@@ -71,7 +71,7 @@ export const rootReducer = combineReducers({
 //export const store = createStore(rootReducer, window.REDUX_DEVTOOLS_EXTENSION && window.REDUX_DEVTOOLS_EXTENSION());
 export const store = createStore(rootReducer, applyMiddleware(thunk));
 
-
+/*
 store.dispatch(fetchData()).then(() => {
   console.log(JSON.stringify(store.getState())); // выводим измененное состояние после завершения запроса
-});
+}); */

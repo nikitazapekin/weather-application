@@ -1,0 +1,17 @@
+.renderedCountry{
+    width: 300px;
+    cursor: pointer;
+    background-color: #fff;
+    border: 2px solid black;
+}
+.inputSearchForm{
+    width: 300px;
+}
+.inputSearch{
+    width: 300px;
+}
+.searchCountries {
+    position: absolute;
+   margin-left:155px ;
+   transform: translateY(-21px);
+}
