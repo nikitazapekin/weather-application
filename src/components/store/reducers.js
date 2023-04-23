@@ -33,3 +33,15 @@ import thunk from "redux-thunk";
         return state;
     }
   };
+  export const dataForSearchList=(state=[], action)=>{
+      switch(action.type){
+        case "ADD": {
+          state=action.newArr 
+          console.log("state"+state)
+          return state
+        }
+        default: {
+          return state;
+        }
+      }
+  }

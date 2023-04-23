@@ -25,10 +25,23 @@
  transform: translateX(-50%);
     display: grid;
     text-align: center;
-    grid-template-columns: repeat(4, 200px);
-    grid-template-rows: repeat(4, 250px);
+    grid-template-columns: repeat(4, 250px);
+    grid-template-rows: repeat(4, 300px);
 }
 .todayIn {
     font-size: 40px;
     color:black
+}
+.testt {
+  position: absolute;
+  left: 50%;
+  white-space: nowrap;
+  display: flex;
+  transform: translateX(-50%);
+}
+.testtEl {
+    padding-top: 50px;
+}
+.test {
+   transform: translateY(-200px);
 }

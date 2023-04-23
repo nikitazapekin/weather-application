@@ -2,10 +2,13 @@
 import { useState, useEffect } from "react"
 import "./currentWeather.css"
 export const CurrentWeather = (props) => {
-  const { city, newArr, temp, date } = props
+  const { city, newArr, temp, date, data } = props
   const [arrayOfMin, setArrayOfMin] = useState([])
 const [arrayOfMax, setArrayOfMax]=useState([])
 const [datas, setDatas]=useState([])
+//const rain=data.hourly.rain
+//const showers=data.hourly.showers
+//const snowfall=data.hourly.snowfall
   useEffect(() => {
     const tempArray = []
     const maxTempArray=[]
@@ -48,14 +51,19 @@ setArrayOfMax(maxTempArray)
     return <div>{item}</div>
   })
   const renderItems=renderMax.map((item, index)=> {
-    return <div className="renderedCurrentCityTemperature">{arrayOfMin[index]}-{item }<br /> {datas[index]} <div className="renderedCurrentCityTemperatureFon"></div></div>
+    return <div className="renderedCurrentCityTemperature"><div className="testt">{arrayOfMin[index]}-{item }</div><br /> <div className="testt testtEl">{datas[index]}</div> <div className="renderedCurrentCityTemperatureFon"></div></div>
   })
   //console.log(datas)
   return (
     <div className="currentWeather">
       <div className="todayIn">Today in {city} </div>
      <div className="tableTemperature">{renderItems}</div>
-     
+     <button className="test" onClick={()=> {
+        console.log(data)
+        console.log(data.hourly.rain)
+        console.log(data.hourly.showers)
+        console.log(data.hourly.snowfall)
+     }}>data</button>
     </div>
   )
 }

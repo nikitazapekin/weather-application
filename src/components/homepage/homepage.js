@@ -159,17 +159,19 @@ import MyComponent from '../test/test';
 import { Navigation } from '../date/navigation/navigation';
 import { CurrentWeather } from '../currentWeather/currentWeather';
 //import translate from 'translate-google';
-
+import { useSelector } from "react-redux"
+import { useDispatch } from "react-redux"
+import { SearchList } from '../searchList/searchList';
 const Homepage = () => {
   const [city, setCity] = useState("");
   const [newArr, setNewArr] = useState([]);
   const [temp, setTemp]=useState([])
   const [date, setDate]=useState([])
   const [boolCheck, setBoolCheck] = useState(true); // initialize with true
-
+const [data, setData]=useState()
   useEffect(() => {
     function successCallback(position) {
-      setBoolCheck(false); // hide the loading image
+      setBoolCheck(false); 
       const geoUrl = `https://api.opencagedata.com/geocode/v1/json?q=${position.coords.latitude}+${position.coords.longitude}&key=f9629a9e6fd7493aac20c35043c7e411`;
       fetch(geoUrl)
         .then(responses => responses.json())
@@ -188,12 +190,17 @@ const Homepage = () => {
             }); */
         });
       
-      async function fetchAsyncTodos() {
-        const weatherUrl = `https://api.open-meteo.com/v1/forecast?latitude=${position.coords.latitude}&longitude=${position.coords.longitude}&hourly=temperature_2m&forecast_days=16`;
-        const response = await fetch(weatherUrl);
+      async function fetchAsyncTodos() {// ,apparent_temperature,precipitation_probability,precipitation,rain,showers,snowfall,cloudcover_low,cloudcover_high,windspeed_10m,windspeed_80m,windspeed_120m,windspeed_180m
+       // const weatherUrl = `https://api.open-meteo.com/v1/forecast?latitude=${position.coords.latitude}&longitude=${position.coords.longitude}&hourly=temperature_2m,rain,showers,snowfall,precipitation&forecast_days=16`;
+       const weatherUrl = `https://api.open-meteo.com/v1/forecast?latitude=${position.coords.latitude}&longitude=${position.coords.longitude}&hourly=temperature_2m,apparent_temperature,precipitation_probability,precipitation,rain,showers,snowfall,cloudcover_low,cloudcover_high,windspeed_10m,windspeed_80m,windspeed_120m,windspeed_180m&forecast_days=16`;
+       const response = await fetch(weatherUrl);
         const data = await response.json();
+        //console.log("data" +JSON.stringify(data))
+        setData(data)
         const arrayOfTemp = data.hourly.temperature_2m.map(item => item);
         const arrayOfTime = data.hourly.time.map(item => item);
+       // const arrayOfRain=data.hourly.temperature_2m.rain.map(item=> item)
+       // console("rain"+data.hourly.rain)
         const newArr = arrayOfTemp.concat(arrayOfTime);
         setTemp(arrayOfTemp)
         setDate(arrayOfTime)
@@ -239,8 +246,9 @@ return <div>{Math.round(item)} {newArr[index+len]}</div>
 const style={
 display: boolCheck ? "block" : "none" // show the loading image if boolCheck is true
 }
-console.log("bool" +boolCheck)
-console.log(city)
+const dispatch = useDispatch();
+const state = useSelector((state) => state);
+state.dispatch({type: "ADD"}, newArr)
   return (
     <div className="homepage">
        <img style={style} className='loadBar' src="https://media.giphy.com/media/17mNCcKU1mJlrbXodo/giphy.gif" alt="loading" />
@@ -248,8 +256,8 @@ console.log(city)
       <Time />
       <img className='backgroundFon' src="https://media.giphy.com/media/xT0xeNf2csFIbeAxvq/giphy.gif" alt="fon" />
    {/*   {finalRender} */}
-      <CurrentWeather temp={temp} date={date} newArr={newArr} city={city}  />
-     
+      <CurrentWeather data={data} temp={temp} date={date} newArr={newArr} city={city}  />
+     <SearchList newArr={newArr}/>
     </div>
   )
 }
@@ -279,3 +287,7 @@ function Time() {
 }
 
 export { Homepage }
+
+
+
+//https://api.open-meteo.com/v1/forecast?latitude=53.93&longitude=30.36&hourly=temperature_2m,rain,showers
