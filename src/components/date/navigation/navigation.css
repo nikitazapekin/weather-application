@@ -6,7 +6,9 @@
     width: 100%;
     height: 60px;
     display: flex;
-    justify-content: space-between;
+  /*  justify-content: space-between; */
+  display: flex;
+  gap: 50px;
     padding-right: 50px;
 }
 .fonNavigation{
@@ -23,4 +25,44 @@ z-index: -1;
     width: 250px;
     height: 250px;
     transform: translateY(-100px);
+    cursor: pointer;
 }
+.renderedCountry{
+    width: 300px;
+    cursor: pointer;
+    background-color: #fff;
+    border: 2px solid black;
+}
+.inputSearchForm{
+    width: 300px;
+ cursor: pointer;
+}
+.inputSearch{
+    cursor:  pointer;
+    position: relative;
+    width: 300px;
+    right: 50px;
+    transform: translateY(15px);
+    border: none;
+    outline: none;
+    padding-left: 15px;
+    color:rgb(136, 133, 133)
+}
+.searchCountries {
+
+    position: absolute;
+   margin-left:155px ; 
+ 
+   transform: translateY(-21px);
+}
+.textNav{
+    font-weight: 800;
+    color: #fff;
+    cursor: pointer;
+}
+
+
+
+/*
+box-shadow: rgba(240, 46, 170, 0.4) -5px 5px, rgba(240, 46, 170, 0.3) -10px 10px, rgba(240, 46, 170, 0.2) -15px 15px, rgba(240, 46, 170, 0.1) -20px 20px, rgba(240, 46, 170, 0.05) -25px 25px;
+*/
