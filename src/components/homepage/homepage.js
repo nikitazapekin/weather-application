@@ -1,18 +1,43 @@
 import { useState, useEffect } from 'react';
-//import { InputSearch } from './components/inputSearch/inputSearch';
-//import MyComponent from './components/test/test';
+import "./homepage.css"
 import { InputSearch } from '../inputSearch/inputSearch';
 import MyComponent from '../test/test';
-//import { Navigation } from './components/date/navigation/navigation';
+import { Navigation } from '../date/navigation/navigation';
 const Homepage=()=> {
+   if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
+  } else {
+    console.log("Geolocation не поддерживается вашим браузером");
+  }
+  
+  function successCallback(position) {
+    console.log(`Широта: ${position.coords.latitude}, Долгота: ${position.coords.longitude}`);
+  }
+  
+  function errorCallback(error) {
+    let errorMessage = "";
+    switch(error.code) {
+      case error.PERMISSION_DENIED:
+        errorMessage = "Пользователь отказался предоставить местоположение";
+        break;
+      case error.POSITION_UNAVAILABLE:
+        errorMessage = "Местоположение недоступно";
+        break;
+      case error.TIMEOUT:
+        errorMessage = "Таймаут при запросе местоположения";
+        break;
+      default:
+        errorMessage = "Произошла неизвестная ошибка";
+    }
+    console.log(errorMessage);
+  }
     return (
         <div className="homepage">
+          <Navigation />
   <Time /> 
-  effe
+  <img className='backgroundFon' src="https://media.giphy.com/media/xT0xeNf2csFIbeAxvq/giphy.gif" alt="fon" />
  
-   <MyComponent /> 
 
-  <InputSearch />
         </div>
     )
 }

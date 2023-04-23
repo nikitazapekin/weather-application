@@ -40,7 +40,8 @@ const InputSearch=()=>{
     })
     return (
         <div className="inputSearch">
-           <input type="text"  placeholder="search..." className="inputSearchForm" onChange={(e) =>{
+           <input type="text"  placeholder="search..." className="inputSearchForm" 
+           onChange={(e) =>{
              setCountry(e.target.value)
             
           //   typedCountry()

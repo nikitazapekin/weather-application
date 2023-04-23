@@ -1,0 +1,26 @@
+.navigation {
+  position: relative;
+  margin: 0 auto;
+   /* background-color: red; */
+    max-width: 1440px;
+    width: 100%;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    padding-right: 50px;
+}
+.fonNavigation{
+/*background-color: red; */
+background: linear-gradient(45deg, blue, rgb(129, 186, 247));
+position: absolute;
+max-width: 100%;
+width: 100%;
+height: 60px;
+opacity: 0.5;
+z-index: -1;
+}
+.logoOfWebPage {
+    width: 250px;
+    height: 250px;
+    transform: translateY(-100px);
+}
