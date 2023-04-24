@@ -4,6 +4,7 @@ import "./inputSearch.css"
 import { fetchData } from "../store/reducers";
 import { store } from "../store/store";
 import { useState } from "react";
+import {  useSearchParams } from 'react-router-dom';
 const InputSearch=()=>{
    const dispatch = useDispatch();
     const state = useSelector((state) => state);
@@ -37,7 +38,7 @@ const InputSearch=()=>{
     
     }
     const renderedElements =countryData.map(element=> {
-        return <Link><div className="renderedCountry">{element.name} {element.timezone}</div> </Link>
+    //    return <Link to={`/${id}`}><div className="renderedCountry">{element.name} {element.timezone}</div> </Link>
     })
     return (
         <div className="inputSearch">

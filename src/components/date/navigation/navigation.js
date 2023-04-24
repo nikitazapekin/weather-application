@@ -1,13 +1,15 @@
 import "./navigation.css"
 import { useSelector, useDispatch } from "react-redux";
-
+import {Routes,Route, Link } from"react-router-dom"
 //import { fetchData } from "../store/reducers";
 import { fetchData } from "../../store/reducers";
 //import { store } from "../store/store";
+import {  useSearchParams } from 'react-router-dom';
 import { store } from "../../store/store";
 import { useState } from "react";
 import Logo from "./logo.png"
-export const Navigation=()=> {
+export const Navigation=(props)=> {
+    const {id}= props
     const dispatch = useDispatch();
     const state = useSelector((state) => state);
     const [country, setCountry] =useState("")
@@ -35,7 +37,16 @@ export const Navigation=()=> {
     
     }
     const renderedElements =countryData.map(element=> {
-        return <div className="renderedCountry">{element.name} {element.timezone}</div>
+        const countryId=element.country_id
+        //return  <Link to={`/${id}`}><div className="renderedCountry">{element.name} {element.timezone}</div></Link>
+      //  return  <Link to={`/${element.name}/${element.timezone}`}><div className="renderedCountry">{element.name} {element.timezone}</div></Link>
+      //return  <Link to={`/${countryId}`}><div className="renderedCountry">{element.name} {element.timezone}</div></Link>
+      const latitude=element.latitude
+      const longitude=element.longitude
+      const arr=[]
+      arr.push(latitude)
+      arr.push(longitude)
+      return  <Link to={`/${arr}`}><div className="renderedCountry">{element.name} {element.timezone}</div></Link>
     })
     return(
         <nav className="navigation">
