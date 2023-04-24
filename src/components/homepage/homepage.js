@@ -153,6 +153,7 @@ setBoolCheck(false) // hide the loading image
 
 
 import React, { useState, useEffect } from 'react';
+import {Routes,Route, Link } from"react-router-dom"
 import "./homepage.css";
 import { InputSearch } from '../inputSearch/inputSearch';
 import MyComponent from '../test/test';
@@ -169,6 +170,8 @@ const Homepage = () => {
   const [date, setDate]=useState([])
   const [boolCheck, setBoolCheck] = useState(true); // initialize with true
 const [data, setData]=useState()
+const dispatch = useDispatch();
+const state = useSelector((state) => state);
   useEffect(() => {
     function successCallback(position) {
       setBoolCheck(false); 
@@ -197,6 +200,9 @@ const [data, setData]=useState()
         const data = await response.json();
         //console.log("data" +JSON.stringify(data))
         setData(data)
+
+
+dispatch({type: "ADD", data})
         const arrayOfTemp = data.hourly.temperature_2m.map(item => item);
         const arrayOfTime = data.hourly.time.map(item => item);
        // const arrayOfRain=data.hourly.temperature_2m.rain.map(item=> item)
@@ -246,9 +252,7 @@ return <div>{Math.round(item)} {newArr[index+len]}</div>
 const style={
 display: boolCheck ? "block" : "none" // show the loading image if boolCheck is true
 }
-const dispatch = useDispatch();
-const state = useSelector((state) => state);
-state.dispatch({type: "ADD"}, newArr)
+
   return (
     <div className="homepage">
        <img style={style} className='loadBar' src="https://media.giphy.com/media/17mNCcKU1mJlrbXodo/giphy.gif" alt="loading" />

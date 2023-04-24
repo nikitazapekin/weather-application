@@ -5,11 +5,81 @@ import { InputSearch } from './components/inputSearch/inputSearch';
 import MyComponent from './components/test/test';
 import { Navigation } from './components/date/navigation/navigation';
 import { Homepage } from './components/homepage/homepage';
+//import {Routes,Route, Link } from"react-router-dom"
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { SearchList } from './components/searchList/searchList';
 function App(){
-  return <div className="App">
+
+const [city, setCity]=useState('')
+
+
+
+
+
+
+  useEffect(() => {
+    function successCallback(position) {
+     // setBoolCheck(false); 
+      const geoUrl = `https://api.opencagedata.com/geocode/v1/json?q=${position.coords.latitude}+${position.coords.longitude}&key=f9629a9e6fd7493aac20c35043c7e411`;
+      fetch(geoUrl)
+        .then(responses => responses.json())
+        .then(data => {
+          const city = data.results[0].components.city;
+       console.log("city app"+city)
+     setCity(city)
+        });
+    }
+
+    function errorCallback(error) {
+      let errorMessage = "";
+      switch(error.code) {
+        case error.PERMISSION_DENIED:
+          errorMessage = "Пользователь отказался предоставить местоположение";
+          break;
+        case error.POSITION_UNAVAILABLE:
+          errorMessage = "Местоположение недоступно";
+          break;
+        case error.TIMEOUT:
+          errorMessage = "Таймаут при запросе местоположения";
+          break;
+        default:
+          errorMessage = "Произошла неизвестная ошибка";
+      }
+    //  console.log(errorMessage);
+    //  setBoolCheck(false); // hide the loading image
+    }
+
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
+    } else {
+      console.log("Geolocation не поддерживается вашим браузером");
+   //   setBoolCheck(false); // hide the loading image
+    }
+  }, []);
+
+
+
+
+
+
+
+  return(
     
-    <Homepage />
+    <div className="App">
+    
+
+
+
+    <Routes >
+  <Route path="/" element={ <Homepage />} />
+
+</Routes>
+
+current city {city}
+
+  {/*  <Homepage /> */}
   </div>
+  )
 }
 
 export default App;

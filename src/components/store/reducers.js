@@ -36,7 +36,7 @@ import thunk from "redux-thunk";
   export const dataForSearchList=(state=[], action)=>{
       switch(action.type){
         case "ADD": {
-          state=action.newArr 
+         state=action.data 
           console.log("state"+state)
           return state
         }

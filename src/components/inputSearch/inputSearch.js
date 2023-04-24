@@ -1,4 +1,5 @@
 import { useSelector, useDispatch } from "react-redux";
+import {Routes,Route, Link } from"react-router-dom"
 import "./inputSearch.css"
 import { fetchData } from "../store/reducers";
 import { store } from "../store/store";
@@ -11,7 +12,7 @@ const InputSearch=()=>{
     const typedCountry=(country)=> {
     
         setTimeout(()=> {
-            console.log(1)
+           // console.log(1)
           
             store.dispatch(fetchData(`${country}`)).then(() => {
                 console.log(JSON.stringify(store.getState())); // выводим измененное состояние после завершения запроса
@@ -36,7 +37,7 @@ const InputSearch=()=>{
     
     }
     const renderedElements =countryData.map(element=> {
-        return <div className="renderedCountry">{element.name} {element.timezone}</div>
+        return <Link><div className="renderedCountry">{element.name} {element.timezone}</div> </Link>
     })
     return (
         <div className="inputSearch">
