@@ -33,15 +33,6 @@ const state = useSelector((state) => state);
           const city = data.results[0].components.city;
          // console.log(city)
           setCity(city)
-       /*   const encodedCity = encodeURIComponent(city);
-          const translateUrl = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&tl=en&dt=t&q=${encodedCity}`;
-          fetch(translateUrl)
-            .then(response => response.json())
-            .then(data => {
-           //   const translation = data[0][0][0];
-             // console.log(`Your city: ${translation}`);
-            //  setCity(translation);
-            }); */
         });
       
       async function fetchAsyncTodos() {// ,apparent_temperature,precipitation_probability,precipitation,rain,showers,snowfall,cloudcover_low,cloudcover_high,windspeed_10m,windspeed_80m,windspeed_120m,windspeed_180m
@@ -112,7 +103,7 @@ display: boolCheck ? "block" : "none" // show the loading image if boolCheck is 
       <img className='backgroundFon' src="https://media.giphy.com/media/xT0xeNf2csFIbeAxvq/giphy.gif" alt="fon" />
    {/*   {finalRender} */}
       <CurrentWeather data={data} temp={temp} date={date} newArr={newArr} city={city}  />
-     <SearchList newArr={newArr}/>
+    {/* <SearchList newArr={newArr}/> */}
     </div>
   )
 }

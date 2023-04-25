@@ -74,12 +74,10 @@ const [city, setCity]=useState('')
     <Routes >
   <Route path="/" element={ <Homepage id={id}/>} />
  {/* <Route path="posts/:id/:idd" element={<SearchList />} />  */}
- <Route path=":id" element={<SearchList />} />
+ <Route path=":id" element={<SearchList />} /> 
 </Routes>
 
-current city {city}
 
-  {/*  <Homepage /> */}
   </div>
   )
 }
