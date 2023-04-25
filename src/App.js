@@ -9,6 +9,7 @@ import { Homepage } from './components/homepage/homepage';
 //import {Routes,Route, Link } from"react-router-dom"
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { SearchList } from './components/searchList/searchList';
+import { List } from './components/list/list';
 function App(){
 
 const [city, setCity]=useState('')
@@ -73,8 +74,8 @@ const [city, setCity]=useState('')
 
     <Routes >
   <Route path="/" element={ <Homepage id={id}/>} />
- {/* <Route path="posts/:id/:idd" element={<SearchList />} />  */}
  <Route path=":id" element={<SearchList />} /> 
+ <Route path="/test/:id" element={<List />} /> 
 </Routes>
 
 

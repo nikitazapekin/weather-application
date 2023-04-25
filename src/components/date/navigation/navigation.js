@@ -36,16 +36,15 @@ export const Navigation=(props)=> {
 
     
     }
+    const [ell, setEll]=useState("")
     const renderedElements =countryData.map(element=> {
         const countryId=element.country_id
-        //return  <Link to={`/${id}`}><div className="renderedCountry">{element.name} {element.timezone}</div></Link>
-      //  return  <Link to={`/${element.name}/${element.timezone}`}><div className="renderedCountry">{element.name} {element.timezone}</div></Link>
-      //return  <Link to={`/${countryId}`}><div className="renderedCountry">{element.name} {element.timezone}</div></Link>
       const latitude=element.latitude
       const longitude=element.longitude
       const arr=[]
       arr.push(latitude)
       arr.push(longitude)
+    
       return  <Link to={`/${arr}`}><div className="renderedCountry">{element.name} {element.timezone}</div></Link>
     })
     return(
@@ -65,7 +64,9 @@ export const Navigation=(props)=> {
             }
             }
             />
-<button className="searchCountries">search</button>
+<Link to={`/test/${country}`}><button className="searchCountries" onClick={()=> {
+    console.log(country)
+}} >search</button></Link>
 {renderedElements}
         </div>
             <div className="navItem"><p className="textNav">Favourite</p></div>

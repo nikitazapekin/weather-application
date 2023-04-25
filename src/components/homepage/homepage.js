@@ -47,8 +47,6 @@ const state = useSelector((state) => state);
 dispatch({type: "ADD", data})
         const arrayOfTemp = data.hourly.temperature_2m.map(item => item);
         const arrayOfTime = data.hourly.time.map(item => item);
-       // const arrayOfRain=data.hourly.temperature_2m.rain.map(item=> item)
-       // console("rain"+data.hourly.rain)
         const newArr = arrayOfTemp.concat(arrayOfTime);
         setTemp(arrayOfTemp)
         setDate(arrayOfTime)
@@ -101,9 +99,9 @@ display: boolCheck ? "block" : "none" // show the loading image if boolCheck is 
       <Navigation id={id} />
       <Time />
       <img className='backgroundFon' src="https://media.giphy.com/media/xT0xeNf2csFIbeAxvq/giphy.gif" alt="fon" />
-   {/*   {finalRender} */}
+  
       <CurrentWeather data={data} temp={temp} date={date} newArr={newArr} city={city}  />
-    {/* <SearchList newArr={newArr}/> */}
+  
     </div>
   )
 }

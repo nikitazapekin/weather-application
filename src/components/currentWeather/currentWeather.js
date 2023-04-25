@@ -1,14 +1,12 @@
 
 import { useState, useEffect } from "react"
+import {Routes,Route, Link } from"react-router-dom"
 import "./currentWeather.css"
 export const CurrentWeather = (props) => {
   const { city, newArr, temp, date, data } = props
   const [arrayOfMin, setArrayOfMin] = useState([])
 const [arrayOfMax, setArrayOfMax]=useState([])
 const [datas, setDatas]=useState([])
-//const rain=data.hourly.rain
-//const showers=data.hourly.showers
-//const snowfall=data.hourly.snowfall
   useEffect(() => {
     const tempArray = []
     const maxTempArray=[]
