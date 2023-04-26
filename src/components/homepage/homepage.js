@@ -3,6 +3,7 @@
 
 import React, { useState, useEffect } from 'react';
 import {Routes,Route, Link } from"react-router-dom"
+import { Fons } from '../fons/fons';
 import "./homepage.css";
 import {  useSearchParams } from 'react-router-dom';
 import { InputSearch } from '../inputSearch/inputSearch';
@@ -95,10 +96,11 @@ display: boolCheck ? "block" : "none" // show the loading image if boolCheck is 
 
   return (
     <div className="homepage">
-       <img style={style} className='loadBar' src="https://media.giphy.com/media/17mNCcKU1mJlrbXodo/giphy.gif" alt="loading" />
+      <Fons />
+     <img style={style} className='loadBar' src="https://media.giphy.com/media/17mNCcKU1mJlrbXodo/giphy.gif" alt="loading" /> 
       <Navigation id={id} />
       <Time />
-      <img className='backgroundFon' src="https://media.giphy.com/media/xT0xeNf2csFIbeAxvq/giphy.gif" alt="fon" />
+    {/*  <img className='backgroundFon' src="https://media.giphy.com/media/xT0xeNf2csFIbeAxvq/giphy.gif" alt="fon" /> */}
   
       <CurrentWeather data={data} temp={temp} date={date} newArr={newArr} city={city}  />
   

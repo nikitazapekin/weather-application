@@ -2,6 +2,7 @@ import { useParams } from 'react-router-dom';
 import { Navigation } from '../date/navigation/navigation';
 import { useState } from 'react';
 import { useEffect } from 'react';
+import { Fons } from '../fons/fons';
 import "./currentHour.css"
 const CurrentHour =()=> {
     const {id, idd} = useParams();
@@ -80,13 +81,14 @@ const [city, setCity]=useState('')
 return (
   <div>
     <Navigation />
+    <Fons />
     <h1 className="weatherFor">{idd} in {city}</h1>
     {rren !== undefined && indexes !== undefined && data !== undefined && (
       <div className='tableTemperature'>
        {rren.map((item, index) => {
        
          // return <div className='renderedCurrentCityTemperature' key={index}><div className="centT"> {item}° </div> <div className="centTT"> {idd}<br />{nums[index]}:00</div> <div className="renderedCurrentCityTemperatureFon"></div></div>;
-       return  <a href="#">
+       return  <a className='styleLink' href="#">
         <span>
         <div className='renderedCurrentCityTemperature' key={index}><div className="centT"> {item}° </div> <div className="centTT"> {idd}<br />{nums[index]}:00</div> <div className="renderedCurrentCityTemperatureFon"></div></div>;
           <i></i></span></a>

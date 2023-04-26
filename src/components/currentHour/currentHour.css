@@ -133,7 +133,7 @@ a {
     transition: 0.5s;
 } */
 
-a:hover {
+.styleLink:hover {
     letter-spacing: 0.25em;
     background: orangered;
     color: orangered;
@@ -152,19 +152,19 @@ a:before{
 } */
 
 
-a span {
+.styleLink span {
     position: relative;
     z-index: 1;
 }
 
-a i {
+.styleLink i {
     position: absolute;
     inset: 0;
     display: block;
 
 }
 
-a i::before{
+.styleLink i::before{
     content: "";
     position: absolute;
     width: 10px;
@@ -178,7 +178,7 @@ top: -10px;
 transition: 1s;
 }
 
-a:hover i::before{
+.styleLink:hover i::before{
     left: -20%;
     transform:  rotate(45deg);
     box-shadow: 40px 15px orangered;
@@ -186,7 +186,7 @@ a:hover i::before{
 
 
 
-a i::after{
+.styleLink i::after{
     content: "";
     position: absolute;
     width: 10px;
@@ -198,10 +198,11 @@ a i::after{
    /* right: 120%; */
 
    /* transform: translateX(80%); */
- transform: translateX(-100px);
+ transform: translateX(-127px);
+
     transition: 1s;
 }
-a:hover i::after{
+.styleLink:hover i::after{
    left: 100%;
     transform:  rotate(45deg);
     box-shadow: -40px -15px orangered;

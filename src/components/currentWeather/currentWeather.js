@@ -87,12 +87,6 @@ console.log(indices); */
     <div className="currentWeather">
       <div className="todayIn">Today in {city} </div>
      <div className="tableTemperature">{renderItems}</div>
-     <button className="test" onClick={()=> {
-        console.log(data)
-        console.log(data.hourly.rain)
-        console.log(data.hourly.showers)
-        console.log(data.hourly.snowfall)
-     }}>data</button>
     </div>
   )
 }

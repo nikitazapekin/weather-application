@@ -50,7 +50,7 @@ export const Navigation=(props)=> {
     })
     return(
         <nav className="navigation">
-            <div className="navItem"><img src={Logo} alt="logo" className="logoOfWebPage" /></div>
+        <Link to="/"> <div className="navItem"> <img src={Logo} alt="logo" className="logoOfWebPage" />  </div> </Link>
             <div className="inputSearch">
            <input type="text"  placeholder="search..." className="inputSearchForm" 
            onChange={(e) =>{
@@ -65,16 +65,30 @@ export const Navigation=(props)=> {
             }
             }
             />
-<Link to={`/test/${country}`}><button className="searchCountries" onClick={()=> {
+
+
+<div class="ccd" onClick={()=> {    //searchCountries
+
+//  if(country!=null){
+  console.log(country)
+  const currentLocation = window.location;
+  setTimeout(()=>{
+currentLocation.reload()
+
+}, 10)}}><a href="#" class="ddott"><span className="trStyle">search</span></a></div>
+            {/* 
+<Link to={`/test/${country}`}>
+  <button className="bttr tick" onClick={()=> {    //searchCountries
+
   //  if(country!=null){
     console.log(country)
     const currentLocation = window.location;
     setTimeout(()=>{
 currentLocation.reload()
-   // location.reload();
+ 
 }, 10)
   //  }
-}} >search</button></Link>
+}} >search</button></Link> */}
 {renderedElements}
         </div>
             <div className="navItem"><p className="textNav">Favourite</p></div>
@@ -86,6 +100,7 @@ currentLocation.reload()
                 </div>
 
             </div>
+           
            <div className="fonNavigation"></div> 
 
 
