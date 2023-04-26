@@ -2,11 +2,12 @@ import { useParams } from 'react-router-dom';
 import { Navigation } from '../date/navigation/navigation';
 import { useState } from 'react';
 import { useEffect } from 'react';
+import "./currentHour.css"
 const CurrentHour =()=> {
     const {id, idd} = useParams();
     const [data, setData]=useState();
     const [indexes, setIndexes]=useState();
-  
+const [city, setCity]=useState('')
     useEffect(() => {
       function successCallback(position) {
         const geoUrl = `https://api.opencagedata.com/geocode/v1/json?q=${position.coords.latitude}+${position.coords.longitude}&key=f9629a9e6fd7493aac20c35043c7e411`;
@@ -14,6 +15,7 @@ const CurrentHour =()=> {
           .then(responses => responses.json())
           .then(data => {
             const city = data.results[0].components.city;
+            setCity(city)
           });
         
         async function fetchAsyncTodos() {
@@ -55,45 +57,43 @@ const CurrentHour =()=> {
           return accumulator;
         }, []);
         setIndexes(indices);
+        //console.log(indices)
+        console.log(JSON.stringify(data))
       }
     }, [data, idd]);
     
     const [rren, setRren] = useState();
+    const  [lll, setLll]=useState()
+    const nums=[0,  1,  2,  3,  4,  5,  6,  7,8,  9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23]
+   
     useEffect(() => {
       if (indexes !== undefined && data !== undefined) {
         const ll = indexes.length;
-    //    const rend = data.hourly.temperature_2m.slice(indexes[0], indexes[ll - 1] - 1).map((item, index)=> {
-        const rend = data.hourly.temperature_2m.slice(indexes[0], indexes[ll] ).map((item, index)=> {
+        setLll(ll)
+        const rend = data.hourly.temperature_2m.slice(indexes[0], indexes[23]+1 ).map((item, index)=> {
           return item;
         });
         setRren(rend);
       }
     }, [indexes, data]);
-/*return (
-<div>
-<Navigation />
-{rren !== undefined && indexes!=undefined && data!=undefined && (
-        <div>
-          
-          rren.map((item, index) => {
-         //   setCurrentHour(prev=> prev+1)
-            return <div key={index}>temperature {item} date {idd}: </div>;
-})
-}
-    
-</div>
-) */
+
 return (
   <div>
     <Navigation />
+    <h1 className="weatherFor">{idd} in {city}</h1>
     {rren !== undefined && indexes !== undefined && data !== undefined && (
-      <div>
-        {rren.map((item, index) => {
-        
-          return <div key={index}>temperature {item} date {idd}:</div>;
-        })}
+      <div className='tableTemperature'>
+       {rren.map((item, index) => {
+       
+         // return <div className='renderedCurrentCityTemperature' key={index}><div className="centT"> {item}° </div> <div className="centTT"> {idd}<br />{nums[index]}:00</div> <div className="renderedCurrentCityTemperatureFon"></div></div>;
+       return  <a href="#">
+        <span>
+        <div className='renderedCurrentCityTemperature' key={index}><div className="centT"> {item}° </div> <div className="centTT"> {idd}<br />{nums[index]}:00</div> <div className="renderedCurrentCityTemperatureFon"></div></div>;
+          <i></i></span></a>
+       
+       })}
       </div>
-    )}
+      )} 
   </div>
 );
 
@@ -101,23 +101,4 @@ return (
   export {CurrentHour} 
 
 
-
-
-  {/*(
-    <div>
-      <Navigation />
-      {id}
-      {JSON.stringify(idd)}
-      {rren !== undefined && indexes!=undefined && data!=undefined && (
-        <div>
-          {useEffect(()=> {
-          rren.map((item, index) => {
-         //   setCurrentHour(prev=> prev+1)
-            return <div key={index}>temperature {item} date {idd}: </div>;
-          })
-        }, [])
-    }
-        </div>
-      )}
-    </div>
-  );  */}
+//https://www.figma.com/file/xWnDJDfzA2TQkLmK8BE3rE/Frosted-Glass-Weather-Icons-(Community)?node-id=7-8&t=evu6xy5rjN52CTmW-0

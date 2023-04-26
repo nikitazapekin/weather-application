@@ -28,7 +28,7 @@ const [city, setCity]=useState('')
         .then(responses => responses.json())
         .then(data => {
           const city = data.results[0].components.city;
-       console.log("city app"+city)
+       //console.log("city app"+city)
      setCity(city)
         });
     }
