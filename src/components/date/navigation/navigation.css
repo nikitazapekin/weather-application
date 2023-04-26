@@ -36,6 +36,7 @@ z-index: -1;
 .inputSearchForm{
     width: 300px;
  cursor: pointer;
+ padding-left: 30px;
 }
 .inputSearch{
     cursor:  pointer;
@@ -61,8 +62,21 @@ z-index: -1;
     cursor: pointer;
 }
 
-
-
+.langSelection{
+    position: absolute;
+    width: 40px;
+    height: 30px;
+ /*   border-radius: 50%; */
+ left: 85%;
+ transform: translateY(5px);
+}
+.imgSelectionItem {
+    width: 40px;
+    height: 30px;
+  /*  border-radius: 50%; */
+    cursor: pointer;
+    float: right;
+}
 /*
 box-shadow: rgba(240, 46, 170, 0.4) -5px 5px, rgba(240, 46, 170, 0.3) -10px 10px, rgba(240, 46, 170, 0.2) -15px 15px, rgba(240, 46, 170, 0.1) -20px 20px, rgba(240, 46, 170, 0.05) -25px 25px;
 */

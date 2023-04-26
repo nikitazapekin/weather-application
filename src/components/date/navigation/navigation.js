@@ -8,6 +8,7 @@ import {  useSearchParams } from 'react-router-dom';
 import { store } from "../../store/store";
 import { useState } from "react";
 import Logo from "./logo.png"
+import En from "./eng.jpg"
 export const Navigation=(props)=> {
     const {id}= props
     const dispatch = useDispatch();
@@ -65,14 +66,27 @@ export const Navigation=(props)=> {
             }
             />
 <Link to={`/test/${country}`}><button className="searchCountries" onClick={()=> {
+  //  if(country!=null){
     console.log(country)
+    const currentLocation = window.location;
+    setTimeout(()=>{
+currentLocation.reload()
+   // location.reload();
+}, 10)
+  //  }
 }} >search</button></Link>
 {renderedElements}
         </div>
             <div className="navItem"><p className="textNav">Favourite</p></div>
             <div className="navItem"><p className="textNav">Pressure</p></div>
             <div className="navItem"><p className="textNav">Wind</p></div>
-            <div className="fonNavigation"></div>
+            <div className="langSelection">
+                <div className="langCheck">
+                <img src={En} alt="lang" className="imgSelectionItem" />
+                </div>
+
+            </div>
+           <div className="fonNavigation"></div> 
 
 
         </nav>

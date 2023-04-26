@@ -49,9 +49,40 @@ setArrayOfMax(maxTempArray)
     return <div>{item}</div>
   })
   const renderItems=renderMax.map((item, index)=> {
-    return <div className="renderedCurrentCityTemperature"><div className="testt">{arrayOfMin[index]}-{item }</div><br /> <div className="testt testtEl">{datas[index]}</div> <div className="renderedCurrentCityTemperatureFon"></div></div>
+    const id=1
+   // const idd=22
+   const ttem=data.hourly.time
+  // console.log("ttem"+ttem)
+   /*const temper =ttem.filter((item, index)=> {
+   if(item.slice(0,10)===datas[index]){
+    return item.slice(0,8)
+   }
+   }) */
+  // console.log(temper)
+/*const el=ttem.map(element => {
+  return ";"+element.slice(0,2)+";"
+});
+console.log("tt"+ttem) */
+/*
+const modifiedArray = ttem.map((element) => {
+  return element.slice(0, -6);
+});
+ 
+// Поиск позиций элементов, равных "2023-05-11"
+const indices = modifiedArray.reduce((accumulator, element, index) => {
+ // if (element === "2023-05-11") {
+  if (element === datas[index]) {
+    accumulator.push(index);
+  }
+  return accumulator;
+}, []);
+ 
+console.log(indices); */
+    const idd=datas[index]
+   // console.log("idd"+idd)
+    return <Link to={`/current/${id}/${datas[index]}`}><div className="renderedCurrentCityTemperature"><div className="testt">{arrayOfMin[index]}-{item }</div><br /> <div className="testt testtEl">{datas[index]}</div> <div className="renderedCurrentCityTemperatureFon"></div></div></Link>
   })
-  //console.log(datas)
+  
   return (
     <div className="currentWeather">
       <div className="todayIn">Today in {city} </div>

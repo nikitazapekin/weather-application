@@ -10,6 +10,7 @@ import { Homepage } from './components/homepage/homepage';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { SearchList } from './components/searchList/searchList';
 import { List } from './components/list/list';
+import { CurrentHour } from './components/currentHour/currentHour';
 function App(){
 
 const [city, setCity]=useState('')
@@ -76,6 +77,7 @@ const [city, setCity]=useState('')
   <Route path="/" element={ <Homepage id={id}/>} />
  <Route path=":id" element={<SearchList />} /> 
  <Route path="/test/:id" element={<List />} /> 
+ <Route path="/current/:id/:idd" element={<CurrentHour />} /> 
 </Routes>
 
 
