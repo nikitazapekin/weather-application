@@ -4,6 +4,7 @@
 import React, { useState, useEffect } from 'react';
 import {Routes,Route, Link } from"react-router-dom"
 import { Fons } from '../fons/fons';
+import Sunn from "./image.png"
 import "./homepage.css";
 import {  useSearchParams } from 'react-router-dom';
 import { InputSearch } from '../inputSearch/inputSearch';
@@ -14,6 +15,7 @@ import { CurrentWeather } from '../currentWeather/currentWeather';
 import { useSelector } from "react-redux"
 import { useDispatch } from "react-redux"
 import { SearchList } from '../searchList/searchList';
+import { Footer } from '../footer/footer';
 const Homepage = (props) => {
   const {id}=props
   const [city, setCity] = useState("");
@@ -100,14 +102,15 @@ display: boolCheck ? "block" : "none" // show the loading image if boolCheck is 
      <img style={style} className='loadBar' src="https://media.giphy.com/media/17mNCcKU1mJlrbXodo/giphy.gif" alt="loading" /> 
       <Navigation id={id} />
       <Time />
-    {/*  <img className='backgroundFon' src="https://media.giphy.com/media/xT0xeNf2csFIbeAxvq/giphy.gif" alt="fon" /> */}
   
       <CurrentWeather data={data} temp={temp} date={date} newArr={newArr} city={city}  />
   
+      {Footer}
+   
     </div>
   )
 }
-
+//import {Sunn} from "./image.png"
 function Time() {
   const [date, setDate] = useState(new Date());
 
@@ -124,6 +127,7 @@ function Time() {
 
   return (
     <div className='Time'>
+     <img src={Sunn} alt="sun" className="sun" /> 
       <div className="day">{date.toLocaleDateString('en-US', {weekday: 'long'})}{' '}</div>
       <div className="date">{date.toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}{' '}</div>
       <div className="time">{date.toLocaleTimeString()}</div>

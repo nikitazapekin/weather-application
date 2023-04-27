@@ -45,3 +45,135 @@
 .test {
    transform: translateY(-200px);
 }
+
+
+
+/*========================================*/
+
+
+
+
+.renderedCurrentCityTemperature {
+    position: relative;
+    background: #25c57d;
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+   text-decoration: none !important;
+    letter-spacing: 0.1em;
+    font-weight: 400;
+  
+    transition: 0.5s;
+} 
+а {
+    text-decoration: none;
+  }
+/*
+a {
+    position: relative;
+    background: #444;
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+   
+    letter-spacing: 0.1em;
+    font-weight: 400;
+  
+    transition: 0.5s;
+} */
+
+.styleLink:hover {
+    letter-spacing: 0.25em;
+    background: orangered;
+    color: orangered;
+    box-shadow:  0 0 35px  orangered;
+  width: 160px;
+  height: 260px;
+  border-radius: 20px;
+}
+/*
+a:before{
+    content: "";
+    position: absolute;
+    inset: 2px;
+    background: #39393b;
+
+} */
+
+
+.styleLink span {
+    position: relative;
+    z-index: 1;
+}
+
+.styleLink i {
+    position: absolute;
+    inset: 0;
+    display: block;
+
+}
+
+.styleLink i::before{
+    content: "";
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: #27282c;
+    border: 2px solid  orangered;
+top: -10px;
+   
+    left: 100%;
+    transform: translateX(80%);
+transition: 1s;
+}
+
+.styleLink:hover i::before{
+    left: -20%;
+    transform:  rotate(45deg);
+    box-shadow: 40px 15px orangered;
+}
+
+
+
+.styleLink i::after{
+    content: "";
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: #27282c;
+    border: 2px solid  rgb(0, 255, 234);
+    top: 250px;
+   
+   /* right: 120%; */
+
+   /* transform: translateX(80%); */
+ transform: translateX(-127px);
+
+    transition: 1s;
+}
+.styleLink:hover i::after{
+   left: 100%;
+    transform:  rotate(45deg);
+    box-shadow: -40px -15px orangered;
+}  
+.textt {
+    transform: translateX(10px);
+}
+.ttt {
+    white-space: nowrap;
+    width: 100px;
+    transform: translateX(50px);
+}
+.qw {
+    padding-top: 150px;
+    transform: translateX(-20px);
+    text-decoration: none;
+}
+.ttqq {
+    transform: translateX(120px);
+}
+.ttty {
+    display: flex;
+    transform: translateX(60px);
+    padding-top: 170px;
+}

@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react';
 import "./App.css"
 import { InputSearch } from './components/inputSearch/inputSearch';
+import {Sun} from "./image.png"
 import MyComponent from './components/test/test';
 import {  useSearchParams } from 'react-router-dom';
 import { Navigation } from './components/date/navigation/navigation';
@@ -11,14 +12,21 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { SearchList } from './components/searchList/searchList';
 import { List } from './components/list/list';
 import { CurrentHour } from './components/currentHour/currentHour';
+import WeatherForecast from './components/testSearch/testSearch';
 function App(){
 
 const [city, setCity]=useState('')
 
 
 
-
-
+/*
+document.body.style.overflow = 'hidden'
+document.addEventListener('DOMContentLoaded', ()=>{
+    setTimeout(()=> {
+        document.querySelector('.fon').style.display = 'none';
+        document.body.style.overflow = ''
+    },1000)
+}) */
 
   useEffect(() => {
     function successCallback(position) {
@@ -70,9 +78,17 @@ const [city, setCity]=useState('')
     
     <div className="App">
     
-
-
-
+   {/* <div className="fon">
+    <div className="logo">
+      <div className="item" >aaaaa</div>
+        <div className="item" ></div>
+        <div className="item" ></div>
+        <div className="item" ></div> 
+        <img className="ima" src="https://thumbs.gfycat.com/UncommonCrazyAfricanaugurbuzzard-size_restricted.gif" alt="kk" />
+    </div>
+</div>
+  */}
+{/*<WeatherForecast /> */}
     <Routes >
   <Route path="/" element={ <Homepage id={id}/>} />
  <Route path=":id" element={<SearchList />} /> 

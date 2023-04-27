@@ -28,10 +28,11 @@ z-index: -1;
     cursor: pointer;
 }
 .renderedCountry{
-    width: 300px;
+    width: 330px;
     cursor: pointer;
     background-color: #fff;
     border: 2px solid black;
+    z-index: 45;
 }
 .inputSearchForm{
     width: 300px;
@@ -60,14 +61,13 @@ z-index: -1;
     height: 20px;
     overflow: hidden;
   /*  width: 60%; */
-  width: 200px;
-    margin:0 auto;
-    position: relative;
-    transform: translateX(210px) translateY(-20px) ;
+  width: 240px;
+    margin:0 auto; 
+  /*  position: absolute; */
+    position: relative; 
+    transform: translateX(210px) translateY(-20px) ; 
 }
-.trStyle {
-   /* transform: translateY(-20px); */
-}
+
 a.ddott {
     margin:0 auto;
     display: block;

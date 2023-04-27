@@ -7,3 +7,97 @@
     top: 0;
 z-index: -2;
 }
+.sun {
+    position: absolute;
+    width: 100px;
+    height: 50px;
+top: -50px;
+left: 5px;
+animation:  anim 8s linear infinite;
+}
+@keyframes anim{
+    50%{
+        transform: translateX(150px);
+    }
+    100%{
+        transform: translateX(0);
+    }
+}
+
+/*/////////////////////////////////////////////// */
+
+
+
+.renderedCurrentCityTemperature {
+    position: relative;
+    background: #25c57d;
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+   
+    letter-spacing: 0.1em;
+    font-weight: 400;
+  
+    transition: 0.5s;
+} 
+
+.styleLink:hover {
+    letter-spacing: 0.25em;
+    background: orangered;
+    color: orangered;
+    box-shadow:  0 0 35px  orangered;
+  width: 160px;
+  height: 260px;
+  border-radius: 20px;
+}
+.styleLink span {
+    position: relative;
+    z-index: 1;
+}
+
+.styleLink i {
+    position: absolute;
+    inset: 0;
+    display: block;
+
+}
+
+.styleLink i::before{
+    content: "";
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: #27282c;
+    border: 2px solid  orangered;
+top: -10px;
+   
+    left: 100%;
+    transform: translateX(80%);
+transition: 1s;
+}
+
+.styleLink:hover i::before{
+    left: -20%;
+    transform:  rotate(45deg);
+    box-shadow: 40px 15px orangered;
+}
+
+
+
+.styleLink i::after{
+    content: "";
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: #27282c;
+    border: 2px solid  rgb(0, 255, 234);
+    top: 250px;
+ transform: translateX(-127px);
+
+    transition: 1s;
+}
+.styleLink:hover i::after{
+   left: 100%;
+    transform:  rotate(45deg);
+    box-shadow: -40px -15px orangered;
+}  

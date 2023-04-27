@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import {Sun} from "./image.png"
 function Date(){
   const [date, setDate] = useState(new Date());
   
@@ -13,6 +14,7 @@ function Date(){
   }, []);
   return (
     <span>
+      <img src={Sun} alt="sun" className="sun" />
       {date.toLocaleTimeString()}
     </span>
   );

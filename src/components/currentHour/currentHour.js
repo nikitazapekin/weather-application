@@ -46,6 +46,7 @@ const [city, setCity]=useState('')
   //const [currentHour, setCurrentHour] =useState(0)
     useEffect(()=> {
       if(data != undefined) {
+        console.log(JSON.stringify(data))
         const ttem = data.hourly.time;
         const modifiedArray = ttem.map((element) => {
           return element.slice(0, -6);
@@ -66,11 +67,47 @@ const [city, setCity]=useState('')
     const [rren, setRren] = useState();
     const  [lll, setLll]=useState()
     const nums=[0,  1,  2,  3,  4,  5,  6,  7,8,  9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23]
-   
+   const [rains, setRains]=useState([])
+   const [showers, setShowers]=useState([])
+   const [presProp, setPresProp]=useState([])
     useEffect(() => {
       if (indexes !== undefined && data !== undefined) {
         const ll = indexes.length;
         setLll(ll)
+        const rendPresProp=data.hourly.precipitation_probability.slice(indexes[0], indexes[23]+1 ).map((item, index)=> {
+          return item;
+        });
+        const rendShowers=data.hourly.showers.slice(indexes[0], indexes[23]+1 ).map((item, index)=> {
+          return item;
+        });
+        const cloudcover_low=data.hourly.cloudcover_low.slice(indexes[0], indexes[23]+1 ).map((item, index)=> {
+          return item;
+        });
+        const rendRain=data.hourly.rain.slice(indexes[0], indexes[23]+1 ).map((item, index)=> {
+          return item;
+        });
+        const rendPres=data.hourly.precipitation.slice(indexes[0], indexes[23]+1 ).map((item, index)=> {
+          return item;
+        });
+        
+
+        console.log("propability"+rendPresProp) //>20 вероятность в % осадков
+        /*console.log("rain "+rendRain);
+        console.log("shower"+rendShowers) */
+        setRains(rendRain)
+        setShowers(rendShowers)
+        setPresProp(rendPresProp)
+        const finalArrayOfWeather=[]
+        for(let i=0; i<24; i++){
+          if(rendPresProp[i]<0.5 ) {
+            finalArrayOfWeather.push(i)
+          }
+          else{ 
+            finalArrayOfWeather.push(-1)
+          }
+        }
+      //  if()
+      console.log(finalArrayOfWeather)
         const rend = data.hourly.temperature_2m.slice(indexes[0], indexes[23]+1 ).map((item, index)=> {
           return item;
         });

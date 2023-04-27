@@ -74,3 +74,43 @@ body{
 .time{
   padding-top: 140px;
 }
+
+
+/*
+.fon {
+  background-color: black;
+
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  height: 100vh;
+  z-index: 22222;
+  position: relative;
+  justify-content: center;
+}
+.logo {
+  position: relative;
+  display: flex;
+  justify-content: center;
+top: 50%;
+
+}
+.ima {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  margin: 0 auto;
+}
+.co {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  background-color: red;
+}
+.aa {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  background-color: orangered;
+} */
