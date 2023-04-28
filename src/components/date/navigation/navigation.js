@@ -8,76 +8,7 @@ import { useState } from "react";
 import Logo from "./logo.png"
 import { useEffect } from "react";
 import En from "./eng.jpg"
-/*
-export const Navigation=(props)=> {
-    const {id}= props
-    const dispatch = useDispatch();
-    const state = useSelector((state) => state);
-    const [country, setCountry] =useState("")
-    const [countryData, setCountryData] =useState([])
-    const typedCountry=(country)=> { 
-        setTimeout(()=> {
-            console.log(1)
-            store.dispatch(fetchData(`${country}`)).then(() => {
-                console.log(JSON.stringify(store.getState())); // выводим измененное состояние после завершения запроса
-                const countries = store.getState();
-             
-                const array=countries.reducer.data.results
-                setCountryData([])
-                  const newData = array.slice(0, 10); // создаем массив с новыми данными
-  setCountryData(prevState => [...prevState, ...newData]); // обновляем состояние одним вызовом setCountryData
-              });
-             
-        }, 100)
-    }
-    const [ell, setEll]=useState("")
-    const renderedElements =countryData.map(element=> {
-        const countryId=element.country_id
-      const latitude=element.latitude
-      const longitude=element.longitude
-      const arr=[]
-      arr.push(latitude)
-      arr.push(longitude)
-      return  <Link to={`/${arr}`}><div className="renderedCountry">{element.name} {element.timezone}</div></Link>
-    })
-    const handleInput = (event) => {
-    };
-    return(
-        <nav className="navigation">
-        <Link to="/"> <div className="navItem"> <img src={Logo} alt="logo" className="logoOfWebPage" />  </div> </Link>
-            <div className="inputSearch">
-           <input type="text"  placeholder="search..." className="inputSearchForm"// onChange={handleInput}
-           onChange={(e) =>{
-             setCountry(e.target.value)
-            handleInput()
-           }  
-            }  
-                        value={country}
-            onBlur={() =>{ //console.log(country)
-                typedCountry(country)
-            }
-            }
-            />
-<div class="ccd" onClick={()=> {    //searchCountries
-  const currentLocation = window.location;
-  setTimeout(()=>{
-currentLocation.reload()
-}, 10)}}><a href="#" class="ddott"><span className="trStyle">search</span></a></div>
-{renderedElements}
-        </div>
-            <div className="navItem"><p className="textNav">Favourite</p></div>
-            <div className="navItem"><p className="textNav">Pressure</p></div>
-            <div className="navItem"><p className="textNav">Wind</p></div>
-            <div className="langSelection">
-                <div className="langCheck">
-                <img src={En} alt="lang" className="imgSelectionItem" />
-                </div>
-            </div>          
-           <div className="fonNavigation"></div> 
-        </nav>
-    )
-} */
-
+import Log from "./image.png"
 
 
 
@@ -139,11 +70,13 @@ export const Navigation = (props) => {
 
   return (
     <nav className="navigation">
+   
       <Link to="/">
         <div className="navItem">
-          <img src={Logo} alt="logo" className="logoOfWebPage" />
+          <img src={Log} alt="logo" className="logoOfWebPage" />
         </div>
       </Link>
+      <div className="navItem">
       <div className="inputSearch">
         <input
           type="text"
@@ -152,29 +85,11 @@ export const Navigation = (props) => {
           onChange={handleInput}
           value={country}
         />
-        {renderedElements}
-        <div
-          class="ccd"
-          onClick={() => {
-            const currentLocation = window.location;
-            setTimeout(() => {
-              currentLocation.reload();
-            }, 10);
-          }}
-        >
-          </div>
-      
-        {/*  <Link style={{width: "60px"}} href="#" class="ddott">
-            <span className="trStyle">search</span>
-        </Link> */}
-      {/*  <Link href="#" className="ddott">
-  <span className="trStyle" onClick={(e) => { e.stopPropagation(); }}>search</span>
-      </Link> */}
-       
-      {/*  {renderedElements} */}
+<Link to={`/test/${country}`}>
+ <button class="button-85" role="button">Search</button>
+ </Link>
       </div>
-      <div className="navItem">
-        <Link to="/"><button>search</button></Link>
+      {renderedElements}
       </div>
       <div className="navItem">
         <p className="textNav">Favourite</p>
@@ -190,7 +105,9 @@ export const Navigation = (props) => {
           <img src={En} alt="lang" className="imgSelectionItem" />
         </div>
       </div>
+    
       <div className="fonNavigation"></div>
+      
     </nav>
   );
 };

@@ -70,6 +70,7 @@ const [city, setCity]=useState('')
    const [rains, setRains]=useState([])
    const [showers, setShowers]=useState([])
    const [presProp, setPresProp]=useState([])
+   const [cloudCoverLow, setCloudCoverLow]=useState([])
     useEffect(() => {
       if (indexes !== undefined && data !== undefined) {
         const ll = indexes.length;
@@ -83,6 +84,8 @@ const [city, setCity]=useState('')
         const cloudcover_low=data.hourly.cloudcover_low.slice(indexes[0], indexes[23]+1 ).map((item, index)=> {
           return item;
         });
+        console.log(cloudcover_low)
+        setCloudCoverLow(cloudcover_low)
         const rendRain=data.hourly.rain.slice(indexes[0], indexes[23]+1 ).map((item, index)=> {
           return item;
         });
@@ -92,19 +95,30 @@ const [city, setCity]=useState('')
         
 
         console.log("propability"+rendPresProp) //>20 вероятность в % осадков
-        /*console.log("rain "+rendRain);
-        console.log("shower"+rendShowers) */
+        console.log(cloudCoverLow) //>20
+        console.log("rain "+rendRain);
+      //  console.log("shower"+rendShowers) 
         setRains(rendRain)
         setShowers(rendShowers)
         setPresProp(rendPresProp)
         const finalArrayOfWeather=[]
         for(let i=0; i<24; i++){
-          if(rendPresProp[i]<0.5 ) {
-            finalArrayOfWeather.push(i)
+          if(rendPresProp[i]>=20 && rains[i]>=0.1) {
+          //  finalArrayOfWeather.push(i)
+        //  if(rains[i]>=0.1){
+          finalArrayOfWeather.push("rain")
           }
-          else{ 
-            finalArrayOfWeather.push(-1)
+          if(rendPresProp[i]>=20 && rains[i]<0.1){
+            finalArrayOfWeather.push("pasmurno")
           }
+                
+ if (cloudCoverLow[i]>20 && rendPresProp[i]>=20 ){
+  finalArrayOfWeather.push("low visibility")
+}
+           if(rendPresProp[i]<20){
+         finalArrayOfWeather.push("sun")
+         }
+          
         }
       //  if()
       console.log(finalArrayOfWeather)

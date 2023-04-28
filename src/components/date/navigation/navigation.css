@@ -10,6 +10,7 @@
   display: flex;
   gap: 50px;
     padding-right: 50px;
+  /*  padding-left: 100px; */
 }
 .fonNavigation{
 /*background-color: red; */
@@ -22,9 +23,11 @@ opacity: 0.5;
 z-index: -1;
 }
 .logoOfWebPage {
-    width: 250px;
-    height: 250px;
-    transform: translateY(-100px);
+ /*   width: 250px;
+    height: 250px; */
+    width: 75px;
+    height: 50px;
+  /*  transform: translateY(-100px); */
     cursor: pointer;
 }
 .renderedCountry{
@@ -36,11 +39,18 @@ z-index: -1;
 }
 .inputSearchForm{
     width: 300px;
+    height: 15px;
  cursor: pointer;
  padding-left: 30px;
 }
+.navItem:nth-child(2){
+  transform: translateY(20px);
+}
 .inputSearch{
-    cursor:  pointer;
+  display: flex;
+  position: relative;
+/*  transform: translateY(5px); */
+   /* cursor:  pointer;
     position: relative;
     width: 300px;
     right: 50px;
@@ -48,7 +58,11 @@ z-index: -1;
     border: none;
     outline: none;
     padding-left: 15px;
-    color:rgb(136, 133, 133)
+    color:rgb(136, 133, 133) */
+}
+.searchButton {
+  position: absolute;
+  left: 100%;
 }
 .searchCountries {
 
@@ -121,3 +135,82 @@ a.ddott:hover {
 /*
 box-shadow: rgba(240, 46, 170, 0.4) -5px 5px, rgba(240, 46, 170, 0.3) -10px 10px, rgba(240, 46, 170, 0.2) -15px 15px, rgba(240, 46, 170, 0.1) -20px 20px, rgba(240, 46, 170, 0.05) -25px 25px;
 */
+.navigationWrapper {
+  padding-left: 100px;
+}
+.navItem {
+  margin-left: 60px;
+}
+
+
+
+
+.button-85 {
+ /* padding: 0.6em 2em; */
+ transform:  translateY(-3px);
+ width: 60px;
+ height: 20px;
+  border: none;
+  outline: none;
+  color: rgb(255, 255, 255);
+  background: #f4a033;
+  cursor: pointer;
+  position: relative;
+  z-index: 0;
+  /*border-radius: 10px; */
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-85:before {
+  content: "";
+  background: linear-gradient(
+    45deg,
+    #ff0000,
+    #ff7300,
+    #fffb00,
+    #48ff00,
+    #00ffd5,
+    #002bff,
+    #7a00ff,
+    #ff00c8,
+    #ff0000
+  );
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  background-size: 400%;
+  z-index: -1;
+  filter: blur(5px);
+  -webkit-filter: blur(5px);
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  animation: glowing-button-85 20s linear infinite;
+  transition: opacity 0.3s ease-in-out;
+  border-radius: 10px;
+}
+
+@keyframes glowing-button-85 {
+  0% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 400% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+
+.button-85:after {
+  z-index: -1;
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #545352;
+  left: 0;
+  top: 0;
+  /*border-radius: 10px; */
+}
