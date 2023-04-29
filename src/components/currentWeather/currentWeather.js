@@ -3,10 +3,21 @@ import { useState, useEffect } from "react"
 import {Routes,Route, Link } from"react-router-dom"
 import "./currentWeather.css"
 export const CurrentWeather = (props) => {
-  const { city, newArr, temp, date, data } = props
+  const { city, newArr, temp, date, data, dataVisib, getDate } = props
   const [arrayOfMin, setArrayOfMin] = useState([])
 const [arrayOfMax, setArrayOfMax]=useState([])
 const [datas, setDatas]=useState([])
+const [arrayOfVisib , setArrayOfVisib]=useState([])
+//console.log(JSON.stringify(dataVisib))
+//console.log("vvvis"+JSON.stringify(dataVisib))
+useEffect(()=>{
+if(dataVisib!=undefined){
+const arrayOfVisibility=dataVisib.hourly.visibility
+setArrayOfVisib(arrayOfVisibility)
+//console.log("vv"+arrayOfVisib)
+}
+}, [dataVisib])
+//console.log("vv"+arrayOfVisib)
   useEffect(() => {
     const tempArray = []
     const maxTempArray=[]
@@ -55,32 +66,36 @@ setArrayOfMax(maxTempArray)
  
     const idd=datas[index]
   
-
- return <a  style={{ textDecoration: 'none' }} className='styleLink' href="#">
-  <Link  style={{ textDecoration: 'none' }} to={`/current/${id}/${datas[index]}`}>
+    
+ return <a onClick={()=>{
+  getDate(datas[index])
+ }}  style={{ textDecoration: 'none' }} className='styleLink' href="#">
+   <Link  style={{ textDecoration: 'none' }} to={`/current/${id}/${datas[index]}`}> 
         <span>
         <div className='renderedCurrentCityTemperature' key={index}><div className="renderedCurrentCityTemperatureFon">
-       {/* <div className="testt">{arrayOfMin[index]}-{item }</div><br /> <div className="testt testtEl">{datas[index]}</div> */}
-   
-          </div>
-        {/*  <div className="ttt"> */}
-      <div className="ttty">  {arrayOfMin[index] }- {item}°</div>
-{/*<span className="ttqq">
     
-        </span>
-      </div> */}
-         {/* <br /> */}
+          </div>
+       
+      <div className="ttty">  {arrayOfMin[index] }- {item}°</div>
        <div className="qw">  {datas[index]} </div> 
+
+
           </div>;
           <i></i></span>
-          </Link>
+          </Link> 
           </a> 
 })
   
   return (
     <div className="currentWeather">
       <div className="todayIn">Today in {city} </div>
-     <div className="tableTemperature">{renderItems}</div>
+      <button onClick={()=> {
+        getDate(1)
+      }}>add</button>
+     <div className="tableTemperature">{renderItems}
+   
+     </div>
+   
     </div>
   )
 }

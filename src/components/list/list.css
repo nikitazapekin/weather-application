@@ -5,7 +5,7 @@
    margin: 0 auto;
    text-align: left;
    border: 2px solid black;
-  
+  cursor: pointer;
 }
 .renderListItemFon{
     width: 100%;
@@ -19,9 +19,10 @@ opacity: 0.5;
 z-index: -1;
 
 }
+/*
 .renderedListItem:nth-child(1) {
     border-top-right-radius: 50%;
   }
   .renderListItemFon:nth-child(1) {
     border-top-right-radius: 50%;
-  }
+  } */

@@ -172,14 +172,18 @@ a:before{
     background: #27282c;
     border: 2px solid  orangered;
 top: -10px;
-   
-    left: 100%;
-    transform: translateX(80%);
+left:-10px;
+   /*transform: translateX(-120px); */
+    /*left: 100%; */
+   /* transform: translateX(80%); */
 transition: 1s;
 }
 
 .styleLink:hover i::before{
-    left: -20%;
+   /* left: -20%; */
+  /* transform: translateX(-200px); */
+ /* right: 30%; */
+ left: -80px;
     transform:  rotate(45deg);
     box-shadow: 40px 15px orangered;
 }
@@ -193,17 +197,22 @@ transition: 1s;
     height: 10px;
     background: #27282c;
     border: 2px solid  rgb(0, 255, 234);
-    top: 250px;
+   /* top: 250px; */
    
-   /* right: 120%; */
-
-   /* transform: translateX(80%); */
- transform: translateX(-127px);
+  
+ transform: translateX(-177px);
 
     transition: 1s;
 }
 .styleLink:hover i::after{
-   left: 100%;
+   left: 80%;
     transform:  rotate(45deg);
     box-shadow: -40px -15px orangered;
 }  
+.renderedCurrentCityTemperatureLogo {
+    width: 100px;
+    height: 80px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
