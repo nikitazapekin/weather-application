@@ -38,7 +38,8 @@ const InputSearch=()=>{
     
     }
     const renderedElements =countryData.map(element=> {
-    //    return <Link to={`/${id}`}><div className="renderedCountry">{element.name} {element.timezone}</div> </Link>
+      console.log(11)
+    //   return <Link to={`/${id}`}><div className="renderedCountry">{element.name} {element.timezone}</div> </Link>
     })
     return (
         <div className="inputSearch">

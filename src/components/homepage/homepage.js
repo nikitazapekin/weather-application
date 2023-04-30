@@ -138,133 +138,29 @@ function findMostFrequent(arr) {
 
 useEffect(() => {
   if (data !== undefined) {
-    console.log(JSON.stringify(data));
-    for (let i = 0; i < data.length; i += 24) {
-      console.log(data[i]);
-      const arrayOfVis = [];
-      const arrayOfRain = [];
-      const arrayOfProps = [];
-      const resultArray = [];
-      for (let j = i; j < i + 24 && j < data.length; j++) {
-        arrayOfProps.push(data.hourly.precipitation_probability[j]);
-        arrayOfRain.push(data.hourly.rain[j]);
-        arrayOfVis.push(data.hourly.visibility[j]);
-        console.log(data.hourly.visibility[j])
-      }
-      for (let z = 0; z < arrayOfRain.length; z++) {
-        if (arrayOfRain[z] >= 0.3) {
-          resultArray.push("дождь");
-        } else if (arrayOfVis[z] < 1000) {
-          resultArray.push("туман");
-        } else if (arrayOfProps[z] > 1) {
-          resultArray.push("осадки");
-        } else {
-          resultArray.push("солнечно");
-        }
-      }
-      console.log(resultArray);
-    }
+
+  } 
+}, [data]);
+
+const [arrOfRain, setArrayOfRain]=useState()
+const [arrayOfProps, setArrayOfProps]=useState()
+const [arrayOfVisib, setArrayOfVisib]=useState()
+useEffect(()=> {
+  if(data != undefined && dataVisib!=undefined) {
+    console.log("data" +JSON.stringify(data))
+  //  setArrayOfRain(data.horly.rain)
+  setArrayOfRain(data.hourly.rain)
+    setArrayOfVisib(dataVisib.hourly.visibility)
+    setArrayOfProps(data.hourly.precipitation_probability)
   }
 }, [data]);
-/*
-useEffect(()=> {
-
-if(data!=undefined){
-  console.log(JSON.stringify(data))
-for (let i = 0; i < data.length; i+=24) {
-  console.log(data[i])
-  const arrayOfVis=[]
-  const arrayOfRain=[]
-  const arrayOfProps=[]
-    for (let j = i; j < i+24 && j < data.length; j++) {
- arrayOfProps.push(data.hourly.precipitation_probability[j])
- arrayOfRain.push(data.hourly.rain[j])
- arrayOfVis.push(data.hourly.visibility[j])
-    }
-  const resultArray=[]
-  for (let z = 0; z < 24; i++) {
-    if (arrayOfRain[z] >= 0.3) {
-      resultArray.push('дождь');
-    } else if (arrayOfVis[z] < 1000) {
-      resultArray.push('туман');
-    } else if (arrayOfProps[z] > 1) {
-      resultArray.push('осадки');
-    } else {
-      resultArray.push('солнечно');
-    }
-  }
-  console.log(resultArray)
-  }
-}
-}, [data]) */
-useEffect(()=> {
-  if(data != undefined) {
- //   console.log(JSON.stringify(data))
-    const ttem = data.hourly.time;
-    const modifiedArray = ttem.map((element) => {
-      return element.slice(0, -6);
-    });
-    for (let i = 0; i < data.length; i+=24) {
-  const arrayOfVis=[]
-  const arrayOfRain=[]
-  const arrayOfProps=[]
-    for (let j = i; j < i+24 && j < data.length; j++) {
- arrayOfProps.push(data.hourly.precipitation_probability[j])
- arrayOfRain.push(data.hourly.rain[j])
- arrayOfVis.push(data.hourly.visibility[j])
-    }
-  const resultArray=[]
-  for (let z = 0; z < 24; i++) {
-    if (arrayOfRain[z] >= 0.3) {
-      resultArray.push('дождь');
-    } else if (arrayOfVis[z] < 1000) {
-      resultArray.push('туман');
-    } else if (arrayOfProps[z] > 1) {
-      resultArray.push('осадки');
-    } else {
-      resultArray.push('солнечно');
-    }
-  }
-  console.log(resultArray)
-  }
-//setCurrentDate(idd)
- /*   const indices = modifiedArray.reduce((accumulator, element, index) => {
-      if (element === idd) {
-        accumulator.push(index);
-      }
-      return accumulator;
-    }, []); */
-   // setIndexes(indices);
-    //console.log(indices)
-   // console.log(JSON.stringify(data))
-  }
-}, [data]);
-/*
-const rendPresProp=data.hourly.precipitation_probability.slice(indexes[0], indexes[23]+1 ).map((item, index)=> {
-  return item;
-}); 
-const rendVis=dataVisib.slice(indexes[0], indexes[23]+1 ).map((item, index)=> {
-  return item;
-});
-
-const rendShowers=data.hourly.showers.slice(indexes[0], indexes[23]+1 ).map((item, index)=> {
-  return item;
-});
-const cloudcover_low=data.hourly.cloudcover_low.slice(indexes[0], indexes[23]+1 ).map((item, index)=> {
-  return item;
-});
-
-const rendRain=data.hourly.rain.slice(indexes[0], indexes[23]+1 ).map((item, index)=> {
-  return item;
-});
-console.log(rendVis) */
-//==========================================
-
   return (
     <div className="homepage">
       <Fons />
      <img style={style} className='loadBar' src="https://media.giphy.com/media/17mNCcKU1mJlrbXodo/giphy.gif" alt="loading" /> 
+  
       <Navigation id={id} />
+  
       <Time timing={timing} /> 
  {/* <Date timing={timing} /> */}
       <CurrentWeather getDate={getDate} dataVisib={dataVisib} data={data} temp={temp} date={date} newArr={newArr} city={city}  />
