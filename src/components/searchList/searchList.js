@@ -37,7 +37,10 @@ function findMostFrequent(arr) {
 
 export const SearchList =()=> {
   const {id} = useParams();
-  const [country, setCountry]=useState('')
+  //const [country, setCountry]=useState('')
+  const [state, setState]=useState()
+  const [country, setCountry]=useState()
+  const [city, setCity]=useState()
   const [stat, setStat]=useState('')
   const [county, setCounty]=useState('')
   const [data, setData]=useState()
@@ -49,6 +52,8 @@ const [datas, setDatas]=useState([])
 const [arrayOfMax, setArrayOfMax]=useState([])
 const [dataVisib, setDataVisib] =useState() 
 const [arOfWeath, setArOfWeath]=useState()
+const [latitude, setLatitude]=useState("")
+const [longitude, setLongitude]=useState("")
 //if(arrOfRain!=undefined && arrayOfProps!=undefined && arrayOfVis!=undefined &&data!=undefined && dataVisib!=undefined){
  // const [arrayOfProps, setArrayOfProps] =useState()
  const [arrOfRain, setArrayOfRain]=useState()
@@ -59,7 +64,9 @@ useEffect(()=>{
  const str = id;
 const parts = str.split(',');
 const latitude = parts[0]; 
+setLatitude(latitude)
 const longitude = parts[1]; 
+setLongitude(longitude)
  const url = `https://nominatim.openstreetmap.org/reverse?lat=${latitude}&lon=${longitude}&format=json`;
  const visibUrl=`https://api.open-meteo.com/v1/gfs?latitude=${latitude}&longitude=${longitude}&hourly=temperature_2m,visibility&forecast_days=16`
 fetch(url)
@@ -71,7 +78,23 @@ fetch(url)
   })
   .catch(error => {
     console.error('Error:', error);
-  });
+  }); 
+ 
+  const geoUrl = `https://api.opencagedata.com/geocode/v1/json?q=${latitude}+${longitude}&key=f9629a9e6fd7493aac20c35043c7e411`;
+        fetch(geoUrl)
+          .then(responses => responses.json())
+          .then(data => {
+            const city = data.results[0].components.city;
+            const country = data.results[0].components.country;
+            const state = data.results[0].components.state;
+           const stroke="";
+          // stroke+=data.results[0].components.city+data.results[0].components.state+data.results[0].components.country
+         // console.log(stroke)
+          setCity(city)
+          setCountry(country)
+          setState(state)
+          }); 
+         
 
   fetch(visibUrl)
   .then(response => response.json())
@@ -167,99 +190,35 @@ if(arrOfRain!=undefined && arrayOfProps!=undefined && arrayOfVis!=undefined && d
   }
 
 }, [temp, arOfWeath])
+
+
 useEffect(()=> {
-if(arOfWeath!=undefined){
-  console.log(arOfWeath)
-}
-}, arOfWeath)
-/*
-const [arOfWeath, setArOfWeath]=useState()
-useEffect(()=> {
-if(arrOfRain!=undefined && arrayOfProps!=undefined && arrayOfVis!=undefined &&data!=undefined && dataVisib!=undefined){
-const arrOfWeath=[]
-for(let i=0; i<data.hourly.rain.length; i+=24){
-  const resultArray=[]
-  for(let j=i;  j < i+24 && j < data.hourly.rain.length; j++) {
-    if (arrOfRain[j] >= 0.3) {
-      resultArray.push('дождь');
-    } else if (arrayOfVis[j] < 1000) {
-      resultArray.push('туман');
-    } else if (arrayOfProps[j] > 1) {
-      resultArray.push('осадки');
-    } else {
-      resultArray.push('солнечно');
-    }
-  }
-const item=findMostFrequent(resultArray)
-arrOfWeath.push(item)
-}
-setArOfWeath(arrOfWeath)
-}
-//}, arOfWeath)
-}, arOfWeath)
-//}, [arOfWeath]) */
-
-
-
-/*
-const [arOfWeath, setArOfWeath] = useState();
-
-useEffect(() => {
-  if (
-    arrOfRain !== undefined &&
-    arrayOfProps !== undefined &&
-    arrayOfVis !== undefined &&
-    data !== undefined &&
-    dataVisib !== undefined
-  ) {
-    const arrOfWeath = [];
-    for (let i = 0; i < data.hourly.rain.length; i += 24) {
-      const resultArray = [];
-      for (
-        let j = i;
-        j < i + 24 && j < data.hourly.rain.length;
-        j++
-      ) {
-        if (arrOfRain[j] >= 0.3) {
-          resultArray.push("дождь");
-        } else if (arrayOfVis[j] < 1000) {
-          resultArray.push("туман");
-        } else if (arrayOfProps[j] > 1) {
-          resultArray.push("осадки");
-        } else {
-          resultArray.push("солнечно");
-        }
-      }
-      const item = findMostFrequent(resultArray);
-      arrOfWeath.push(item);
-    }
-    setArOfWeath(arrOfWeath);
-  }
-}, [data]);
-*/
-
-
-
-
-
-/*
-
-const arrayOfImages=[Fir, Sec, Thir, Four, Fifth, Six, Sev] 
-const [arrOfRain, setArrayOfRain]=useState()
-  const [arrayOfProps, setArrayOfProps]=useState()
-  const [arrayOfVis, setArrayOfVis]=useState()
-  useEffect(()=> {
-    if(data != undefined && dataVisib!=undefined) {
-    setArrayOfRain(data.hourly.rain)
-      setArrayOfVis(dataVisib.hourly.visibility)
-      setArrayOfProps(data.hourly.precipitation_probability)
-    }
-  //}, [data]); 
-  }, data)
   if(arOfWeath!=undefined){
     console.log(arOfWeath)
   }
- */
+
+  if(data && arOfWeath==undefined && arrOfRain!=undefined && arrayOfVis!=undefined && arrayOfProps!=undefined ){
+    const arrOfWeath=[]
+    for(let i=0; i<data.hourly.rain.length; i+=24){
+      const resultArray=[]
+      for(let j=i;  j < i+24 && j < data.hourly.rain.length; j++) {
+        if (arrOfRain[j] >= 0.3) {
+          resultArray.push('дождь');
+        } else if (arrayOfVis[j] < 1000) {
+          resultArray.push('туман');
+        } else if (arrayOfProps[j] > 1) {
+          resultArray.push('осадки');
+        } else {
+          resultArray.push('солнечно');
+        }
+      }
+      const item=findMostFrequent(resultArray)
+      arrOfWeath.push(item)
+    }
+    setArOfWeath(arrOfWeath)
+  }
+}, [arOfWeath, data, arrOfRain, arrayOfVis, arrayOfProps, setArOfWeath])
+
   const arrayOfImages=[Fir, Sec, Thir, Four, Fifth, Six, Sev] 
 const renderMin = arrayOfMin.map(item => {
   return <div>{item}</div>
@@ -283,14 +242,15 @@ const renderItems=renderMax.map((item, index)=> {
 return <a onClick={()=>{
  
  }}  style={{ textDecoration: 'none' }} className='styleLink1' href="#">
-   <Link  style={{ textDecoration: 'none' }} to={`/current/${id}/${datas[index]}`}> 
+  {/* <Link  style={{ textDecoration: 'none' }} to={`/searched/${id}/${datas[index]}`}>  */}
+  <Link  style={{ textDecoration: 'none' }} to={`/searched/country/${latitude}/${longitude}`}>
         <span>
         <div className='renderedCurrentCityTemperature' key={index}><div className="renderedCurrentCityTemperatureFon">
           </div>
       <div className="ttty">  {arrayOfMin[index] }- {item}°</div>
        <div className="qw">  {datas[index]} </div> 
        <img style={{zIndex: "1000"}} src={imageSrc} alt="logo" className="renderedCurrentCityWeatherLogo" /> 
-          </div>;
+          </div><span style={{opacity: "0"}}>;</span>
           <i></i></span>
           </Link> 
           </a> 
@@ -298,7 +258,7 @@ return <a onClick={()=>{
     return( 
     <div className="searchList">
       <Navigation />
-  <div className="selectedCountry"> {country}, {stat}, {county} </div>
+  <div className="selectedCountry">  {city} {state} {country} </div>
   <div className="tableTemperature">{renderItems}</div>
 <button style={{zIndex: "100000", width: "200px", height: "300px", position: "relative", top: "1400px"}} onClick={()=> {
   console.log("current"+arOfWeath)

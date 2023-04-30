@@ -12,6 +12,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { SearchList } from './components/searchList/searchList';
 import { List } from './components/list/list';
 import { CurrentHour } from './components/currentHour/currentHour';
+import { SearchedHours } from './components/searchedHours/searchedHours';
 import WeatherForecast from './components/testSearch/testSearch';
 function App(){
 
@@ -94,6 +95,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
  <Route path=":id" element={<SearchList />} /> 
  <Route path="/test/:id" element={<List />} /> 
  <Route path="/current/:id/:idd" element={<CurrentHour />} /> 
+ <Route path="/searched/country/:id/:idd" element={<SearchedHours />} /> 
 </Routes>
 
 

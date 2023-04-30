@@ -21,7 +21,6 @@ export const Navigation = (props) => {
   const [country, setCountry] = useState("");
   const [countryData, setCountryData] = useState([]);
   const [searchResults, setSearchResults] = useState([]);
-
   const handleInput = (event) => {
     const value = event.target.value;
     setCountry(value);
@@ -30,6 +29,9 @@ export const Navigation = (props) => {
       country.name.toLowerCase().startsWith(value.toLowerCase())
     );
     setSearchResults(results.slice(0, 10));
+   /* if(value.length===0){
+      setSearchResults(null)
+    } */
   };
 
   const fetchCountryData = (country) => {
@@ -51,25 +53,24 @@ export const Navigation = (props) => {
       return () => clearTimeout(timeoutId);
     }
   }, [country]);
-
-  const renderedElements = searchResults.map((element) => {
-    const countryId = element.country_id;
-    const latitude = element.latitude;
-    const longitude = element.longitude;
-    const arr = [];
-    arr.push(latitude);
-    arr.push(longitude);
-    return (
-      <Link style={{textDecoration: "none"}} to={`/${arr}`}>
-        <div onClick={()=> {
-           /*window.location.reload(); */
-        }} className="renderedCountry">
-          {element.name} {element.timezone}
-        </div>
-      </Link>
-    );
-  });
-
+console.log(searchResults)
+const renderedElements = country.length > 0 && searchResults.map((element) => {
+  const countryId = element.country_id;
+  const latitude = element.latitude;
+  const longitude = element.longitude;
+  const arr = [];
+  arr.push(latitude);
+  arr.push(longitude);
+  return (
+    <Link style={{textDecoration: "none"}} to={`/${arr}`}>
+      <div onClick={()=> {
+        setCountry("");
+      }} className="renderedCountry">
+        {element.name} {element.timezone} {element.country}
+      </div>
+    </Link>
+  );
+});
   return (
     <nav className="navigation">
    
@@ -87,10 +88,6 @@ export const Navigation = (props) => {
           onChange={handleInput}
           value={country}
         />
-
-{/*<Link to={`/test/${country}`}> */}
-{/*<Link to={`/test/${country}`}>
- <button class="button-85" role="button">*/}
  <Link to={country.length ? `/test/${country}` : '#'}>
   <button
     className="button-85"

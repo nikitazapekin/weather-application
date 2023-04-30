@@ -156,10 +156,10 @@ useEffect(()=> {
 }, [data]);
   return (
     <div className="homepage">
-      <Fons />
+  {/*    <Fons /> */}
      <img style={style} className='loadBar' src="https://media.giphy.com/media/17mNCcKU1mJlrbXodo/giphy.gif" alt="loading" /> 
   
-      <Navigation id={id} />
+      <Navigation id={id} /> 
   
       <Time timing={timing} /> 
  {/* <Date timing={timing} /> */}

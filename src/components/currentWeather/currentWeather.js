@@ -173,7 +173,7 @@ const arrayOfImages=[Fir, Sec, Thir, Four, Fifth, Six, Sev]
        <div className="qw">  {datas[index]} </div> 
 
        <img style={{zIndex: "1000"}} src={imageSrc} alt="logo" className="renderedCurrentCityWeatherLogo" />
-          </div>;
+          </div><span style={{opacity: "0"}}>;</span>
           <i></i></span>
           </Link> 
           </a> 
