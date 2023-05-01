@@ -9,6 +9,7 @@ const Favourite=()=> {
     return (
         <div className="favourite">
            <Navigation />
+           <div style={{position: "relative", top: "200px"}}>{elems}</div>
         </div>
     )
 }
