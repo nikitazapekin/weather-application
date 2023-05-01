@@ -10,11 +10,13 @@ import { todoReducer } from './reducers';
 import { reducer } from './reducers';
 import { fetchData } from './reducers';
 import { dataForSearchList } from './reducers';
+import { fav } from './reducers';
 import thunk from 'redux-thunk';
 export const rootReducer = combineReducers({
 
  reducer: reducer,
- dataForSearchList: dataForSearchList
+ dataForSearchList: dataForSearchList,
+ fav:fav
 });
 
 //export const store = createStore(rootReducer, window.REDUX_DEVTOOLS_EXTENSION && window.REDUX_DEVTOOLS_EXTENSION());

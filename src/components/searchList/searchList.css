@@ -54,3 +54,23 @@
 .test {
    transform: translateY(-200px);
 }
+.addToFavourite{
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+  margin: 0 auto;
+   
+}
+.addToFavouriteWrapper{
+    cursor: pointer;
+    width: 70px;
+    height: 70px;
+    align-items: center;
+    display: flex;
+    border-radius: 50%;
+    background-color: #fff;
+    position: fixed;
+    top: 550px;
+   right: 0;
+   transform: translateX(-50px);
+}

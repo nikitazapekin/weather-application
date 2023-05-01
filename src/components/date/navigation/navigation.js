@@ -161,7 +161,7 @@ export const Navigation = (props) => {
       {renderedElements}
       </div>
       <div className="navItem">
-        <p className="textNav">Favourite</p>
+      <Link style={{textDecoration: "none"}} to="/favourite">  <p className="textNav">Favourite</p></Link>
       </div>
       <div className="navItem">
         <p className="textNav">Pressure</p>

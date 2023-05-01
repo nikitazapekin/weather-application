@@ -1,6 +1,7 @@
 
 import { useState, useEffect } from 'react';
 import "./App.css"
+//import { connect } from 'react-redux';
 import { InputSearch } from './components/inputSearch/inputSearch';
 import {Sun} from "./image.png"
 import MyComponent from './components/test/test';
@@ -9,13 +10,17 @@ import { Navigation } from './components/date/navigation/navigation';
 import { Homepage } from './components/homepage/homepage';
 //import {Routes,Route, Link } from"react-router-dom"
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+//import { SearchList } from './components/searchList/searchList';
 import { SearchList } from './components/searchList/searchList';
 import { List } from './components/list/list';
 import { CurrentHour } from './components/currentHour/currentHour';
 import { SearchedHours } from './components/searchedHours/searchedHours';
+import { Favourite } from './components/favourite/favourite';
 import WeatherForecast from './components/testSearch/testSearch';
+import ReactDOM from 'react-dom';
+import { Provider, connect } from 'react-redux';
 function App(){
-
+ 
 const [city, setCity]=useState('')
 
 
@@ -28,7 +33,6 @@ document.addEventListener('DOMContentLoaded', ()=>{
         document.body.style.overflow = ''
     },1000)
 }) */
-
   useEffect(() => {
     function successCallback(position) {
      // setBoolCheck(false); 
@@ -79,19 +83,13 @@ document.addEventListener('DOMContentLoaded', ()=>{
     
     <div className="App">
     
-   {/* <div className="fon">
-    <div className="logo">
-      <div className="item" >aaaaa</div>
-        <div className="item" ></div>
-        <div className="item" ></div>
-        <div className="item" ></div> 
-        <img className="ima" src="https://thumbs.gfycat.com/UncommonCrazyAfricanaugurbuzzard-size_restricted.gif" alt="kk" />
+  
+<div>
+     
     </div>
-</div>
-  */}
-{/*<WeatherForecast /> */}
     <Routes >
   <Route path="/" element={ <Homepage id={id}/>} />
+  <Route path="/favourite" element={ <Favourite />} />
  <Route path=":id" element={<SearchList />} /> 
  <Route path="/test/:id" element={<List />} /> 
  <Route path="/current/:id/:idd" element={<CurrentHour />} /> 
@@ -103,7 +101,21 @@ document.addEventListener('DOMContentLoaded', ()=>{
   )
 }
 
-export default App;
+//export default App;
+
+function mapStateToProps(state) {
+  return {
+    counter: state.todos
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    incrementCounter: () => dispatch({ type: 'ad' })
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
 // const response = await fetch('https://api.openweathermap.org/data/2.5/weather?q=Minsk&appid=fc64e04f2a354206a57c0d4cf2ca7ea0');
 
 //https://www.figma.com/file/QzR65XLC5oQrsDTn3kFVN7/WEATHER-APP-(Community)?node-id=0%3A1&t=W7NUznGq5AoaQX3R-1

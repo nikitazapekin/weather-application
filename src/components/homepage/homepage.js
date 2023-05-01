@@ -14,6 +14,7 @@ import { CurrentWeather } from '../currentWeather/currentWeather';
 //import translate from 'translate-google';
 import { useSelector } from "react-redux"
 import { useDispatch } from "react-redux"
+import { connect } from 'react-redux';
 import { SearchList } from '../searchList/searchList';
 import { Footer } from '../footer/footer';
 
