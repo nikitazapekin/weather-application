@@ -149,7 +149,7 @@ const arrayOfImages=[Fir, Sec, Thir, Four, Fifth, Six, Sev]
 const [stateImage, setStateImage]=useState()
         return (
           <div>
-            <Navigation />
+           
           
            <h1 className="weatherFor">{idd} in {city}</h1>
             {rren !== undefined && indexes !== undefined && data !== undefined && (
@@ -181,6 +181,7 @@ const [stateImage, setStateImage]=useState()
                 })}
               </div>
             )}
+             <Navigation />
           </div>
         );
               }

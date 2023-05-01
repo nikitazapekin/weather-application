@@ -95,7 +95,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
  <Route path=":id" element={<SearchList />} /> 
  <Route path="/test/:id" element={<List />} /> 
  <Route path="/current/:id/:idd" element={<CurrentHour />} /> 
- <Route path="/searched/country/:id/:idd" element={<SearchedHours />} /> 
+ <Route path="/searched/country/:id/:idd/:iddd/:idddd" element={<SearchedHours />} /> 
 </Routes>
 
 

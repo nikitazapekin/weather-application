@@ -1,5 +1,6 @@
 import "./navigation.css"
 import { useSelector, useDispatch } from "react-redux";
+import { useCallback } from "react";
 import {Routes,Route, Link } from"react-router-dom"
 import { fetchData } from "../../store/reducers";
 import {  useSearchParams } from 'react-router-dom';
@@ -13,7 +14,7 @@ import Log from "./image.png"
 
 
 
-
+/*
 export const Navigation = (props) => {
   const { id } = props;
   const dispatch = useDispatch();
@@ -29,9 +30,6 @@ export const Navigation = (props) => {
       country.name.toLowerCase().startsWith(value.toLowerCase())
     );
     setSearchResults(results.slice(0, 10));
-   /* if(value.length===0){
-      setSearchResults(null)
-    } */
   };
 
   const fetchCountryData = (country) => {
@@ -48,7 +46,7 @@ export const Navigation = (props) => {
     if (country) {
       const timeoutId = setTimeout(() => {
         fetchCountryData(country);
-      }, 100);
+      }, 1000);
 
       return () => clearTimeout(timeoutId);
     }
@@ -70,7 +68,70 @@ const renderedElements = country.length > 0 && searchResults.map((element) => {
       </div>
     </Link>
   );
-});
+}); */
+
+
+
+
+
+
+
+export const Navigation = (props) => {
+  const { id } = props;
+  const dispatch = useDispatch();
+  const state = useSelector((state) => state);
+  const [country, setCountry] = useState("");
+  const [countryData, setCountryData] = useState([]);
+  const [searchResults, setSearchResults] = useState([]);
+
+  const handleInput = useCallback((event) => {
+    const value = event.target.value;
+    setCountry(value);
+
+    const results = countryData.filter((country) =>
+      country.name.toLowerCase().startsWith(value.toLowerCase())
+    );
+    setSearchResults(results.slice(0, 10));
+  }, [countryData]);
+
+  const fetchCountryData = (country) => {
+    dispatch(fetchData(country)).then(() => {
+      const countries = store.getState();
+      const array = countries.reducer.data.results;
+      const newData = array.slice(0, 10);
+      setCountryData(newData);
+      setSearchResults(newData);
+    });
+  };
+
+  useEffect(() => {
+    if (country) {
+      const timeoutId = setTimeout(() => {
+        fetchCountryData(country);
+      }, 100);
+
+      return () => clearTimeout(timeoutId);
+    }
+  }, [country, countryData]);
+
+  const renderedElements = country.length > 0 && searchResults.map((element) => {
+    const countryId = element.country_id;
+    const latitude = element.latitude;
+    const longitude = element.longitude;
+    const arr = [];
+    arr.push(latitude);
+    arr.push(longitude);
+    return (
+      <Link style={{textDecoration: "none"}} to={`/${arr}`}>
+        <div onClick={()=> {
+          setCountry("");
+        }} className="renderedCountry">
+          {element.name} {element.timezone} {element.country}
+        </div>
+      </Link>
+    );
+  });
+  
   return (
     <nav className="navigation">
    

@@ -13,7 +13,8 @@ import Four from "./4.png"
 import Fifth from "./5.png"
 import Six from "./6.png"
 import Sev from "./7.png"
-function findMostFrequent(arr) {
+import Nine from "./9.png"
+/*function findMostFrequent(arr) {
   let maxCount = 0;
   let mostFrequent;
 
@@ -33,7 +34,7 @@ function findMostFrequent(arr) {
   }
 
   return mostFrequent;
-}
+} */
 
 export const SearchList =()=> {
   const {id} = useParams();
@@ -88,14 +89,10 @@ fetch(url)
             const country = data.results[0].components.country;
             const state = data.results[0].components.state;
            const stroke="";
-          // stroke+=data.results[0].components.city+data.results[0].components.state+data.results[0].components.country
-         // console.log(stroke)
           setCity(city)
           setCountry(country)
           setState(state)
           }); 
-         
-
   fetch(visibUrl)
   .then(response => response.json())
   .then(data => {
@@ -157,16 +154,9 @@ setArrayOfMax(maxTempArray)
 //const 
 if(data!=undefined && dataVisib!=undefined) {
 setArrayOfRain(data.hourly.rain)
-//console.log("=============================================")
-//console.log(data.hourly.rain)
 setArrayOfVis(dataVisib.hourly.visibility)
 setArrayOfProps(data.hourly.precipitation_probability)
-//console.log(data.hourly.precipitation_probability)
 }
-
-
-
-
 if(arrOfRain!=undefined && arrayOfProps!=undefined && arrayOfVis!=undefined && data!=undefined && dataVisib!=undefined){
   const arrOfWeath=[]
   for(let i=0; i<data.hourly.rain.length; i+=24){
@@ -185,13 +175,12 @@ if(arrOfRain!=undefined && arrayOfProps!=undefined && arrayOfVis!=undefined && d
   const item=findMostFrequent(resultArray)
   arrOfWeath.push(item)
   }
- // console.log("getted"+arOfWeath)
   setArOfWeath(arrOfWeath)
   }
 
 }, [temp, arOfWeath])
 
-
+/*
 useEffect(()=> {
   if(arOfWeath!=undefined){
     console.log(arOfWeath)
@@ -217,9 +206,48 @@ useEffect(()=> {
     }
     setArOfWeath(arrOfWeath)
   }
-}, [arOfWeath, data, arrOfRain, arrayOfVis, arrayOfProps, setArOfWeath])
+}, [arOfWeath, data, arrOfRain, arrayOfVis, arrayOfProps, setArOfWeath])  */
+const findMostFrequent = (arr) => {
+  const obj = {};
+  let max = 0;
+  let result = '';
 
-  const arrayOfImages=[Fir, Sec, Thir, Four, Fifth, Six, Sev] 
+  for (const item of arr) {
+    obj[item] = obj[item] ? obj[item] + 1 : 1;
+    if (obj[item] > max) {
+      max = obj[item];
+      result = item;
+    }
+  }
+
+  return result;
+};
+
+useEffect(() => {
+  if (data && arrOfRain !== undefined && arrayOfVis !== undefined && arrayOfProps !== undefined) {
+    const arrOfWeath = [];
+    for (let i = 0; i < data.hourly.rain.length; i += 24) {
+      const resultArray = [];
+      for (let j = i; j < i + 24 && j < data.hourly.rain.length; j++) {
+        if (arrOfRain[j] >= 0.3) {
+          resultArray.push('дождь');
+        } else if (arrayOfVis[j] < 1000) {
+          resultArray.push('туман');
+        } else if (arrayOfProps[j] > 1) {
+          resultArray.push('осадки');
+        } else {
+          resultArray.push('солнечно');
+        }
+      }
+      const item = findMostFrequent(resultArray);
+      arrOfWeath.push(item);
+    }
+    setArOfWeath(arrOfWeath);
+  }
+}, [data, arrOfRain, arrayOfVis, arrayOfProps, setArOfWeath]);
+
+
+ const arrayOfImages=[Fir, Sec, Thir, Four, Fifth, Six, Sev] 
 const renderMin = arrayOfMin.map(item => {
   return <div>{item}</div>
 })
@@ -239,11 +267,28 @@ const renderItems=renderMax.map((item, index)=> {
     imageSrc = arrayOfImages[0];
   } 
   } 
+  const cities=[]
+  if(city!=undefined && country!=undefined && state!=undefined){
+if(city!=null){
+  cities.push(city)
+}
+if(country!=null){
+  cities.push(city)
+}
+if(state!=null){
+cities.push(state)
+}
+console.log(cities)
+  }
+
+
 return <a onClick={()=>{
  
  }}  style={{ textDecoration: 'none' }} className='styleLink1' href="#">
   {/* <Link  style={{ textDecoration: 'none' }} to={`/searched/${id}/${datas[index]}`}>  */}
-  <Link  style={{ textDecoration: 'none' }} to={`/searched/country/${latitude}/${longitude}`}>
+  {/*<Link  style={{ textDecoration: 'none' }} to={`/searched/country/${latitude}/${longitude}`}> */}
+  {/*<Link  style={{ textDecoration: 'none' }} to={`/searched/country/${latitude}/${longitude}/${datas[index]}`}> */}
+  <Link style={{ textDecoration: 'none' }} to={`/searched/country/${latitude}/${longitude}/${datas[index]}/${city ? city : (state ? state : country)}`}>
         <span>
         <div className='renderedCurrentCityTemperature' key={index}><div className="renderedCurrentCityTemperatureFon">
           </div>
@@ -257,13 +302,114 @@ return <a onClick={()=>{
 })
     return( 
     <div className="searchList">
-      <Navigation />
+    {/*  <Navigation /> */}
+    <div style={{position:"relative", top: "100px"}}>
   <div className="selectedCountry">  {city} {state} {country} </div>
   <div className="tableTemperature">{renderItems}</div>
+  <div className="addToFavourite"></div>
 <button style={{zIndex: "100000", width: "200px", height: "300px", position: "relative", top: "1400px"}} onClick={()=> {
-  console.log("current"+arOfWeath)
  // console.log(arOfWeath)
 }}>show ar</button>
+</div>
+   <Navigation />
     </div>
     )
 }
+
+
+
+
+
+/*
+useEffect(() => {
+  if (id !== undefined) {
+    const str = id;
+    const parts = str.split(',');
+    const latitude = parts[0];
+    const longitude = parts[1];
+    setLatitude(latitude);
+    setLongitude(longitude);
+    const url = `https://nominatim.openstreetmap.org/reverse?lat=${latitude}&lon=${longitude}&format=json`;
+    const visibUrl = `https://api.open-meteo.com/v1/gfs?latitude=${latitude}&longitude=${longitude}&hourly=temperature_2m,visibility&forecast_days=16`;
+
+    fetch(url)
+      .then(response => response.json())
+      .then(data => {
+        setCity(data.address.city);
+        setCountry(data.address.country);
+        setState(data.address.state);
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+
+    fetch(visibUrl)
+      .then(response => response.json())
+      .then(data => {
+        setDataVisib(data);
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+
+    const weatherUrl = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&hourly=temperature_2m,apparent_temperature,precipitation_probability,precipitation,rain,showers,snowfall,cloudcover_low,cloudcover_high,windspeed_10m,windspeed_80m,windspeed_120m,windspeed_180m&forecast_days=16`;
+
+    fetch(weatherUrl)
+      .then(response => response.json())
+      .then(data => {
+        setData(data);
+
+        const arrayOfTemp = data.hourly.temperature_2m.map(item => item);
+        const arrayOfTime = data.hourly.time.map(item => item);
+        const newArrr = arrayOfTemp.concat(arrayOfTime);
+        setTemp(arrayOfTemp);
+        setDate(arrayOfTime);
+        setNewArr(newArrr);
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+  }
+}, [id]);
+
+useEffect(() => {
+  if (temp.length > 0) {
+    const tempArray = [];
+    const maxTempArray = [];
+    const arrayOfDatas = [];
+
+    for (let i = 0; i < temp.length; i += 24) {
+      const currentData = date[i].slice(0, 10);
+      arrayOfDatas.push(currentData);
+
+      let currentMin = 100;
+
+      for (let j = i; j < i + 24 && j < temp.length; j++) {
+        if (temp[j] < currentMin) {
+          currentMin = temp[j];
+        }
+      }
+      tempArray.push(Math.round(currentMin));
+    }
+
+    setArrayOfMin(tempArray);
+    setDatas(arrayOfDatas);
+
+    for (let i = 0; i < temp.length; i += 24) {
+      let currentMax = -100;
+
+      for (let j = i; j < i + 24 && j < temp.length; j++) {
+        if (temp[j] > currentMax) {
+          currentMax = temp[j];
+        }
+      }
+      maxTempArray.push(Math.round(currentMax));
+    }
+
+    setArrayOfMax(maxTempArray);
+
+    if (data !== undefined && dataVisib !== undefined) {
+      setArrayOfRain(data.hourly.rain);
+      setArrayOfVis(dataVisib.hourly.visibility);
+      setArrayOfProps(data.hourly.precipitation_probability);
+    } */

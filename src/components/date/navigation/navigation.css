@@ -1,6 +1,10 @@
 .navigation {
-  position: relative;
-  margin: 0 auto;
+  /*position: relative;
+  margin: 0 auto; */
+  position: absolute;
+  transform: translateX(-50%);
+  left: 50%;
+  top: 0;
    /* background-color: red; */
     max-width: 1440px;
     width: 100%;

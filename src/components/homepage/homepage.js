@@ -154,23 +154,60 @@ useEffect(()=> {
     setArrayOfProps(data.hourly.precipitation_probability)
   }
 }, [data]);
-  return (
+ /* return (
     <div className="homepage">
-  {/*    <Fons /> */}
      <img style={style} className='loadBar' src="https://media.giphy.com/media/17mNCcKU1mJlrbXodo/giphy.gif" alt="loading" /> 
-  
+  <div style={{zIndex: "11111111111"}}>
       <Navigation id={id} /> 
-  
+      </div>
+      <div style={{zIndex: "1"}}>
       <Time timing={timing} /> 
- {/* <Date timing={timing} /> */}
+      </div>
       <CurrentWeather getDate={getDate} dataVisib={dataVisib} data={data} temp={temp} date={date} newArr={newArr} city={city}  />
   <button className='testBtn' onClick={()=> {
     console.log(currentTiming)
   }}>show state</button>
       {Footer}
    
+</div> 
+  ) */
+  return (
+    <div className="homepage">
+      {/* <Fons /> */}
+      <img
+        style={style}
+        className="loadBar"
+        src="https://media.giphy.com/media/17mNCcKU1mJlrbXodo/giphy.gif"
+        alt="loading"
+      />
+      <div style={{ zIndex: "1" }}>
+        <Time timing={timing} />
+      </div>
+      {/* <Date timing={timing} /> */}
+      <CurrentWeather
+        getDate={getDate}
+        dataVisib={dataVisib}
+        data={data}
+        temp={temp}
+        date={date}
+        newArr={newArr}
+        city={city}
+      />
+      <button
+        className="testBtn"
+        onClick={() => {
+          console.log(currentTiming);
+        }}
+      >
+        show state
+      </button>
+      <div style={{ zIndex: "11111111111" }}>
+        <Navigation id={id} />
+      </div>
+      {Footer}
     </div>
-  )
+  );
+  
 }
 //import {Sunn} from "./image.png"
 function Time() {
@@ -188,7 +225,7 @@ function Time() {
   }, []);
 
   return (
-    <div className='Time'>
+    <div style={{zIndex: "0"}} className='Time'>
      <img src={Sunn} alt="sun" className="sun" />  
       <div className="day">{date.toLocaleDateString('en-US', {weekday: 'long'})}{' '}</div>
       <div className="date">{date.toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}{' '}</div>
