@@ -16,7 +16,7 @@ import Six from "./6.png"
 import Sev from "./7.png"
 import Nine from "./9.png"
 import Ten from "./10.png"
-
+import { Footer } from "../footer/footer";
 
 
  export const SearchList =(props)=> {
@@ -277,11 +277,13 @@ return <a onClick={()=>{
 <div className="addToFavouriteWrapper" onClick={()=> {
   if(boolHeart===false){
     setBoolHeart(true)
-    dispatch({type: "REMOVE_FROM_FAV", latitude: latitude, longitude: longitude})
+    dispatch({type: "REMOVE_FROM_FAV", latitude: latitude, longitude: longitude, city: city, country: country, state: state})
+    dispatch({type: "REMOVE_FROM_FAV_CITY",  city: city, country: country, state: state})
   }
   else{
     setBoolHeart(false)
-    dispatch({type: "ADD_TO_FAV", latitude: latitude, longitude: longitude})
+    dispatch({type: "ADD_TO_FAV", latitude: latitude, longitude: longitude, city: city, country: country, state: state})
+    dispatch({type: "ADD_TO_FAV_CITY",  city: city, country: country, state: state})
    
   }
  
@@ -290,6 +292,7 @@ return <a onClick={()=>{
 <img src={boolHeart ? Nine : Ten} alt="logo" className="addToFavourite" /> 
 
 </div>
+<Footer />
    <Navigation />
     </div>
     )

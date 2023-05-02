@@ -11,12 +11,16 @@ import { reducer } from './reducers';
 import { fetchData } from './reducers';
 import { dataForSearchList } from './reducers';
 import { fav } from './reducers';
+import { favCities } from './reducers';
+import { coords } from './reducers';
 import thunk from 'redux-thunk';
 export const rootReducer = combineReducers({
 
  reducer: reducer,
  dataForSearchList: dataForSearchList,
- fav:fav
+ fav:fav,
+ favCities:favCities,
+ coords: coords
 });
 
 //export const store = createStore(rootReducer, window.REDUX_DEVTOOLS_EXTENSION && window.REDUX_DEVTOOLS_EXTENSION());

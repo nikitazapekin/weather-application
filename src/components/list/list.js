@@ -55,7 +55,7 @@ import { store } from '../store/store';
 import { fetchData } from '../store/reducers';
 import { useState, useEffect } from 'react';
 import { Navigation } from '../date/navigation/navigation';
-
+import { Footer } from '../footer/footer';
 const List = () => {
   const { id } = useParams();
   const [data, setData] = useState([]);
@@ -92,6 +92,7 @@ console.log(JSON.stringify(data))
   return (
     <div className='list'>
       <Navigation />
+      <Footer />
       <div className='resultsOfSearch'>Results of search {id}: </div>
       {render()}
     </div>

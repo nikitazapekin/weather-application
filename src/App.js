@@ -8,15 +8,14 @@ import MyComponent from './components/test/test';
 import {  useSearchParams } from 'react-router-dom';
 import { Navigation } from './components/date/navigation/navigation';
 import { Homepage } from './components/homepage/homepage';
-//import {Routes,Route, Link } from"react-router-dom"
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-//import { SearchList } from './components/searchList/searchList';
 import { SearchList } from './components/searchList/searchList';
 import { List } from './components/list/list';
 import { CurrentHour } from './components/currentHour/currentHour';
 import { SearchedHours } from './components/searchedHours/searchedHours';
 import { Favourite } from './components/favourite/favourite';
 import WeatherForecast from './components/testSearch/testSearch';
+import { Wind } from './components/wind/wind';
 import ReactDOM from 'react-dom';
 import { Provider, connect } from 'react-redux';
 function App(){
@@ -90,6 +89,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
     <Routes >
   <Route path="/" element={ <Homepage id={id}/>} />
   <Route path="/favourite" element={ <Favourite />} />
+  <Route path="/wind/:id/:idd" element={ <Wind />} />
  <Route path=":id" element={<SearchList />} /> 
  <Route path="/test/:id" element={<List />} /> 
  <Route path="/current/:id/:idd" element={<CurrentHour />} /> 

@@ -1,24 +1,10 @@
 .footer {
-    position: relative;
-    top: 500px;
-    margin: 0 auto;
-     /* background-color: red; */
-      max-width: 1440px;
-      width: 100%;
-      height: 60px;
-      display: flex;
-    /*  justify-content: space-between; */
-    display: flex;
-    gap: 50px;
-      padding-right: 50px;
-  }
-.footerBackground {
-    /*background-color: red; */
-background: linear-gradient(45deg, blue, rgb(129, 186, 247));
-position: absolute;
-max-width: 100%;
+    max-width: 1440px;
 width: 100%;
-height: 60px;
-opacity: 0.5;
-z-index: -1;
+height: 10px;
+position: absolute;
+left: 50%;
+transform: translateX(-50%);
+background-color: red;
+bottom:  0;
 }

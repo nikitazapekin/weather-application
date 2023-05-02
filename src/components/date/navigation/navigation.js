@@ -10,76 +10,13 @@ import Logo from "./logo.png"
 import { useEffect } from "react";
 import En from "./eng.jpg"
 import Log from "./image.png"
-
-
-
-
-/*
 export const Navigation = (props) => {
   const { id } = props;
   const dispatch = useDispatch();
   const state = useSelector((state) => state);
-  const [country, setCountry] = useState("");
-  const [countryData, setCountryData] = useState([]);
-  const [searchResults, setSearchResults] = useState([]);
-  const handleInput = (event) => {
-    const value = event.target.value;
-    setCountry(value);
-
-    const results = countryData.filter((country) =>
-      country.name.toLowerCase().startsWith(value.toLowerCase())
-    );
-    setSearchResults(results.slice(0, 10));
-  };
-
-  const fetchCountryData = (country) => {
-    dispatch(fetchData(country)).then(() => {
-      const countries = store.getState();
-      const array = countries.reducer.data.results;
-      const newData = array.slice(0, 10);
-      setCountryData(newData);
-      setSearchResults(newData);
-    });
-  };
-
-  useEffect(() => {
-    if (country) {
-      const timeoutId = setTimeout(() => {
-        fetchCountryData(country);
-      }, 1000);
-
-      return () => clearTimeout(timeoutId);
-    }
-  }, [country]);
-console.log(searchResults)
-const renderedElements = country.length > 0 && searchResults.map((element) => {
-  const countryId = element.country_id;
-  const latitude = element.latitude;
-  const longitude = element.longitude;
-  const arr = [];
-  arr.push(latitude);
-  arr.push(longitude);
-  return (
-    <Link style={{textDecoration: "none"}} to={`/${arr}`}>
-      <div onClick={()=> {
-        setCountry("");
-      }} className="renderedCountry">
-        {element.name} {element.timezone} {element.country}
-      </div>
-    </Link>
-  );
-}); */
-
-
-
-
-
-
-
-export const Navigation = (props) => {
-  const { id } = props;
-  const dispatch = useDispatch();
-  const state = useSelector((state) => state);
+  const stateId=state.coords
+  const latitude=stateId[0]
+  const longitude =stateId[1]
   const [country, setCountry] = useState("");
   const [countryData, setCountryData] = useState([]);
   const [searchResults, setSearchResults] = useState([]);
@@ -167,12 +104,13 @@ export const Navigation = (props) => {
         <p className="textNav">Pressure</p>
       </div>
       <div className="navItem">
-        <p className="textNav">Wind</p>
+       <Link style={{textDecoration: "none"}} to={`/wind/${latitude}/${longitude}`}> <p className="textNav">Wind</p> </Link>
       </div>
       <div className="langSelection">
         <div className="langCheck">
           <img src={En} alt="lang" className="imgSelectionItem" />
         </div>
+       
       </div>
     
       <div className="fonNavigation"></div>

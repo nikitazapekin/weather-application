@@ -16,8 +16,8 @@ import { useSelector } from "react-redux"
 import { useDispatch } from "react-redux"
 import { connect } from 'react-redux';
 import { SearchList } from '../searchList/searchList';
+//import { Footer } from '../footer/footer';
 import { Footer } from '../footer/footer';
-
 const Homepage = (props) => {
   const {id}=props
   const [city, setCity] = useState("");
@@ -42,6 +42,9 @@ setCurrentTiming(event)
     function successCallback(position) {
       setBoolCheck(false); 
       const geoUrl = `https://api.opencagedata.com/geocode/v1/json?q=${position.coords.latitude}+${position.coords.longitude}&key=f9629a9e6fd7493aac20c35043c7e411`;
+   const latitude=position.coords.latitude
+   const longitude=position.coords.longitude
+   dispatch({type: "ADD_COORDS", latitude: latitude, longitude: longitude})
       fetch(geoUrl)
         .then(responses => responses.json())
         .then(data => {
@@ -155,23 +158,6 @@ useEffect(()=> {
     setArrayOfProps(data.hourly.precipitation_probability)
   }
 }, [data]);
- /* return (
-    <div className="homepage">
-     <img style={style} className='loadBar' src="https://media.giphy.com/media/17mNCcKU1mJlrbXodo/giphy.gif" alt="loading" /> 
-  <div style={{zIndex: "11111111111"}}>
-      <Navigation id={id} /> 
-      </div>
-      <div style={{zIndex: "1"}}>
-      <Time timing={timing} /> 
-      </div>
-      <CurrentWeather getDate={getDate} dataVisib={dataVisib} data={data} temp={temp} date={date} newArr={newArr} city={city}  />
-  <button className='testBtn' onClick={()=> {
-    console.log(currentTiming)
-  }}>show state</button>
-      {Footer}
-   
-</div> 
-  ) */
   return (
     <div className="homepage">
       {/* <Fons /> */}
@@ -181,6 +167,7 @@ useEffect(()=> {
         src="https://media.giphy.com/media/17mNCcKU1mJlrbXodo/giphy.gif"
         alt="loading"
       />
+     
       <div style={{ zIndex: "1" }}>
         <Time timing={timing} />
       </div>
@@ -205,7 +192,7 @@ useEffect(()=> {
       <div style={{ zIndex: "11111111111" }}>
         <Navigation id={id} />
       </div>
-      {Footer}
+     <Footer />
     </div>
   );
   

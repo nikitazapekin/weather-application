@@ -1,0 +1,70 @@
+.favCityItem {
+    position: relative;
+ margin: 0 auto;
+    width: 100%;
+    max-width: 90%;
+    height: 60px;
+  /*  background-color: red; */
+    border-radius:  2px solid black;
+    text-align: left;
+}
+.favCityItemFon{
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgb(153, 247, 99);
+    opacity: 0.5;
+    height: 60px;
+    width: 100%;
+    max-width: 100%;
+    z-index: -1;
+}
+
+
+
+
+.cl-btn-7 {
+  width: 40px;
+  height: 40px;
+  border-radius: 40px;
+  position: relative; 
+  float: right;
+  z-index: 1;
+ /* margin: 20px auto; */
+ display: flex;
+ align-items:  center;
+ top: -15px;
+  cursor: pointer;
+}
+.cl-btn-7:before {
+  content: '+';
+  color: #337AB7;
+  position: absolute;
+  z-index: 2;
+  transform: rotate(45deg);
+  font-size: 50px;
+  line-height: 1;
+  top: -5px;
+  left: 6px;
+  transition: all 0.3s cubic-bezier(0.77, 0, 0.2, 0.85);
+}
+.cl-btn-7:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 100%;
+  background: #337AB7;
+  z-index: 1;
+  transition: all 0.3s cubic-bezier(0.77, 0, 0.2, 0.85);
+  transform: scale(0.01);
+}
+.cl-btn-7:hover:after {
+  transform: scale(1);
+}
+.cl-btn-7:hover:before {
+  transform: scale(0.8) rotate(45deg);
+  color: #fff;
+}
