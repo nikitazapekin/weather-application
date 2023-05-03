@@ -44,13 +44,14 @@ setCurrentTiming(event)
       const geoUrl = `https://api.opencagedata.com/geocode/v1/json?q=${position.coords.latitude}+${position.coords.longitude}&key=f9629a9e6fd7493aac20c35043c7e411`;
    const latitude=position.coords.latitude
    const longitude=position.coords.longitude
-   dispatch({type: "ADD_COORDS", latitude: latitude, longitude: longitude})
+  // dispatch({type: "ADD_COORDS", latitude: latitude, longitude: longitude})
       fetch(geoUrl)
         .then(responses => responses.json())
         .then(data => {
           const city = data.results[0].components.city;
          // console.log(city)
           setCity(city)
+          dispatch({type: "ADD_COORDS", latitude: latitude, longitude: longitude, city: city})
         });
       
       async function fetchAsyncTodos() {// ,apparent_temperature,precipitation_probability,precipitation,rain,showers,snowfall,cloudcover_low,cloudcover_high,windspeed_10m,windspeed_80m,windspeed_120m,windspeed_180m

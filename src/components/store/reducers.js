@@ -80,8 +80,18 @@ switch (action.type){
     const latitude=action.latitude
     const longitude=action.longitude
     state=[]
+    
     state.push(latitude)
     state.push(longitude)
+    if(action.state!=undefined){
+      state.push(action.state)
+    }
+    if(action.country!=undefined){
+      state.push(action.country)
+    }
+    if(action.city!=undefined){
+      state.push(action.city)
+    }
   console.log("COOORSDDDDDS"+state)
 return state
   }

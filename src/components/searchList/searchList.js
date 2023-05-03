@@ -63,6 +63,7 @@ const latitude = parts[0];
 setLatitude(latitude)
 const longitude = parts[1]; 
 setLongitude(longitude)
+
  const url = `https://nominatim.openstreetmap.org/reverse?lat=${latitude}&lon=${longitude}&format=json`;
  const visibUrl=`https://api.open-meteo.com/v1/gfs?latitude=${latitude}&longitude=${longitude}&hourly=temperature_2m,visibility&forecast_days=16`
 fetch(url)
@@ -83,6 +84,7 @@ fetch(url)
             const city = data.results[0].components.city;
             const country = data.results[0].components.country;
             const state = data.results[0].components.state;
+            dispatch({type: "ADD_COORDS", latitude: latitude, longitude: longitude, city: city, country: country, state: state})
            const stroke="";
           setCity(city)
           setCountry(country)

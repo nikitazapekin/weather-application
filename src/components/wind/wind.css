@@ -1,0 +1,17 @@
+.windSpeed {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 100px;
+}
+.windDate {
+   position: absolute;
+   top: 150px;
+   transform: translateX(-50px);
+}
+.windIn {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 100px;
+}
