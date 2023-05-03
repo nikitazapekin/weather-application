@@ -3,6 +3,7 @@ import {Routes,Route, Link } from"react-router-dom"
 import { useSelector } from "react-redux"
 import { useDispatch } from "react-redux"
 import { favCities } from "../store/reducers";
+import { Fons } from "../fons/fons";
 import "./favourite.css"
 const Favourite=()=> {
     const dispatch = useDispatch();
@@ -69,6 +70,7 @@ const country=newArrCity[2]
 })
     return (
         <div className="favourite">
+          <Fons />
          <h1 className="listOfFav" style={{position: "relative", top: "100px"}}>List of favourite cities:</h1>
            <div style={{position: "relative", top: "200px"}}>{rendEl}</div>
            <Navigation />

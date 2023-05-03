@@ -9,6 +9,7 @@ import Four from "./4.png"
 import Fifth from "./5.png"
 import Six from "./6.png"
 import Sev from "./7.png"
+import { Fons } from "../fons/fons"
 export const CurrentWeather = (props) => {
   const { city, newArr, temp, date, data, dataVisib, getDate } = props
   const [arrayOfMin, setArrayOfMin] = useState([])
@@ -19,10 +20,8 @@ useEffect(()=>{
 if(dataVisib!=undefined){
 const arrayOfVisibility=dataVisib.hourly.visibility
 setArrayOfVisib(arrayOfVisibility)
-//console.log("vv"+arrayOfVisib)
 }
 }, [dataVisib])
-//console.log("vv"+arrayOfVisib)
   useEffect(() => {
     const tempArray = []
     const maxTempArray=[]
@@ -61,19 +60,14 @@ setArrayOfMax(maxTempArray)
   const renderMax = arrayOfMax.map(item => {
     return <div>{item}</div>
   })
-  //========================================================
   const [arrOfRain, setArrayOfRain]=useState()
   const [arrayOfProps, setArrayOfProps]=useState()
   const [arrayOfVis, setArrayOfVis]=useState()
   useEffect(()=> {
     if(data != undefined && dataVisib!=undefined) {
-      //console.log("data" +JSON.stringify(data))
-   //   setDatas(data)
     setArrayOfRain(data.hourly.rain)
       setArrayOfVis(dataVisib.hourly.visibility)
       setArrayOfProps(data.hourly.precipitation_probability)
-      //console.log(arrayOfProps)
-    //  console.log(data.hourly.rain.length)
     }
 
 
@@ -99,23 +93,13 @@ setArrayOfMax(maxTempArray)
   
     return mostFrequent;
   }
-  
-  //const [arrayOf16Days, setArrayOf16Days]=useState([])
-//useEffect(()=> {
 const [arOfWeath, setArOfWeath]=useState()
 useEffect(()=> {
 
 
 if(arrOfRain!=undefined && arrayOfProps!=undefined && arrayOfVis!=undefined &&data!=undefined && dataVisib!=undefined){
-console.log(arrOfRain)
-console.log(arrayOfProps)
-console.log(arrayOfVis)
-console.log(data.hourly.rain.length)
 const arrOfWeath=[]
   for(let i=0; i<data.hourly.rain.length; i+=24){
-    //console.log(1)
-  //  console.log(data[i])
-  //  let currentWeath=""
     const resultArray=[]
     for(let j=i;  j < i+24 && j < data.hourly.rain.length; j++) {
       if (arrOfRain[j] >= 0.3) {
@@ -130,12 +114,8 @@ const arrOfWeath=[]
     }
     console.log(resultArray)
   const item=findMostFrequent(resultArray)
- //   setArrayOf16Days((arrayOf16Days)=>[...arrayOf16Days,item ])
  arrOfWeath.push(item)
- //console.log(item)
   }
-//  console.log(1)
- // console.log(arrOfWeath)
   setArOfWeath(arrOfWeath)
 }
 }, arOfWeath)
@@ -164,7 +144,6 @@ const arrayOfImages=[Fir, Sec, Thir, Four, Fifth, Six, Sev]
    <Link  style={{ textDecoration: 'none' }} to={`/current/${id}/${datas[index]}`}> 
   
         <span>
-       {/* <img style={{zIndex: "1000"}} src={imageSrc} alt="logo" className="renderedCurrentCityWeatherLogo" />  */}
         <div className='renderedCurrentCityTemperature' key={index}><div className="renderedCurrentCityTemperatureFon">
     
           </div>
@@ -181,14 +160,9 @@ const arrayOfImages=[Fir, Sec, Thir, Four, Fifth, Six, Sev]
   
   return (
     <div className="currentWeather">
+      <Fons />
       <div className="todayIn">Today in {city} </div>
-      <button onClick={()=> {
-        //getDate(1)
-     //   console.log(arrayOf16Days)
-     console.log(arOfWeath)
-      }}>add</button>
      <div className="tableTemperature">{renderItems}
-   
      </div>
    
     </div>

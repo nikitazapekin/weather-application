@@ -1,0 +1,38 @@
+.carousel {
+    overflow: hidden;
+   /* width: 800px; */
+   width: 100%;
+max-width: 1440px;
+    height: 1000px;
+  }
+  
+  .inner {
+    white-space: nowrap;
+    transition: transform 0.3s;
+  }
+  
+  .carousel-item {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 400px;
+    background-color: green;
+    color: #fff;
+  }
+  
+  .indicators {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .indicators > button {
+    margin: 5px;
+  }
+  
+  .indicators > button.active {
+    background-color: green;
+    color: #fff;
+  }
+  .sliderItem{
+    background-color: red;
+  }

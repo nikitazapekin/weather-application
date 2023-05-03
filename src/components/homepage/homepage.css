@@ -104,3 +104,13 @@ transition: 1s;
 .testBtn {
     transform: translateY(-200px);
 }
+.testCase {
+    /*position: absolute;
+    left: 50%;
+    transform: translateX(-50%); */
+    position: relative;
+    top: 300px;
+   display: flex;
+   justify-content: center;
+  
+}

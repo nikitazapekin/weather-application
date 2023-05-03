@@ -17,7 +17,7 @@ import Sev from "./7.png"
 import Nine from "./9.png"
 import Ten from "./10.png"
 import { Footer } from "../footer/footer";
-
+import { Fons } from "../fons/fons";
 
  export const SearchList =(props)=> {
   const { counter, incrementCounter } = props;
@@ -84,7 +84,7 @@ fetch(url)
             const city = data.results[0].components.city;
             const country = data.results[0].components.country;
             const state = data.results[0].components.state;
-            dispatch({type: "ADD_COORDS", latitude: latitude, longitude: longitude, city: city, country: country, state: state})
+           // dispatch({type: "ADD_COORDS", latitude: latitude, longitude: longitude, city: city, country: country, state: state})
            const stroke="";
           setCity(city)
           setCountry(country)
@@ -265,6 +265,7 @@ return <a onClick={()=>{
 })
     return( 
     <div className="searchList">
+      <Fons />
     {/*  <Navigation /> */}
   {/*  <h1>Counter: {count}</h1> */}
       <button  style={{position: "relative", top: "100px"}} onClick={increment}>Increment</button>
@@ -272,9 +273,6 @@ return <a onClick={()=>{
   <div className="selectedCountry">  {city} {state} {country} </div>
   <div className="tableTemperature">{renderItems}</div>
   <div className="addToFavourite"></div>
-<button style={{zIndex: "100000", width: "200px", height: "300px", position: "relative", top: "1400px"}} onClick={()=> {
- // console.log(arOfWeath)
-}}>show ar</button>
 </div>
 <div className="addToFavouriteWrapper" onClick={()=> {
   if(boolHeart===false){

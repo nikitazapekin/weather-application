@@ -1,9 +1,11 @@
 import { Navigation } from "../date/navigation/navigation"
+import {Routes,Route, Link } from"react-router-dom"
 import { useParams } from 'react-router-dom';
 import { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux"
 import { useSelector } from "react-redux"
+import { Fons } from "../fons/fons";
 import Fir from "./1.png"
 import Sec from "./2.png"
 import Third from "./3.png"
@@ -19,23 +21,41 @@ const Wind=()=> {
 const stat=stateData.coords
 const [city, setCity]=useState("")
 const [country, setCountry]=useState("")
-const [statt, setStatt]=useState("")
+const [state, setState]=useState("")
 console.log("stat"+stat)
+console.log(id)
+console.log(idd)
+
+
+const geoUrl = `https://api.opencagedata.com/geocode/v1/json?q=${id}+${idd}&key=f9629a9e6fd7493aac20c35043c7e411`;
+fetch(geoUrl)
+  .then(responses => responses.json())
+  .then(data => {
+    console.log(JSON.stringify(data))
+    const city = data.results[0].components.city;
+    const country = data.results[0].components.country;
+    const state = data.results[0].components.state;
+   // dispatch({type: "ADD_COORDS", latitude: id, longitude: idd, city: city, country: country, state: state})
+   const stroke="";
+  setCity(city)
+  setCountry(country)
+  setState(state)
+  console.log(state)
+  console.log(city)
+  console.log(country)
+  });  
 useEffect(()=> {
-if(stat[3]!=undefined){
-  setCountry(stat[3])
+async function test(){
+  const weatherUrl = `https://api.open-meteo.com/v1/forecast?latitude=${id}&longitude=${idd}&hourly=temperature_2m,apparent_temperature,precipitation_probability,precipitation,rain,showers,snowfall,cloudcover_low,cloudcover_high,windspeed_10m,windspeed_80m,windspeed_120m,windspeed_180m&forecast_days=16`;
+  const weatherResponse = await fetch(weatherUrl);
+  const weatherData = await weatherResponse.json();
+  console.log("data"+JSON.stringify(weatherData))
+  setData(weatherData)
+  setWind(weatherData.hourly.windspeed_10m)
 }
-}, [stat[3]])
-useEffect(()=> {
-if(stat[2]!=undefined){
-  setCity(stat[2])
-}
-}, [stat[2]])
-useEffect(()=> {
-if(stat[4]!=undefined){
-  setStatt(stat[4])
-}
-}, [stat[4]])
+test()
+}, [id, idd])
+
     async function fetchAsyncTodos() {
       const geoUrl = `https://api.opencagedata.com/geocode/v1/json?q=${id}+${idd}&key=f9629a9e6fd7493aac20c35043c7e411`;
       const geoResponse = await fetch(geoUrl);
@@ -47,34 +67,11 @@ if(stat[4]!=undefined){
       const weatherData = await weatherResponse.json();
       console.log("data"+JSON.stringify(weatherData))
       setData(weatherData)
-      setWind(weatherData.hourly.windspeed_10m)
+     setWind(weatherData.hourly.windspeed_10m)
     }
     useEffect(() => {
       fetchAsyncTodos();
     }, [id, idd]);
-  
- /*   useEffect(()=> {
-    const geoUrl = `https://api.opencagedata.com/geocode/v1/json?q=${id}+${idd}&key=f9629a9e6fd7493aac20c35043c7e411`;
-       fetch(geoUrl)
-         .then(responses => responses.json())
-         .then(data => {
-           const city = data.results[0].components.city;
-         });
-        
-
-        
-         async function fetchAsyncTodos() {// ,apparent_temperature,precipitation_probability,precipitation,rain,showers,snowfall,cloudcover_low,cloudcover_high,windspeed_10m,windspeed_80m,windspeed_120m,windspeed_180m
-            const weatherUrl = `https://api.open-meteo.com/v1/forecast?latitude=${id}&longitude=${idd}&hourly=temperature_2m,apparent_temperature,precipitation_probability,precipitation,rain,showers,snowfall,cloudcover_low,cloudcover_high,windspeed_10m,windspeed_80m,windspeed_120m,windspeed_180m&forecast_days=16`;
-    
-            const response = await fetch(weatherUrl);
-           
-             const data = await response.json();
-    console.log("data"+JSON.stringify(data))
-    setData(data)
-    setWind(data.hourly.windspeed_10m)
-           }
-           fetchAsyncTodos();
-        }, [id, idd]) */
            function findMostFrequent(arr) {
             let maxCount = 0;
             let mostFrequent;
@@ -120,7 +117,8 @@ if(wind!=undefined){
             const item=findMostFrequent(resultArray)
  arrOfWeath.push(item)
  
-        }
+        } 
+        console.log(wind)
     }
     setArOfWind(arrOfWeath) 
 }, [wind, id, idd] )
@@ -176,12 +174,14 @@ if (arrayOfMax !== undefined && arrayOfMin !== undefined) {
   console.log(arrayOfMin);
 } 
 
-const arrayOfImages=[Fir, Fiv, Six]
+const arrayOfImages=[Fir, Fiv, Six] 
 
 return (
     <div> 
-      <h1 className="windIn">wind in{statt} {city} {country} </h1>
+      <h1 className="windIn">wind in {state} {city} {country} {id} {idd} </h1>
+      <Fons />
      {arrayOfMax !== undefined && (
+      
         <div className='tableTemperature' style={{ top: "200px"}}>
           {arrayOfMax.map((item, index) => {
             let imageSrc;
@@ -195,6 +195,7 @@ return (
               }  
             }
             return (
+              <Link  style={{ textDecoration: 'none' }} to={`/currentwind/${id}/${idd}/${datas[index]}`}> 
               <a style={{textDecoration: "none"}} className='styleLink' href="#" key={index}>
                 <span>
                   <div className='renderedCurrentCityTemperature'>
@@ -206,15 +207,33 @@ return (
                   <i></i>
                 </span>
               </a>
+              </Link>
             );
           })}
+         
         </div>
+     
       )}
+       <button style={{position: "relative", top: "100px"}} onClick={()=> {
+        async function test(){
+              const weatherUrl = `https://api.open-meteo.com/v1/forecast?latitude=${id}&longitude=${idd}&hourly=temperature_2m,apparent_temperature,precipitation_probability,precipitation,rain,showers,snowfall,cloudcover_low,cloudcover_high,windspeed_10m,windspeed_80m,windspeed_120m,windspeed_180m&forecast_days=16`;
+              const weatherResponse = await fetch(weatherUrl);
+              const weatherData = await weatherResponse.json();
+              console.log("data"+JSON.stringify(weatherData))
+        }
+        test()
+          }}>shhh</button>
       <Navigation />
     </div>
   );
-        }
-export {Wind}
+        } 
+    /*    return (
+          <div>
+            efee
+          </div>
+        )
+} */
+export {Wind} 
 
 
 

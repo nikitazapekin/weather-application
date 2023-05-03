@@ -61,6 +61,7 @@ export const Navigation = (props) => {
     return (
       <Link style={{textDecoration: "none"}} to={`/${arr}`}>
         <div onClick={()=> {
+           dispatch({type: "ADD_COORDS", latitude: latitude, longitude: longitude, city: 0, country: 0, state: 0})
           setCountry("");
         }} className="renderedCountry">
           {element.name} {element.timezone} {element.country}

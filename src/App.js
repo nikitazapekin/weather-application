@@ -18,6 +18,7 @@ import WeatherForecast from './components/testSearch/testSearch';
 import { Wind } from './components/wind/wind';
 import ReactDOM from 'react-dom';
 import { Provider, connect } from 'react-redux';
+import { CurrentWind } from './components/currentWind/currentWind';
 function App(){
  
 const [city, setCity]=useState('')
@@ -92,6 +93,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
   <Route path="/wind/:id/:idd" element={ <Wind />} />
  <Route path=":id" element={<SearchList />} /> 
  <Route path="/test/:id" element={<List />} /> 
+ <Route path="/currentwind/:id/:idd/:iddd" element={<CurrentWind />} /> 
  <Route path="/current/:id/:idd" element={<CurrentHour />} /> 
  <Route path="/searched/country/:id/:idd/:iddd/:idddd" element={<SearchedHours />} /> 
 </Routes>

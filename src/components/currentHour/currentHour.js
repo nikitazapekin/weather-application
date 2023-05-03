@@ -10,6 +10,7 @@ import Four from "./4.png"
 import Fifth from "./5.png"
 import Six from "./6.png"
 import Sev from "./7.png"
+
 import "./currentHour.css"
 const CurrentHour =()=> {
     const {id, idd} = useParams();
@@ -152,6 +153,7 @@ const [stateImage, setStateImage]=useState()
            
           
            <h1 className="weatherFor">{idd} in {city}</h1>
+           <Fons />
             {rren !== undefined && indexes !== undefined && data !== undefined && (
               <div className='tableTemperature'>
                 {rren.map((item, index) => {

@@ -11,6 +11,7 @@ import Four from "./4.png"
 import Fifth from "./5.png"
 import Six from "./6.png"
 import Sev from "./7.png"
+
 import "./searchedHours.css"
 export const SearchedHours =()=> {
     const {id, idd, iddd, idddd} = useParams();
@@ -22,40 +23,6 @@ const [currentDate, setCurrentDate]=useState()
 const [state, setState]=useState()
 const [country, setCountry]=useState()
   
-/*
-async function fetchAsyncTodos() {
-    const weatherUrl = `https://api.open-meteo.com/v1/forecast?latitude=${id}&longitude=${idd}&hourly=temperature_2m,apparent_temperature,precipitation_probability,precipitation,rain,showers,snowfall,cloudcover_low,cloudcover_high,windspeed_10m,windspeed_80m,windspeed_120m,windspeed_180m&forecast_days=16`;
-    const response = await fetch(weatherUrl);
-    const data = await response.json();
-    console.log(data)
-   setData(data);
-  }
-  fetchAsyncTodos();
-async function vis() {// ,apparent_temperature,precipitation_probability,precipitation,rain,showers,snowfall,cloudcover_low,cloudcover_high,windspeed_10m,windspeed_80m,windspeed_120m,windspeed_180m
-  
-    const visibUrl=`https://api.open-meteo.com/v1/gfs?latitude=${id}&longitude=${idd}&hourly=temperature_2m,visibility&forecast_days=16`
-   
-    const responseVisib= await fetch(visibUrl)
-     const dataVisib = await responseVisib.json()
- setDataVisib(dataVisib.hourly.visibility)
-  }
-  vis()
-  const [state, setState]=useState()
-  const [country, setCountry]=useState()
-  const geoUrl = `https://api.opencagedata.com/geocode/v1/json?q=${id}+${idd}&key=f9629a9e6fd7493aac20c35043c7e411`;
-        fetch(geoUrl)
-          .then(responses => responses.json())
-          .then(data => {
-            const city = data.results[0].components.city;
-            const country = data.results[0].components.country;
-            const state = data.results[0].components.state;
-           const stroke="";
-          // stroke+=data.results[0].components.city+data.results[0].components.state+data.results[0].components.country
-          console.log(stroke)
-          setCity(city)
-          setCountry(country)
-          setState(state)
-          });  */
 
 
 
@@ -207,6 +174,7 @@ const [stateImage, setStateImage]=useState()
           <div>
           {/*  <Navigation /> */}
             <h1 className="weatherFor" style={{position: "relative", top:"100px"}}> {city} {state} {country}</h1> 
+            <Fons />
           <div style={{position: "relative", top:"100px"}}> {idddd} </div> 
          {rren !== undefined && indexes !== undefined && data !== undefined && (
               <div className='tableTemperature' style={{ top: "200px"}}>

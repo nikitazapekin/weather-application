@@ -3,7 +3,7 @@
 
 import React, { useState, useEffect } from 'react';
 import {Routes,Route, Link } from"react-router-dom"
-import { Fons } from '../fons/fons';
+
 import Sunn from "./image.png"
 import "./homepage.css";
 import {  useSearchParams } from 'react-router-dom';
@@ -18,6 +18,8 @@ import { connect } from 'react-redux';
 import { SearchList } from '../searchList/searchList';
 //import { Footer } from '../footer/footer';
 import { Footer } from '../footer/footer';
+import Sld from '../slider/slider';
+import { Fons } from '../fons/fons';
 const Homepage = (props) => {
   const {id}=props
   const [city, setCity] = useState("");
@@ -159,8 +161,10 @@ useEffect(()=> {
     setArrayOfProps(data.hourly.precipitation_probability)
   }
 }, [data]);
+
   return (
     <div className="homepage">
+      <Fons />
       {/* <Fons /> */}
       <img
         style={style}
@@ -172,7 +176,10 @@ useEffect(()=> {
       <div style={{ zIndex: "1" }}>
         <Time timing={timing} />
       </div>
-      {/* <Date timing={timing} /> */}
+<div className='testCase'>
+<Sld />
+</div>
+<div style={{position: "relative", top: "300px"}}>
       <CurrentWeather
         getDate={getDate}
         dataVisib={dataVisib}
@@ -182,6 +189,7 @@ useEffect(()=> {
         newArr={newArr}
         city={city}
       />
+      </div>
       <button
         className="testBtn"
         onClick={() => {
