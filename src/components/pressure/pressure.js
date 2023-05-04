@@ -195,7 +195,7 @@ pressure
             }  
           }
           return (
-            <Link  style={{ textDecoration: 'none' }} to={`/currentwind/${id}/${idd}/${datas[index]}`}> 
+            <Link  style={{ textDecoration: 'none' }} to={`/pressurecurrent/${id}/${idd}/${datas[index]}`}> 
             <a style={{textDecoration: "none"}} className='styleLink' href="#" key={index}>
               <span>
                 <div className='renderedCurrentCityTemperature'>

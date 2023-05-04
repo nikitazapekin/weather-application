@@ -20,6 +20,7 @@ import ReactDOM from 'react-dom';
 import { Provider, connect } from 'react-redux';
 import { CurrentWind } from './components/currentWind/currentWind';
 import { Pressure } from './components/pressure/pressure';
+import PressureCurrent from './components/pressureCurrent/pressureCurrent';
 function App(){
  
 const [city, setCity]=useState('')
@@ -95,6 +96,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
  <Route path=":id" element={<SearchList />} /> 
  <Route path="/pressure/:id/:idd" element={<Pressure />} /> 
  <Route path="/test/:id" element={<List />} /> 
+ <Route path="/pressurecurrent/:id/:idd/:iddd" element={<PressureCurrent />} /> 
  <Route path="/currentwind/:id/:idd/:iddd" element={<CurrentWind />} /> 
  <Route path="/current/:id/:idd" element={<CurrentHour />} /> 
  <Route path="/searched/country/:id/:idd/:iddd/:idddd" element={<SearchedHours />} /> 
