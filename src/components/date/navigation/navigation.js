@@ -102,7 +102,7 @@ export const Navigation = (props) => {
       <Link style={{textDecoration: "none"}} to="/favourite">  <p className="textNav">Favourite</p></Link>
       </div>
       <div className="navItem">
-        <p className="textNav">Pressure</p>
+      <Link style={{textDecoration: "none"}} to={`/pressure/${latitude}/${longitude}`}> <p className="textNav">Pressure</p></Link> 
       </div>
       <div className="navItem">
        <Link style={{textDecoration: "none"}} to={`/wind/${latitude}/${longitude}`}> <p className="textNav">Wind</p> </Link>
