@@ -109,7 +109,7 @@ const [langCheck, setLangCheck]=useState(false)
  </Link>
  
       </div>
-      {renderedElements}
+   {renderedElements} 
       </div>
     
 

@@ -164,6 +164,9 @@ useEffect(()=> {
 
   return (
     <div className="homepage">
+      {/* <div style={{ zIndex: "1", position: "relative", top: "50px" }}>
+        <Time timing={timing} />
+  </div> */}
       <Fons />
       <img
         style={style}
@@ -171,10 +174,10 @@ useEffect(()=> {
         src="https://media.giphy.com/media/17mNCcKU1mJlrbXodo/giphy.gif"
         alt="loading"
       />
-     
+      {/*<Footer />  */}
       <div style={{ zIndex: "1" }}>
         <Time timing={timing} />
-      </div>
+  </div> 
 <div className='testCase'>
 </div>
 
@@ -192,7 +195,13 @@ useEffect(()=> {
       <div style={{ zIndex: "11111111111" }}>
         <Navigation id={id} />
   </div> 
-  <Footer /> 
+
+
+
+
+
+
+
     </div>
   );
   

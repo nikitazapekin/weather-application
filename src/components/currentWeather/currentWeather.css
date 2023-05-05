@@ -289,3 +289,45 @@ transition: 1s;
 }
 
 
+.tv {
+  position: relative;
+  width: 350px;
+  height: 250px;
+  background: rgb(215, 245, 151);
+  border-radius: 0% 0% 0% 0% / 0% 0% 0% 0% ;
+  color: white;
+  box-shadow: 20px 20px rgba(0,0,0,.15);
+  transition: all .4s ease;
+  color: #25c57d;
+  font-size: 30px;
+}
+.tv:hover {
+  border-radius: 0% 0% 50% 50% / 0% 0% 5% 5% ;
+  box-shadow: 10px 10px rgba(0,0,0,.25);
+}
+.sketchy {
+ width: 300px;
+ height: 80px;
+  display: inline-block;
+  border: 3px solid #333333;
+  font-size: 25px;
+  border-radius: 2% 6% 5% 4% / 1% 1% 2% 4%;
+  text-transform: uppercase;
+  letter-spacing: 0.3ch;
+  background: #ffffff;
+  position: relative;
+  margin-bottom: 30px;
+  
+  &::before {
+      content: '';
+      border: 2px solid #353535;
+      display: block;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate3d(-50%, -50%, 0) scale(1.015) rotate(0.5deg);
+      border-radius: 1% 1% 2% 4% / 2% 6% 5% 4%;
+  }
+}

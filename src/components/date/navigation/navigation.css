@@ -110,6 +110,13 @@ z-index: -1;
   .navItem{
     margin-left: 20px;
   }
+  .listOfSearchedCities{
+    width: 200px;
+    transform: translateX(-50px);
+  }
+  .renderedCountry{
+    width: 225px;
+  }
 }
 .txtx{
   font-size: 14px;
@@ -137,28 +144,20 @@ transform: translate(200px, -20px);
  position: absolute;
  right: 0;
 }
+.listOfSearchedCities{
+  width: 200px;
+  transform: translateX(-50px);
+}
+.renderedCountry{
+  width: 430px;
+}
 }
 
 
 
 
 @media (max-width: 766px){
-/*.inputSearchForm{
-  width: 400px;
-}
-.txtx {
-  transform: translate(200px, -20px);
-}
-}
-@media (max-width: 679px){
-  .inputSearchForm{
-    width: 300px;
-   
-  }
 
-  .txtx {
-    transform: translate(150px, -20px);
-  } */
 .logoOfWebPage, .navItem:nth-child(3), .navItem:nth-child(4), .navItem:nth-child(5){
   display: none;
 
@@ -172,71 +171,35 @@ transform: translate(200px, -20px);
     .inputSearch{
       width: 400px;
     }
+    .renderedCountry{
+      width: 330px;
+    }
   }
   @media (max-width: 524px){
     .inputSearch {
       width: 300px;
       transform: translateX(-80px);
     }
-  }
-  /*
-  @media (max-width: 579px){
-    .inputSearchForm{
+    .listOfSearchedCities{
       width: 200px;
-    
+      transform: translateX(-80px);
     }
-    .txtx {
-      transform: translate(50px, -20px);
+    .renderedCountry{
+      width: 230px;
     }
-    }
-    @media (max-width: 470px){
-      .logoOfWebPage{
-        width: 50px;
-        height: 40px;
-        transform: translate(-20px, 35px);
-      }
-      .inputSearch {
-        transform: translateX(-120px);
-       
-      }
-      .navItem{
-        margin-left: 0px;
-        transform: translateX(-10px);
-      }
-    } */
+  }
 
-
-
-
-/*
-    @media (max-width: 600px) {
-      .navigation {
-        flex-wrap: wrap;
-     
-      }
-      .inputSearchForm {
-        width: 100%;
-        margin-bottom: 20px;
-        display: flex;
-        justify-content: center;
-      }
-      .navItem {
-        width: 100%;
-        text-align: center;
-      }
-      .textNav {
-        margin-right: 0;
-      }
-      .button-85 {
-        width: 100%;
-      }
-    }
-
-    */
 
 @media  (max-width: 370px){
   .inputSearch {
     transform: translateY(35px) translateX(-90px);
+  }
+  .listOfSearchedCities{
+    width: 200px;
+    transform: translate(-90px, 35px);
+  }
+  .renderedCountry{
+    width: 230px;
   }
 }
 
