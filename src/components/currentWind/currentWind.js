@@ -161,11 +161,9 @@ setFinalArr(resultArray)
 const arrayOfImages=[Fir, Sec, Third]
     return (
         <div>
-{id} <br />
-{idd} <br/>
-{iddd}
-<Fons />
 
+<Fons />
+<h1>{city} {state} {country}</h1>
 {rren !== undefined && indexes !== undefined && data !== undefined && speed!=undefined && (
               <div className='tableTemperature'>
                 {rren.map((item, index) => {

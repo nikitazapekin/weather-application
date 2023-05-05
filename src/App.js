@@ -21,6 +21,10 @@ import { Provider, connect } from 'react-redux';
 import { CurrentWind } from './components/currentWind/currentWind';
 import { Pressure } from './components/pressure/pressure';
 import PressureCurrent from './components/pressureCurrent/pressureCurrent';
+import TestComp from './components/testComp/testComp';
+//import "./i18n"
+import i18n from 'i18next';
+
 function App(){
  
 const [city, setCity]=useState('')
@@ -84,7 +88,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
   return(
     
     <div className="App">
-    
+    <div className='tttttt'></div>
   
 <div>
      

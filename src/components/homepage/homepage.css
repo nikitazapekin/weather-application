@@ -114,3 +114,16 @@ transition: 1s;
    justify-content: center;
   
 }
+.tablePos {
+ justify-content: center;
+    display: flex;
+}
+.tableWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 0 auto;
+  }
+  
+  

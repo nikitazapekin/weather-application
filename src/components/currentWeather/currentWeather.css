@@ -19,16 +19,125 @@
     border-radius: 20px;
     z-index: -1;
 }
+.tableWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+/*
 .tableTemperature {
- position: absolute;
- left: 50%;
- transform: translateX(-50%);
+
     display: grid;
     text-align: center;
    grid-template-columns: repeat(4, 250px); 
     grid-template-rows: repeat(auto, 300px);
     gap: 30px;
-}
+    max-width: 1000px;
+    width: 100%;
+} */
+
+/*
+.tableWrapper1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .tableTemperature1 {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: grid;
+    text-align: center;
+    grid-template-columns: repeat(4, 250px); 
+    grid-template-rows: repeat(auto, 300px); 
+
+    gap: 30px;
+    max-width: 1000px;
+    width: 100%;
+  }
+  @media (max-width: 1132px){
+    .tableTemperature1{
+        grid-template-columns: repeat(3, 200px); 
+        grid-template-rows: repeat(2, 300px)
+    }
+  } */
+/*
+  .tableWrapper1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .tableTemperature1 {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: grid;
+    text-align: center;
+    grid-template-columns: repeat(4, 250px);
+    grid-template-rows: repeat(auto, 300px);
+    gap: 30px;
+    max-width: 1000px;
+    width: 100%;
+    justify-items: center;
+  }
+  
+  
+  @media (max-width: 1132px) {
+    .tableTemperature1 {
+      grid-template-columns: repeat(3, 200px); 
+      grid-template-rows: repeat(2, 250px);
+    }
+  } */
+
+  .tableWrapper1 {
+    display: flex;
+    justify-content: center;
+   /* align-items: center; */
+    height: 100vh;
+  }
+  
+  .tableTemperature1 {
+    display: grid;
+    text-align: center;
+    grid-template-columns: repeat(4, 250px); 
+    grid-template-rows: repeat(auto, 300px);
+    gap: 30px;
+    max-width: 1000px;
+    width: 100%;
+    margin: 0 auto;
+    justify-content: center;
+  }
+  
+  @media (max-width: 1132px) {
+    .tableTemperature1 {
+      grid-template-columns: repeat(3, 200px); 
+      grid-template-rows: repeat(2, 300px);
+     /* left: 0; */
+    }
+  }
+  @media (max-width: 812px) {
+    .tableTemperature1 {
+        transform: translateX(40px);
+      grid-template-columns: repeat(2, 200px); 
+      grid-template-rows: repeat(2, 300px);
+     /* left: 0; */
+    }
+  }
+  @media (max-width: 422px) {
+    .tableTemperature1 {
+        transform: translateX(40px);
+      grid-template-columns: repeat(1, 200px); 
+      grid-template-rows: repeat(2, 300px);
+     /* left: 0; */
+    }
+  }
+
+
 .todayIn {
     font-size: 40px;
     color:black
@@ -174,3 +283,9 @@ transition: 1s;
     transform: translateX(-50%);
     left: 50%; 
 }
+.currentWeather {
+    position: relative;
+    top: 200px;
+}
+
+

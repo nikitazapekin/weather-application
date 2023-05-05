@@ -165,7 +165,6 @@ useEffect(()=> {
   return (
     <div className="homepage">
       <Fons />
-      {/* <Fons /> */}
       <img
         style={style}
         className="loadBar"
@@ -177,9 +176,9 @@ useEffect(()=> {
         <Time timing={timing} />
       </div>
 <div className='testCase'>
-<Sld />
 </div>
-<div style={{position: "relative", top: "300px"}}>
+
+
       <CurrentWeather
         getDate={getDate}
         dataVisib={dataVisib}
@@ -189,24 +188,15 @@ useEffect(()=> {
         newArr={newArr}
         city={city}
       />
-      </div>
-      <button
-        className="testBtn"
-        onClick={() => {
-          console.log(currentTiming);
-        }}
-      >
-        show state
-      </button>
+    
       <div style={{ zIndex: "11111111111" }}>
         <Navigation id={id} />
-      </div>
-     <Footer />
+  </div> 
+  <Footer /> 
     </div>
   );
   
 }
-//import {Sunn} from "./image.png"
 function Time() {
   const [date, setDate] = useState(new Date());
 

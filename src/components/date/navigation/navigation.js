@@ -9,7 +9,9 @@ import { useState } from "react";
 import Logo from "./logo.png"
 import { useEffect } from "react";
 import En from "./eng.jpg"
+import Rus from "./rus.jpg"
 import Log from "./image.png"
+import BurgerMenu from "../../burgerMenu/burgerMenu";
 export const Navigation = (props) => {
   const { id } = props;
   const dispatch = useDispatch();
@@ -20,7 +22,7 @@ export const Navigation = (props) => {
   const [country, setCountry] = useState("");
   const [countryData, setCountryData] = useState([]);
   const [searchResults, setSearchResults] = useState([]);
-
+const [langCheck, setLangCheck]=useState(false)
   const handleInput = useCallback((event) => {
     const value = event.target.value;
     setCountry(value);
@@ -69,7 +71,17 @@ export const Navigation = (props) => {
       </Link>
     );
   });
-  
+  const styles={
+  display:  langCheck===true ?  "block" : "none"
+  }
+
+
+
+
+
+
+
+
   return (
     <nav className="navigation">
    
@@ -82,7 +94,7 @@ export const Navigation = (props) => {
       <div className="inputSearch">
         <input
           type="text"
-          placeholder="search..."
+          placeholder="найти..."
           className="inputSearchForm"
           onChange={handleInput}
           value={country}
@@ -95,27 +107,29 @@ export const Navigation = (props) => {
   >
  Search</button>
  </Link>
+ 
       </div>
       {renderedElements}
       </div>
-      <div className="navItem">
-      <Link style={{textDecoration: "none"}} to="/favourite">  <p className="textNav">Favourite</p></Link>
-      </div>
-      <div className="navItem">
-      <Link style={{textDecoration: "none"}} to={`/pressure/${latitude}/${longitude}`}> <p className="textNav">Pressure</p></Link> 
-      </div>
-      <div className="navItem">
-       <Link style={{textDecoration: "none"}} to={`/wind/${latitude}/${longitude}`}> <p className="textNav">Wind</p> </Link>
-      </div>
-      <div className="langSelection">
-        <div className="langCheck">
-          <img src={En} alt="lang" className="imgSelectionItem" />
-        </div>
-       
-      </div>
     
+
+
+
+      <div className="navItem txtx">
+      <Link style={{textDecoration: "none"}} to="/favourite">  <p className="textNav">Избранное</p></Link>
+      </div>
+      <div className="navItem txtx">
+      <Link style={{textDecoration: "none"}} to={`/pressure/${latitude}/${longitude}`}> <p className="textNav ">Давление</p></Link> 
+      </div>
+      <div className="navItem txtx">
+       <Link style={{textDecoration: "none"}} to={`/wind/${latitude}/${longitude}`}> <p className="textNav ">Ветер</p> </Link>
+      </div>
+
+<div className="burger">
+<BurgerMenu />
+</div>
       <div className="fonNavigation"></div>
-      
+    
     </nav>
   );
 };

@@ -181,7 +181,7 @@ const arrayOfImages=[Fir, Sec, Third]
 
 return (
     <div className="pressureCurrent">
-
+<h1>{city} {state} {country}</h1>
 <Fons />
 <Navigation />
 {rren !== undefined && indexes !== undefined && data !== undefined && speed!=undefined && (

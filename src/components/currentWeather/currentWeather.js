@@ -161,8 +161,10 @@ const arrayOfImages=[Fir, Sec, Thir, Four, Fifth, Six, Sev]
   return (
     <div className="currentWeather">
       <Fons />
-      <div className="todayIn">Today in {city} </div>
-     <div className="tableTemperature">{renderItems}
+      <p className="todayIn fancy">Сегодня в  {city} </p>
+      <div className="tableWrapper1">
+     <div className="tableTemperature1">{renderItems}
+     </div>
      </div>
    
     </div>
