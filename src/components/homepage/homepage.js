@@ -164,9 +164,6 @@ useEffect(()=> {
 
   return (
     <div className="homepage">
-      {/* <div style={{ zIndex: "1", position: "relative", top: "50px" }}>
-        <Time timing={timing} />
-  </div> */}
       <Fons />
       <img
         style={style}
@@ -175,9 +172,9 @@ useEffect(()=> {
         alt="loading"
       />
       {/*<Footer />  */}
-      <div style={{ zIndex: "1" }}>
+      <div   style={{ zIndex: "1", marginTop: "50px" }}>
         <Time timing={timing} />
-  </div> 
+  </div>  
 <div className='testCase'>
 </div>
 
@@ -190,11 +187,11 @@ useEffect(()=> {
         date={date}
         newArr={newArr}
         city={city}
-      />
+  /> 
     
       <div style={{ zIndex: "11111111111" }}>
         <Navigation id={id} />
-  </div> 
+</div>  
 
 
 

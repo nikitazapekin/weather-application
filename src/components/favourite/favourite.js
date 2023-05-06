@@ -47,7 +47,7 @@ const country=newArrCity[2]
     
       
          <div className="favCityItem">
-           <Link style={{textDecoration: "none"}} to={`/${arr}`}>
+           <Link style={{textDecoration: "none", color: "#fff"}} to={`/${arr}`}>
           <div>
          
           {index+1}.
@@ -71,7 +71,15 @@ const country=newArrCity[2]
     return (
         <div className="favourite">
           <Fons />
-         <h1 className="listOfFav" style={{position: "relative", top: "100px"}}>List of favourite cities:</h1>
+
+        <div class="container">
+  <h2 class="title">
+    <span class="title-word title-word-1">Список </span>
+    <span class="title-word title-word-2">избранных </span>
+    <span class="title-word title-word-3">городов </span>
+    
+  </h2>
+</div>
            <div style={{position: "relative", top: "200px"}}>{rendEl}</div>
            <Navigation />
         </div>

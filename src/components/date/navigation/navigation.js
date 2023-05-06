@@ -100,12 +100,14 @@ const [langCheck, setLangCheck]=useState(false)
           value={country}
         />
  <Link to={country.length ? `/test/${country}` : '#'}>
+  <div style={{position: "relative"}}>
   <button
+  style={{paddingBottom: "10px"}} 
     className="button-85"
     role="button"
     disabled={!country.length}
   >
- Search</button>
+<span style={{lineHeight: "0px",  marginBottom: "-10px"}} className="btnSearchText"> Search</span></button></div>
  </Link>
 
       </div>
