@@ -90,7 +90,7 @@ const [langCheck, setLangCheck]=useState(false)
           <img src={Log} alt="logo" className="logoOfWebPage" />
         </div>
       </Link>
-      <div className="navItem">
+      <div className="navItem navItemSearch">
       <div className="inputSearch">
         <input
           type="text"
@@ -107,9 +107,9 @@ const [langCheck, setLangCheck]=useState(false)
   >
  Search</button>
  </Link>
- 
+
       </div>
-   {renderedElements} 
+      {renderedElements} 
       </div>
     
 

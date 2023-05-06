@@ -42,7 +42,13 @@ z-index: -1;
 }
 .renderedCountry{
  
-    width: 330px;
+   /* width: 330px; */
+   width: 100%;
+  /* float: left; */
+  position: relative;
+  left: 0;
+  justify-content: left;
+   max-width: 100%;
     cursor: pointer;
     background-color: #fff;
     border: 2px solid black;
@@ -97,10 +103,10 @@ z-index: -1;
   .navItem:nth-child(1){
     transform: translateX(0);
   }
-  .inputSearch{
+ /* .inputSearch{
     transform: translateX(-50px);
 
-  }
+  } */
   .inputSearchForm {
     width: 200px;
   }
@@ -114,9 +120,9 @@ z-index: -1;
     width: 200px;
     transform: translateX(-50px);
   }
-  .renderedCountry{
+ /* .renderedCountry{
     width: 225px;
-  }
+  } */
 }
 .txtx{
   font-size: 14px;
@@ -148,9 +154,9 @@ transform: translate(200px, -20px);
   width: 200px;
   transform: translateX(-50px);
 }
-.renderedCountry{
+/*.renderedCountry{
   width: 430px;
-}
+} */
 }
 
 
@@ -171,36 +177,44 @@ transform: translate(200px, -20px);
     .inputSearch{
       width: 400px;
     }
-    .renderedCountry{
+   /* .renderedCountry{
       width: 330px;
+    } */
+  }
+  .navItemSearch{
+    cursor: pointer;
+  }
+  @media (max-width: 570px) {
+    .navItem:nth-child(2){
+      transform: translateX(-80px) translateY(55px);
     }
   }
   @media (max-width: 524px){
     .inputSearch {
       width: 300px;
-      transform: translateX(-80px);
+    /*  transform: translateX(-80px); */
     }
     .listOfSearchedCities{
       width: 200px;
       transform: translateX(-80px);
     }
-    .renderedCountry{
+    /*.renderedCountry{
       width: 230px;
-    }
+    } */
   }
 
 
 @media  (max-width: 370px){
-  .inputSearch {
+ /* .inputSearch {
     transform: translateY(35px) translateX(-90px);
-  }
+  } */
   .listOfSearchedCities{
     width: 200px;
     transform: translate(-90px, 35px);
   }
-  .renderedCountry{
+ /* .renderedCountry{
     width: 230px;
-  }
+  } */
 }
 
 .ccd {
@@ -274,7 +288,9 @@ box-shadow: rgba(240, 46, 170, 0.4) -5px 5px, rgba(240, 46, 170, 0.3) -10px 10px
   margin-left: 60px;
  
 }
-
+.navItem:nth-child(3), .navItem:nth-child(4), .navItem:nth-child(5) {
+  transform: translateY(10px);
+}
 
 
 
