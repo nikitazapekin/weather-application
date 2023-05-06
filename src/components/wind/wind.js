@@ -178,11 +178,21 @@ const arrayOfImages=[Fir, Fiv, Six]
 
 return (
     <div> 
-      <h1 className="windIn">wind in {state} {city} {country} {id} {idd} </h1>
+   
+
+     <div class="container">
+  <h2 class="title">
+    <span class="title-word title-word-1">{state} </span>
+    <span class="title-word title-word-2">{city} </span>
+    <span class="title-word title-word-3">{country} </span>
+    
+  </h2>
+</div>
       <Fons />
      {arrayOfMax !== undefined && (
-      
-        <div className='tableTemperature' style={{ top: "200px"}}>
+       <div style={{position: "relative", top: "200px"}} className="tableWrapper1">
+       <div className='tableTemperature1' >
+     {/*   <div className='tableTemperature' style={{ top: "200px"}}> */}
           {arrayOfMax.map((item, index) => {
             let imageSrc;
             if(arOfWind!=undefined){
@@ -210,63 +220,14 @@ return (
               </Link>
             );
           })}
-         
+         </div>
         </div>
      
       )}
-       <button style={{position: "relative", top: "100px"}} onClick={()=> {
-        async function test(){
-              const weatherUrl = `https://api.open-meteo.com/v1/forecast?latitude=${id}&longitude=${idd}&hourly=temperature_2m,apparent_temperature,precipitation_probability,precipitation,rain,showers,snowfall,cloudcover_low,cloudcover_high,windspeed_10m,windspeed_80m,windspeed_120m,windspeed_180m&forecast_days=16`;
-              const weatherResponse = await fetch(weatherUrl);
-              const weatherData = await weatherResponse.json();
-              console.log("data"+JSON.stringify(weatherData))
-        }
-        test()
-          }}>shhh</button>
+     
       <Navigation />
     </div>
   );
         } 
-    /*    return (
-          <div>
-            efee
-          </div>
-        )
-} */
+   
 export {Wind} 
-
-
-
-
-
-
-/*
-
-  {arrayOfMax !== undefined && (
-        <div className='tableTemperature' style={{ top: "200px"}}>
-          {arrayOfMax.map((item, index) => {
-            let imageSrc;
-            if(arOfWind!=undefined){
-              if (arOfWind[index] === "сильный ветер" ) {
-                imageSrc = arrayOfImages[1];
-              } else if (arOfWind[index] === "средний ветер") {
-                imageSrc = arrayOfImages[2];
-              } else  {
-                imageSrc = arrayOfImages[0];
-              }  
-            }
-            return (
-              <a className='styleLink' href="#" key={index}>
-                <span>
-                  <div className='renderedCurrentCityTemperature'>
-                    <img src={imageSrc} alt="logo" className="renderedCurrentCityTemperatureLogo" />
-                    <div className="renderedCurrentCityTemperatureFon"></div>
-                  </div>
-                  <i></i>
-                </span>
-              </a>
-            );
-          })}
-        </div>
-      )}
-      */

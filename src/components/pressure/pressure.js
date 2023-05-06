@@ -176,13 +176,21 @@ function findMostFrequent(arr) {
   const arrayOfImages=[Fir, Sec, Third] 
     return (
       <div className="pressure">
-<h1 className="">{city} {state} {country} </h1>
+{/*<h1 className="">{city} {state} {country} </h1> */}
+<div class="container">
+  <h2 class="title">
+    <span class="title-word title-word-1">{city} </span>
+    <span class="title-word title-word-2">{state} </span>
+    <span class="title-word title-word-3">{country} </span>
+    
+  </h2>
+</div>
 
 
 
 {arrayOfMax !== undefined && (
-      
-      <div className='tableTemperature' style={{ top: "200px"}}>
+        <div style={{position: "relative", top: "200px"}} className="tableWrapper1">
+      <div className='tableTemperature1' style={{ top: "200px"}}>
         {arrayOfMax.map((item, index) => {
           let imageSrc;
           if(arOfWind!=undefined){
@@ -212,7 +220,7 @@ function findMostFrequent(arr) {
         })}
        
       </div>
-   
+   </div>
     )}
 <Navigation />
 <Fons />

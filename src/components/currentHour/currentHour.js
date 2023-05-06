@@ -152,10 +152,16 @@ const [stateImage, setStateImage]=useState()
           <div>
            
           
-           <h1 className="weatherFor">{idd} in {city}</h1>
+        {/*   <h1 className="weatherFor">{idd} in {city}</h1> */}
+        <div class="container" style={{position: "relative", top: "150px"}}>
+  <h2 class="title">
+    <span class="title-word title-word-2">{city} </span>
+  </h2>
+</div>
            <Fons />
             {rren !== undefined && indexes !== undefined && data !== undefined && (
-              <div className='tableTemperature'>
+                 <div style={{position: "relative", top: "200px"}} className="tableWrapper1">
+              <div className='tableTemperature1'>
                 {rren.map((item, index) => {
                   let imageSrc;
                   if (finalArr[index] === "солнечно" ) {
@@ -170,6 +176,7 @@ const [stateImage, setStateImage]=useState()
                   return (
                     <a className='styleLink' href="#" key={index}>
                       <span>
+                   
                         <div className='renderedCurrentCityTemperature'>
                           <div className="centT">{item}°</div>
                           <div className="centTT">{idd}<br />{nums[index]}:00</div>
@@ -181,6 +188,7 @@ const [stateImage, setStateImage]=useState()
                     </a>
                   );
                 })}
+              </div>
               </div>
             )}
              <Navigation />

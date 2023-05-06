@@ -181,11 +181,21 @@ const arrayOfImages=[Fir, Sec, Third]
 
 return (
     <div className="pressureCurrent">
-<h1>{city} {state} {country}</h1>
+{/*<h1>{city} {state} {country}</h1> */}
+<div class="container">
+  <h2 class="title">
+    <span class="title-word title-word-1">{city} </span>
+    <span class="title-word title-word-2">{state} </span>
+    <span class="title-word title-word-3">{country} </span>
+    
+  </h2>
+</div>
 <Fons />
 <Navigation />
 {rren !== undefined && indexes !== undefined && data !== undefined && speed!=undefined && (
-              <div style={{position: "absolute", top: "200px"}} className='tableTemperature'>
+    <div className="tableWrapper1">
+  
+              <div style={{position: "absolute", top: "200px"}} className='tableTemperature1'>
                 {rren.map((item, index) => {
                   let imageSrc;
                   if (finalArr[index] === "сильный ветер" ) {
@@ -209,6 +219,7 @@ return (
                     </a>
                   );
                 })}
+              </div>
               </div>
             )}
     </div>
