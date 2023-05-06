@@ -126,4 +126,8 @@ transition: 1s;
     margin: 0 auto;
   }
   
-  
+  .loadBar{
+    max-width: 100%;
+    width: 100%;
+    height: 100vh;
+  }

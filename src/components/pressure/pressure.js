@@ -176,7 +176,7 @@ function findMostFrequent(arr) {
   const arrayOfImages=[Fir, Sec, Third] 
     return (
       <div className="pressure">
-pressure
+<h1 className="">{city} {state} {country} </h1>
 
 
 

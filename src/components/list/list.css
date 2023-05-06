@@ -6,6 +6,8 @@
    text-align: left;
    border: 2px solid black;
   cursor: pointer;
+  color: #fff;
+  background-color: yellowgreen;
 }
 .renderListItemFon{
     width: 100%;
@@ -15,7 +17,7 @@
     top:0;
     left: 0;
 background-color: yellowgreen;
-opacity: 0.5; 
+opacity: 0.8; 
 z-index: -1;
 
 }
