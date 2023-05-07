@@ -74,14 +74,6 @@ const [langCheck, setLangCheck]=useState(false)
   const styles={
   display:  langCheck===true ?  "block" : "none"
   }
-
-
-
-
-
-
-
-
   return (
     <nav className="navigation">
    
@@ -107,7 +99,7 @@ const [langCheck, setLangCheck]=useState(false)
     role="button"
     disabled={!country.length}
   >
-<span style={{lineHeight: "0px",  marginBottom: "-10px"}} className="btnSearchText"> Search</span></button></div>
+<span style={{lineHeight: "0px",  marginBottom: "-10px"}} className="btnSearchText"> Найти</span></button></div>
  </Link>
 
       </div>

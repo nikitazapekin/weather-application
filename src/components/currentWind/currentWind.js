@@ -188,7 +188,7 @@ const arrayOfImages=[Fir, Sec, Third]
                     <a className='styleLink' href="#" key={index}>
                       <span>
                         <div className='renderedCurrentCityTemperature'>
-                          <div className="centT">{speed[index]}</div>
+                          <div className="centT">{speed[index]} km/h</div>
                           <div className="centTT">{nums[index]}:00</div>
                           <img src={imageSrc} alt="logo" className="renderedCurrentCityTemperatureLogo" />
                           <div className="renderedCurrentCityTemperatureFon"></div>

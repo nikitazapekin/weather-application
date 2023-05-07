@@ -3,9 +3,9 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { Navigation } from "../date/navigation/navigation";
 import { Fons } from "../fons/fons";
-import Fir from "./1.png"
-import Sec from "./2.png"
-import Third from "./3.png"
+import Fir from "./4.png"
+import Sec from "./5.png"
+import Third from "./6.png"
 const PressureCurrent =()=> {
     const {id, idd, iddd} =useParams()
     const [indexes, setIndexes]=useState();
@@ -101,18 +101,6 @@ useEffect(()=> {
     console.log(indexes)
   }
 
-
-
-
-
-
-
-
-
-
-
-
-
   const [rren, setRren] = useState();
 const  [lll, setLll]=useState()
 const nums=[0,  1,  2,  3,  4,  5,  6,  7,8,  9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23]
@@ -154,16 +142,14 @@ const rendSpeed=data.hourly.pressure_msl.slice(indexes[0], indexes[23]+1 ).map((
     console.log("pressure"+rendPresProp)
     const resultArray=[]
     for (let i = 0; i < 24; i++) {
-      if (rendSpeed[i] >= 72) {
+      if (rendSpeed[i] >= 1020.25) {
         resultArray.push('сильный ветер');
-      }  else if (wind[i] < 72 && wind[i]>22) {
+      }  else if (wind[i] < 1020.25 && wind[i]>1013.25) {
         resultArray.push('средний ветер');
       }  
-      else if (wind[i] >=0 && wind[i]<=22) {
+      else  {
         resultArray.push('легкий ветер');
-      } else {
-        resultArray.push(null);
-      }
+      } 
     }
    // console.log("resArray"+resultArray)
 setFinalArr(resultArray)

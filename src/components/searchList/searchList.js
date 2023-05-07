@@ -266,12 +266,19 @@ return <a onClick={()=>{
     return( 
     <div className="searchList">
       <Fons />
-    {/*  <Navigation /> */}
-  {/*  <h1>Counter: {count}</h1> */}
-      <button  style={{position: "relative", top: "100px"}} onClick={increment}>Increment</button>
     <div style={{position:"relative", top: "100px"}}>
-  <div className="selectedCountry">  {city} {state} {country} </div>
-  <div className="tableTemperature">{renderItems}</div>
+  {/*<div className="selectedCountry">  {city} {state} {country} </div> */}
+  <div class="container">
+  <h2 class="title">
+    <span class="title-word title-word-1">{city} </span>
+    <span class="title-word title-word-2">{state}</span>
+    <span class="title-word title-word-3">{country} </span>
+    
+  </h2>
+</div>
+  <div style={{position: "relative", top: "200px"}} className="tableWrapper1">
+  <div className="tableTemperature1">{renderItems}</div>
+  </div>
   <div className="addToFavourite"></div>
 </div>
 <div className="addToFavouriteWrapper" onClick={()=> {
@@ -292,7 +299,6 @@ return <a onClick={()=>{
 <img src={boolHeart ? Nine : Ten} alt="logo" className="addToFavourite" /> 
 
 </div>
-<Footer />
    <Navigation />
     </div>
     )

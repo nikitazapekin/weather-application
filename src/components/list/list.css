@@ -1,5 +1,5 @@
 .renderedListItem{
-    width: 70%;
+    width: 90%;
     height: 70px;
    position: relative;
    margin: 0 auto;
@@ -28,3 +28,69 @@ z-index: -1;
   .renderListItemFon:nth-child(1) {
     border-top-right-radius: 50%;
   } */
+  @media (max-width: 700px){
+    .title-word-55{
+font-size: 20px;
+    }
+  }
+  @media (max-width: 600px){
+    .title-word-55{
+font-size: 20px;
+transform: translateX(-50px);
+    }
+  }
+  @media (max-width: 500px){
+    .title-word-55{
+font-size: 17px;
+transform: translateX(-100px);
+
+    }
+    .renderedListItem {
+transform: translateX(15px);
+    }
+  }
+  .animationSunnn{
+  /*  position:absolute;
+left: 0;
+bottom: 0; */
+  /*  width: 70px;
+    height: 50px;
+    animation:  animateSunn 4s linear infinite;
+    transform: translateX(100px) translateY(-50px); */
+    position: absolute;
+    width: 100px;
+    height: 50px;
+top: -50px;
+left: 100px;
+animation:  animationSunn 8s linear infinite;
+  }
+  @keyframes animationSunn {
+ /*  0%, 100% {
+left: 50px;
+   } */
+
+   50%{
+    transform: translateX(100px);
+}
+100%{
+    transform: translateX(0);
+}
+  }
+  /*
+  
+.sun {
+    position: absolute;
+    width: 100px;
+    height: 50px;
+top: -50px;
+left: 5px;
+animation:  anim 8s linear infinite;
+}
+@keyframes anim{
+    50%{
+        transform: translateX(150px);
+    }
+    100%{
+        transform: translateX(0);
+    }
+} */

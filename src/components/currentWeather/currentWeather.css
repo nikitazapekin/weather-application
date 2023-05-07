@@ -220,7 +220,7 @@ a:before{
 top: -10px;
    
     left: 100%;
-    transform: translateX(80%);
+   /* transform: translateX(80%); */
 transition: 1s;
 }
 
@@ -249,6 +249,15 @@ transition: 1s;
 
     transition: 1s;
 }
+@media (max-width: 1132px){
+  .styleLink1 i::after {
+      transform: translateX(10px);
+     /* margin-left: 100px; */
+  } 
+  .styleLink1 i::before {
+    transform: translateX(20px);
+  }
+}
 .styleLink1:hover i::after{
    left: 100%;
     transform:  rotate(45deg);
@@ -262,18 +271,27 @@ transition: 1s;
     width: 100px;
     transform: translateX(50px);
 }
+.testPosCent {
+  display: flex;
+  justify-content: center;
+}
 .qw {
-    padding-top: 150px;
-    transform: translateX(-20px);
-    text-decoration: none;
+    padding-top: 120px;
+   /* transform: translateX(-20px);
+    text-decoration: none; */
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
 }
 .ttqq {
     transform: translateX(120px);
 }
 .ttty {
-    display: flex;
-    transform: translateX(60px);
-    padding-top: 170px;
+  /*  display: flex;
+    transform: translateX(60px); */
+ display: flex;
+ justify-content: center;
+    padding-top: 120px;
 }
 .renderedCurrentCityWeatherLogo {
     position: absolute;

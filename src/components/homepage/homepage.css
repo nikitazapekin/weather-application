@@ -101,6 +101,19 @@ transition: 1s;
     transform:  rotate(45deg);
     box-shadow: -40px -15px orangered;
 }  
+@media (max-width: 1132px){
+    .styleLink i::after {
+       left: 80px;
+       /* margin-left: 100px; */
+    } 
+    .styleLink i::before {
+       transform: translateX(40px);
+        /* margin-left: 100px; */
+     } 
+/*  .styleLink1 i::before {
+      transform: translateX(20px);
+    } */
+  }
 .testBtn {
     transform: translateY(-200px);
 }

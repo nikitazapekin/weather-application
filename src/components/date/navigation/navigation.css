@@ -289,9 +289,9 @@ box-shadow: rgba(240, 46, 170, 0.4) -5px 5px, rgba(240, 46, 170, 0.3) -10px 10px
  
 }
 .navItem:nth-child(3), .navItem:nth-child(4), .navItem:nth-child(5) {
-  transform: translateY(30px);
+  transform: translateY(15px);
 }
-
+ 
 
 
 .button-85 {

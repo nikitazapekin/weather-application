@@ -172,12 +172,24 @@ const arrayOfImages=[Fir, Sec, Thir, Four, Fifth, Six, Sev]
 const [stateImage, setStateImage]=useState()
         return (
           <div>
+ <div class="container">
+  <h2 class="title">
+    <span class="title-word title-word-1">{idddd} </span>
+
+    
+  </h2>
+</div>
+
+
+
           {/*  <Navigation /> */}
-            <h1 className="weatherFor" style={{position: "relative", top:"100px"}}> {city} {state} {country}</h1> 
+           {/* <h1 className="weatherFor" style={{position: "relative", top:"100px"}}> {city} {state} {country}</h1>  */}
             <Fons />
-          <div style={{position: "relative", top:"100px"}}> {idddd} </div> 
+         {/* <div style={{position: "relative", top:"100px"}}> {idddd} </div>  */}
          {rren !== undefined && indexes !== undefined && data !== undefined && (
-              <div className='tableTemperature' style={{ top: "200px"}}>
+             <div  style={{ position: "relative", top: "200px"}} className="tableWrapper1">
+  
+              <div className='tableTemperature1'>
                 {rren.map((item, index) => {
                   let imageSrc;
                   if (finalArr[index] === "солнечно" ) {
@@ -203,6 +215,7 @@ const [stateImage, setStateImage]=useState()
                     </a>
                   );
                 })}
+              </div>
               </div>
             )}
         

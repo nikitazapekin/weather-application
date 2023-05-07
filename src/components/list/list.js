@@ -1,55 +1,10 @@
-/*import { useParams } from 'react-router-dom';
-import "./list.css"
-import { store } from '../store/store';
-import { fetchData } from '../store/reducers';
-import { useState } from 'react';
-import { Navigation } from '../date/navigation/navigation';
-import { useEffect } from 'react';
-const List=()=> {
-    const {id} = useParams();
-    const [data, setData]= useState()
-    useEffect(()=> {
-
-
-    setTimeout(()=> {
-        store.dispatch(fetchData(`${id}`)).then(() => {
-            console.log(JSON.stringify(store.getState())); // выводим измененное состояние после завершения запроса
-            const countries = store.getState();
-         
-            const array=countries.reducer.data.results
-            setData(array)
-           
-          });
-         
-    }, 100)
-    //console.log(data)
-}, [])
-   console.log(data)
-   function render(){
-   if(data!=undefined){
- const rend=  data.map((item, index)=> {
-    return <div className='renderedListItem'>{index+1}. {item.name} {item.country} {item.timezone}<div className='renderListItemFon'></div></div>
-   })
-   return rend
-} 
-return 0;
-   }
-    return (
-        <div className='list'>
-            <Navigation />
-       <div className="resultsOfSearch">Results of search {id}: </div> 
-{render()}
-        </div>
-    )
-}
-export {List} */
-
 
 
 
 
 import { useParams } from 'react-router-dom';
 import "./list.css"
+import Im from "./image.png"
 import {Routes,Route, Link } from "react-router-dom"
 import { store } from '../store/store';
 import { fetchData } from '../store/reducers';
@@ -79,7 +34,7 @@ console.log(JSON.stringify(data))
         return (
             <Link style={{textDecoration: "none"}} to={`/${arr}`}>
           <div className='renderedListItem' key={index}>
-            {index + 1}. {item.name} {item.country} {item.timezone}  {item.latitude} {item.longitude}
+            {index + 1}. {item.name} {item.country} {item.timezone} 
             <div className='renderListItemFon'></div>
           </div>
           </Link>
@@ -94,9 +49,14 @@ console.log(JSON.stringify(data))
     <div className='list'>
       <Fons />
       <Navigation />
-      <Footer />
-      <div className='resultsOfSearch'>Results of search {id}: </div>
-      {render()}
+    <div className="container" style={{position: "relative", top: "130px"}}>
+  <h2 class="title">
+    <span className="title-word title-word-1 title-word-55">Результат поиска {id}:</span>
+  </h2>
+</div>
+    <div  style={{position: "relative", top: "200px"}}> 
+    <img style={{position: "absolute"}} src={Im} alt="sun" className="animationSunnn" />
+     {render()} </div>
     </div>
   );
 };

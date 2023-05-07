@@ -148,8 +148,8 @@ const arrayOfImages=[Fir, Sec, Thir, Four, Fifth, Six, Sev]
     
           </div>
        
-      <div className="ttty">  {arrayOfMin[index] }- {item}°</div>
-       <div className="qw">  {datas[index]} </div> 
+    {/*  <div className="ttty">  {arrayOfMin[index] }- {item}°</div> */}
+       <div className="qw">  {datas[index]} <br /><span className="testPosCent"> {arrayOfMin[index] }-{item}°</span> </div> 
 
        <img style={{zIndex: "1000"}} src={imageSrc} alt="logo" className="renderedCurrentCityWeatherLogo" />
           </div><span style={{opacity: "0"}}>;</span>
@@ -162,7 +162,15 @@ const arrayOfImages=[Fir, Sec, Thir, Four, Fifth, Six, Sev]
     <div className="currentWeather">
       <Fons />
     {/*  <p className="todayIn fancy">Сегодня в  {city} </p> */}
-    <div className="sketchy">Сегодня в городе {city}</div>
+   {/*  <div className="sketchy">Сегодня в городе {city}</div> */}
+   <div class="container" style={{position: "relative", top: "0"}}>
+  <h2 class="title">
+    <span class="title-word title-word-1">Сегодня  </span>
+    <span class="title-word title-word-2">в </span>
+    <span class="title-word title-word-3">городе </span>
+    <span class="title-word title-word-3">{city} </span>
+  </h2>
+</div>
       <div className="tableWrapper1">
      <div className="tableTemperature1">{renderItems}
      </div>

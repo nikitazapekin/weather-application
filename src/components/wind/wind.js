@@ -209,8 +209,8 @@ return (
               <a style={{textDecoration: "none"}} className='styleLink' href="#" key={index}>
                 <span>
                   <div className='renderedCurrentCityTemperature'>
-                  <span className="windSpeed"> {arrayOfMin[index]}-{arrayOfMax[index]} km/h </span>
-                  <span className="windDate">    {datas[index]} </span>
+                  <span className="windSpeed"> {arrayOfMin[index]}-{arrayOfMax[index]} km/h <br /> <br /> {datas[index]} </span>
+               {/*   <span className="windDate">    {datas[index]} </span> */} 
                     <img src={imageSrc} alt="logo" className="renderedCurrentCityTemperatureLogo" />
                     <div className="renderedCurrentCityTemperatureFon"></div>
                   </div>

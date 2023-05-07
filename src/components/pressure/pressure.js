@@ -7,9 +7,9 @@ import { useDispatch } from "react-redux"
 import {Routes,Route, Link } from"react-router-dom"
 import { useSelector } from "react-redux"
 import { Fons } from "../fons/fons"
-import Fir from "./1.png"
-import Sec from "./2.png"
-import Third from "./3.png"
+import Fir from "./4.png"
+import Sec from "./5.png"
+import Third from "./6.png"
 
 const Pressure =()=> {
     const {id, idd} = useParams();
@@ -100,14 +100,12 @@ function findMostFrequent(arr) {
            
               const resultArray=[]
               for(let j=i;  j < i+24 && j <wind.length; j++) {
-                if (wind[j] >= 1013.25) {
+                if (wind[j] >= 1020.25) {
                   resultArray.push('сильное давление');
-                } else if (wind[j] < 72 && wind[j]>22) {
+                } else if (wind[j] < 1020.25 && wind[j]>1013.25) {
                   resultArray.push('среднее давление');
-                } else if (wind[j] >=0 && wind[j]<=22) {
+                } else  {
                   resultArray.push('легкое давление');
-                } else {
-                  resultArray.push(null);
                 }
               }
               const item=findMostFrequent(resultArray)
@@ -207,8 +205,8 @@ function findMostFrequent(arr) {
             <a style={{textDecoration: "none"}} className='styleLink' href="#" key={index}>
               <span>
                 <div className='renderedCurrentCityTemperature'>
-                <span className="windSpeed"> {arrayOfMin[index]}-{arrayOfMax[index]}	hPa </span>
-                <span className="windDate">    {datas[index]} </span>
+                <span className="windSpeed"> {arrayOfMin[index]}-{arrayOfMax[index]}	hPa <br /> <br /> {datas[index]} </span>
+               {/* <span className="windDate">    {datas[index]} </span> */}
                   <img src={imageSrc} alt="logo" className="renderedCurrentCityTemperatureLogo" />
                   <div className="renderedCurrentCityTemperatureFon"></div>
                 </div>
