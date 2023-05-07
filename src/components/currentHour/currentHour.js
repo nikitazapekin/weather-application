@@ -153,14 +153,15 @@ const [stateImage, setStateImage]=useState()
            
           
         {/*   <h1 className="weatherFor">{idd} in {city}</h1> */}
-        <div class="container" style={{position: "relative", top: "150px"}}>
+       <div class="container" style={{position: "relative", top: "150px"}}>
   <h2 class="title">
     <span class="title-word title-word-2">{city} </span>
   </h2>
-</div>
+        </div> 
            <Fons />
             {rren !== undefined && indexes !== undefined && data !== undefined && (
-                 <div style={{position: "relative", top: "200px"}} className="tableWrapper1">
+                <div style={{position: "relative", top: "200px"}} className="tableWrapper1"> 
+           {/*  <div className="tableWrapper1"> */}
               <div className='tableTemperature1'>
                 {rren.map((item, index) => {
                   let imageSrc;
@@ -191,7 +192,9 @@ const [stateImage, setStateImage]=useState()
               </div>
               </div>
             )}
+              <div style={{position: 'absolute', top: 0, left: 0, right: 0, bottom: 0,  zIndex: "111", height: "120px" }}>
              <Navigation />
+              </div> 
           </div>
         );
               }

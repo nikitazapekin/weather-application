@@ -144,3 +144,53 @@ transition: 1s;
   .clock{
     transform: translateX(50px);
   }
+
+
+
+
+
+  
+.sketchy1 {
+ 
+    display: inline-block;
+    border: 3px solid #333333;
+    width: 400px;
+    height: auto;
+ font-size: 20px;
+    border-radius: 2% 6% 5% 4% / 1% 1% 2% 4%;
+    text-transform: uppercase;
+    letter-spacing: 0.3ch;
+    background: #ffffff;
+    position: relative;
+    left:  100px;
+    
+    &::before {
+        content: '';
+        border: 2px solid #353535;
+        display: block;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate3d(-50%, -50%, 0) scale(1.015) rotate(0.5deg);
+        border-radius: 1% 1% 2% 4% / 2% 6% 5% 4%;
+    }
+}
+.palz{
+    transform: translateY(30px);
+    float: right;
+}
+@media (max-width: 966px){
+    .sketchy1 {
+        transform: translateY(150px);
+    }
+}
+@media (max-width: 570px){
+    .sketchy1 {
+        transform: translateY(150px);
+        left: 10px;
+        width: 200px;
+        font-size: 16px;
+    }
+}

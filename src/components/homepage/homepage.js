@@ -5,6 +5,7 @@ import React, { useState, useEffect } from 'react';
 import {Routes,Route, Link } from"react-router-dom"
 
 import Sunn from "./image.png"
+import Palz from "./palz.png"
 import "./homepage.css";
 import {  useSearchParams } from 'react-router-dom';
 import { InputSearch } from '../inputSearch/inputSearch';
@@ -46,7 +47,7 @@ setCurrentTiming(event)
       const geoUrl = `https://api.opencagedata.com/geocode/v1/json?q=${position.coords.latitude}+${position.coords.longitude}&key=f9629a9e6fd7493aac20c35043c7e411`;
    const latitude=position.coords.latitude
    const longitude=position.coords.longitude
-  // dispatch({type: "ADD_COORDS", latitude: latitude, longitude: longitude})
+ dispatch({type: "ADD_COORDS", latitude: latitude, longitude: longitude})
       fetch(geoUrl)
         .then(responses => responses.json())
         .then(data => {
@@ -161,7 +162,7 @@ useEffect(()=> {
     setArrayOfProps(data.hourly.precipitation_probability)
   }
 }, [data]);
-
+console.log("data"+JSON.stringify(data))
   return (
     <div className="homepage">
       <Fons />
@@ -175,8 +176,15 @@ useEffect(()=> {
       <div   style={{ zIndex: "1", marginTop: "50px" }}>
         <Time timing={timing} />
   </div>  
-<div className='testCase'>
-</div>
+  
+
+  <div class="sketchy1">Добро пожаловать в Weather app! Здесь вы можете посмотреть погоду, ветер, давление для любого города!
+  <img src={Palz} alt="palz" className="palz" />
+  </div>
+
+
+ 
+{data!=undefined && (
 
 
       <CurrentWeather
@@ -188,11 +196,11 @@ useEffect(()=> {
         newArr={newArr}
         city={city}
   /> 
-    
-      <div style={{ zIndex: "11111111111" }}>
+  )}
+     
+     <div style={{position: 'absolute', top: 0, left: 0, right: 0, bottom: 0,  zIndex: "11111111111", height: "120px"  }}>
         <Navigation id={id} />
-</div>  
-
+</div> 
 
 
 
@@ -203,6 +211,7 @@ useEffect(()=> {
   );
   
 }
+
 function Time() {
   const [date, setDate] = useState(new Date());
 

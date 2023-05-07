@@ -44,10 +44,30 @@ const BurgerMenu = () => {
             <Link to="/favourite">Избранное</Link>
           </li>
           <li>
-            <Link to={`/pressure/${latitude}/${longitude}`}>Давление</Link>
+          {latitude && longitude ? (
+  <Link style={{textDecoration: "none"}} to={`/wind/${latitude}/${longitude}`}>
+   Ветер
+  </Link>
+) : (
+
+<Link to="#">Ветер</Link>
+
+)}
+          {/*  <Link to={`/pressure/${latitude}/${longitude}`}>Давление</Link> */}
           </li>
           <li>
-            <Link to={`/wind/${latitude}/${longitude}`}>Ветер</Link>
+           {/* <Link to={`/wind/${latitude}/${longitude}`}>Ветер</Link>  */}
+
+           {latitude && longitude ? (
+  <Link style={{textDecoration: "none"}} to={`/pressure/${latitude}/${longitude}`}>
+  Давление
+  </Link>
+) : (
+
+<Link to="#">Давление</Link>
+ 
+)}
+
           </li>
         </ul>
   </nav> 

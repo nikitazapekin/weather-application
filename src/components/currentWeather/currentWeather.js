@@ -148,7 +148,7 @@ const arrayOfImages=[Fir, Sec, Thir, Four, Fifth, Six, Sev]
     
           </div>
        
-    {/*  <div className="ttty">  {arrayOfMin[index] }- {item}°</div> */}
+   
        <div className="qw">  {datas[index]} <br /><span className="testPosCent"> {arrayOfMin[index] }-{item}°</span> </div> 
 
        <img style={{zIndex: "1000"}} src={imageSrc} alt="logo" className="renderedCurrentCityWeatherLogo" />

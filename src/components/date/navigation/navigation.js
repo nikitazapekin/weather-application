@@ -113,10 +113,24 @@ const [langCheck, setLangCheck]=useState(false)
       <Link style={{textDecoration: "none"}} to="/favourite">  <p className="textNav">Избранное</p></Link>
       </div>
       <div className="navItem txtx">
-      <Link style={{textDecoration: "none"}} to={`/pressure/${latitude}/${longitude}`}> <p className="textNav ">Давление</p></Link> 
+    {/* <Link style={{textDecoration: "none"}} to={`/pressure/${latitude}/${longitude}`}> <p className="textNav ">Давление</p></Link>  */}
+    {latitude && longitude ? (
+  <Link style={{textDecoration: "none"}} to={`/pressure/${latitude}/${longitude}`}>
+    <p className="textNav">Давление</p>
+  </Link>
+) : (
+  <p className="textNav">Давление</p>
+)}
       </div>
       <div className="navItem txtx">
-       <Link style={{textDecoration: "none"}} to={`/wind/${latitude}/${longitude}`}> <p className="textNav ">Ветер</p> </Link>
+     {/*  <Link style={{textDecoration: "none"}} to={`/wind/${latitude}/${longitude}`}> <p className="textNav ">Ветер</p> </Link> */}
+     {latitude && longitude ? (
+  <Link style={{textDecoration: "none"}} to={`/wind/${latitude}/${longitude}`}>
+    <p className="textNav">Ветер</p>
+  </Link>
+) : (
+  <p className="textNav ">Ветер</p>
+)}
       </div>
 
 <div className="burger">

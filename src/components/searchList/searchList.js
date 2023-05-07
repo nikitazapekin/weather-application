@@ -255,8 +255,8 @@ return <a onClick={()=>{
         <span>
         <div className='renderedCurrentCityTemperature' key={index}><div className="renderedCurrentCityTemperatureFon">
           </div>
-      <div className="ttty">  {arrayOfMin[index] }- {item}°</div>
-       <div className="qw">  {datas[index]} </div> 
+      {/*<div className="ttty">  {arrayOfMin[index] }- {item}°</div> */}
+       <div className="qw">  {datas[index]}  <span className="testPosCent"> {arrayOfMin[index] }-{item}°</span> </div> 
        <img style={{zIndex: "1000"}} src={imageSrc} alt="logo" className="renderedCurrentCityWeatherLogo" /> 
           </div><span style={{opacity: "0"}}>;</span>
           <i></i></span>
@@ -271,7 +271,7 @@ return <a onClick={()=>{
   <div class="container">
   <h2 class="title">
     <span class="title-word title-word-1">{city} </span>
-    <span class="title-word title-word-2">{state}</span>
+    <span class="title-word title-word-2">{state} </span>
     <span class="title-word title-word-3">{country} </span>
     
   </h2>
@@ -299,7 +299,9 @@ return <a onClick={()=>{
 <img src={boolHeart ? Nine : Ten} alt="logo" className="addToFavourite" /> 
 
 </div>
+<div style={{position: 'absolute', top: 0, left: 0, right: 0, bottom: 0,  zIndex: "11111111111", height: "120px"  }}>
    <Navigation />
+   </div>
     </div>
     )
 }

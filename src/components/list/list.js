@@ -48,7 +48,9 @@ console.log(JSON.stringify(data))
   return (
     <div className='list'>
       <Fons />
+      <div style={{position: 'absolute', top: 0, left: 0, right: 0, bottom: 0,  zIndex: "11111111111", height: "120px"  }}>
       <Navigation />
+      </div>
     <div className="container" style={{position: "relative", top: "130px"}}>
   <h2 class="title">
     <span className="title-word title-word-1 title-word-55">Результат поиска {id}:</span>

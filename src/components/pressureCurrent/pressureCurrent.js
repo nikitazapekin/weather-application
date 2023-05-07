@@ -177,7 +177,9 @@ return (
   </h2>
 </div>
 <Fons />
+<div style={{position: 'absolute', top: 0, left: 0, right: 0, bottom: 0,  zIndex: "11111111111", height: "120px"  }}>
 <Navigation />
+</div>
 {rren !== undefined && indexes !== undefined && data !== undefined && speed!=undefined && (
     <div className="tableWrapper1">
   
