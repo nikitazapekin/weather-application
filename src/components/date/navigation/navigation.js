@@ -12,8 +12,10 @@ import En from "./eng.jpg"
 import Rus from "./rus.jpg"
 import Log from "./image.png"
 import BurgerMenu from "../../burgerMenu/burgerMenu";
+import { useTranslation } from 'react-i18next';
 export const Navigation = (props) => {
   const { id } = props;
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const state = useSelector((state) => state);
   const stateId=state.coords
@@ -76,7 +78,7 @@ const [langCheck, setLangCheck]=useState(false)
   }
   return (
     <nav className="navigation">
-   
+ 
       <Link to="/">
         <div className="navItem">
           <img src={Log} alt="logo" className="logoOfWebPage" />
@@ -86,7 +88,7 @@ const [langCheck, setLangCheck]=useState(false)
       <div className="inputSearch">
         <input
           type="text"
-          placeholder="найти..."
+          placeholder={t('navigation.search')+"..."}
           className="inputSearchForm"
           onChange={handleInput}
           value={country}
@@ -99,7 +101,7 @@ const [langCheck, setLangCheck]=useState(false)
     role="button"
     disabled={!country.length}
   >
-<span style={{lineHeight: "0px",  marginBottom: "-10px"}} className="btnSearchText"> Найти</span></button></div>
+<span style={{lineHeight: "0px",  marginBottom: "-10px"}} className="btnSearchText">{t('navigation.search')}</span></button></div>
  </Link>
 
       </div>
@@ -110,32 +112,35 @@ const [langCheck, setLangCheck]=useState(false)
 
 
       <div className="navItem txtx">
-      <Link style={{textDecoration: "none"}} to="/favourite">  <p className="textNav">Избранное</p></Link>
+      <Link style={{textDecoration: "none"}} to="/favourite">  <p className="textNav">{t('navigation.favourite')}</p></Link>
       </div>
       <div className="navItem txtx">
     {/* <Link style={{textDecoration: "none"}} to={`/pressure/${latitude}/${longitude}`}> <p className="textNav ">Давление</p></Link>  */}
     {latitude && longitude ? (
   <Link style={{textDecoration: "none"}} to={`/pressure/${latitude}/${longitude}`}>
-    <p className="textNav">Давление</p>
+    <p className="textNav">{t('navigation.pressure')}</p>
   </Link>
 ) : (
-  <p className="textNav">Давление</p>
+  <p className="textNav">{t('navigation.pressure')}</p>
 )}
       </div>
       <div className="navItem txtx">
      {/*  <Link style={{textDecoration: "none"}} to={`/wind/${latitude}/${longitude}`}> <p className="textNav ">Ветер</p> </Link> */}
      {latitude && longitude ? (
   <Link style={{textDecoration: "none"}} to={`/wind/${latitude}/${longitude}`}>
-    <p className="textNav">Ветер</p>
+    <p className="textNav">{t('navigation.wind')}</p>
   </Link>
 ) : (
-  <p className="textNav ">Ветер</p>
+  <p className="textNav ">{t('navigation.wind')}</p>
 )}
       </div>
+
+
 
 <div className="burger">
 <BurgerMenu />
 </div>
+
       <div className="fonNavigation"></div>
     
     </nav>

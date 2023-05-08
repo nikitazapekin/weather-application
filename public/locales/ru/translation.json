@@ -1,0 +1,15 @@
+{
+    "news": {
+      "title": "Наши новости"
+    },
+    "weather": {
+      "title": "Прогноз погоды",
+      "hour": "час"
+    },
+    "navigation": {
+      "search": "найти",
+      "favourite": "Избранное",
+      "pressure": "Давление",
+      "wind": "Ветер"
+    }
+  }

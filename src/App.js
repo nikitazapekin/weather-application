@@ -1,6 +1,8 @@
 
 import { useState, useEffect } from 'react';
 import "./App.css"
+import { Suspense } from 'react';
+import { useTranslation } from 'react-i18next';
 //import { connect } from 'react-redux';
 import { InputSearch } from './components/inputSearch/inputSearch';
 import {Sun} from "./image.png"
@@ -22,23 +24,28 @@ import { CurrentWind } from './components/currentWind/currentWind';
 import { Pressure } from './components/pressure/pressure';
 import PressureCurrent from './components/pressureCurrent/pressureCurrent';
 import TestComp from './components/testComp/testComp';
-//import "./i18n"
+import En from "./en.jpg"
+import Ru from "./ru.jpg"
 import i18n from 'i18next';
 
 function App(){
  
 const [city, setCity]=useState('')
-
-
-
-/*
-document.body.style.overflow = 'hidden'
-document.addEventListener('DOMContentLoaded', ()=>{
-    setTimeout(()=> {
-        document.querySelector('.fon').style.display = 'none';
-        document.body.style.overflow = ''
-    },1000)
-}) */
+const [langCheck, setLangCheck]=useState(false)
+const [langImg, setLangImg]=useState(true)
+const [currentLanguage, setCurrentLanguage] = useState(i18n.language);
+const toggleLanguage = (lang) => {
+ // const newLanguage= currentLanguage===lang ? 'en' : 'ru'
+  //const newLanguage = currentLanguage === 'en' ? 'ru' : 'en';
+  if(lang==="ru"){
+  setCurrentLanguage('en');
+  i18n.changeLanguage('en');
+  }
+  else{
+    setCurrentLanguage('ru');
+    i18n.changeLanguage('ru');
+  }
+};
   useEffect(() => {
     function successCallback(position) {
      // setBoolCheck(false); 
@@ -88,11 +95,44 @@ document.addEventListener('DOMContentLoaded', ()=>{
   return(
     
     <div className="App">
-    <div className='tttttt'></div>
+       <div className='selectLang'>
+    
+
+       {langImg === true ? (
+  <img src={Ru} alt="lang" onClick={() => {
+    setLangCheck(true);
   
+  }} className="selectLangItem" />
+) : (
+  <img src={En} alt="lang" onClick={() => {
+    setLangCheck(true);
+
+  }} className="selectLangItem" />
+)}
+
+
+
+       {langCheck===true && (
+      <div className="langBlock">
+         <img src={Ru} alt="lang" onClick={()=>{
+        setLangCheck(false)
+        setLangImg(true)
+        toggleLanguage("en")
+       }} className='selectLangItem' />
+        <img src={En} alt="lang" onClick={()=>{
+        setLangCheck(false)
+        setLangImg(false)
+        toggleLanguage("ru")
+       }} className='selectLangItem' />
+      </div>
+       )}
+       </div>
+
+
 <div>
      
     </div>
+    <Suspense fallback={(<div>Loading</div>)}>
     <Routes >
   <Route path="/" element={ <Homepage id={id}/>} />
   <Route path="/favourite" element={ <Favourite />} />
@@ -105,7 +145,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
  <Route path="/current/:id/:idd" element={<CurrentHour />} /> 
  <Route path="/searched/country/:id/:idd/:iddd/:idddd" element={<SearchedHours />} /> 
 </Routes>
-
+</Suspense>
 
   </div>
   )
@@ -126,26 +166,6 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
-// const response = await fetch('https://api.openweathermap.org/data/2.5/weather?q=Minsk&appid=fc64e04f2a354206a57c0d4cf2ca7ea0');
 
-//https://www.figma.com/file/QzR65XLC5oQrsDTn3kFVN7/WEATHER-APP-(Community)?node-id=0%3A1&t=W7NUznGq5AoaQX3R-1
-//open meteo
-//https://api.open-meteo.com/v1/forecast?latitude=53.89&longitude=27.56&hourly=temperature_2m&forecast_days=16
-//https://api.open-meteo.com/v1/forecast?latitude=53.89&longitude=27.56&hourly=temperature_2m&forecast_days=7&country=minsk
-
-
-//https://open-meteo.com/en/docs/geocoding-api
-//https://geocoding-api.open-meteo.com/v1/search?name=Berlin&count=10&language=en&format=json&hourly=temperature_2m&forecast_days=7
-//https://geocoding-api.open-meteo.com/v1/search?name=Vitebsk&count=10&language=en&format=json&hourly=temperature_2m&forecast_days=7&admin1_id=true
-
-
-
-
-
-//https://geocoding-api.open-meteo.com/v1/search?name=Brest&count=10&language=en&format=json&hourly=temperature_2m&forecast_days=7&admin1_id=true&admin2_id=true&daily=true
-
-
-
-//https://api.open-meteo.com/v1/forecast?latitude=48.39&longitude=-4.48&hourly=temperature_2m
-
-//https://geocoding-api.open-meteo.com/v1/search?name=Brest&count=10&language=en&format=json&hourly=temperature_2m&forecast_days=7&admin1_id=true&admin2_id=true&daily=true
+//Перевод
+//

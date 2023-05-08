@@ -1,0 +1,15 @@
+{
+    "news": {
+      "title": "Our news"
+    },
+    "weather": {
+      "title": "Weather forecast",
+      "hour": "hour"
+    },
+    "navigation": {
+      "search": "search",
+      "favourite": "Favourite",
+      "pressure": "Pressure",
+      "wind": "Wind"
+    }
+  }
