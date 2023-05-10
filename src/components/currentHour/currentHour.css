@@ -8,9 +8,7 @@
  /*text-align: center;*/
 }
 .centTT {
-  /*  position: absolute;
-    white-space: wrap;
-    padding-left: 40px; */
+
  position: absolute;
  left: 50%;
  transform: translateX(-50%);

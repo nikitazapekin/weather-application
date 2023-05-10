@@ -11,5 +11,25 @@
       "favourite": "Избранное",
       "pressure": "Давление",
       "wind": "Ветер"
+    }, 
+    "list": {
+      "result": "Результаты поиска"
+    },
+    "favourite": {
+      "cities": "городов",
+      "list": "Список",
+      "favourite": "избранных"
+    },
+    "homepage": {
+      "welcome": "Добро пожаловать в Weather app! Здесь вы можете посмотреть погоду, ветер, давление для любого города!"
+    },
+    "testCity": {
+      "today_in_city": "Сегодня в городе {city}", 
+      "city": "городе"
+    },
+    "currentWeather": {
+      "today": "Сегодня",
+      "in": "в",
+      "city": "городе"
     }
   }

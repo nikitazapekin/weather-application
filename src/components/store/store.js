@@ -13,6 +13,8 @@ import { dataForSearchList } from './reducers';
 import { fav } from './reducers';
 import { favCities } from './reducers';
 import { coords } from './reducers';
+import { stateOfLang } from './reducers';
+import { enTimezone } from './reducers';
 import thunk from 'redux-thunk';
 export const rootReducer = combineReducers({
 
@@ -20,7 +22,9 @@ export const rootReducer = combineReducers({
  dataForSearchList: dataForSearchList,
  fav:fav,
  favCities:favCities,
- coords: coords
+ coords: coords,
+ stateOfLang:  stateOfLang,
+ enTimezone: enTimezone
 });
 
 //export const store = createStore(rootReducer, window.REDUX_DEVTOOLS_EXTENSION && window.REDUX_DEVTOOLS_EXTENSION());

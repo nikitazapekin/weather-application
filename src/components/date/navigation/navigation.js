@@ -32,18 +32,22 @@ const [langCheck, setLangCheck]=useState(false)
     const results = countryData.filter((country) =>
       country.name.toLowerCase().startsWith(value.toLowerCase())
     );
+   // if(results!=undefined){
     setSearchResults(results.slice(0, 10));
+   // }
   }, [countryData]);
 
   const fetchCountryData = (country) => {
     dispatch(fetchData(country)).then(() => {
       const countries = store.getState();
       const array = countries.reducer.data.results;
+      if(array!=undefined){
       const newData = array.slice(0, 10);
       setCountryData(newData);
       setSearchResults(newData);
-    });
-  };
+      }
+    }); 
+  }; 
 
   useEffect(() => {
     if (country) {
@@ -62,6 +66,7 @@ const [langCheck, setLangCheck]=useState(false)
     const arr = [];
     arr.push(latitude);
     arr.push(longitude);
+    //console.log(element)
     return (
       <Link style={{textDecoration: "none"}} to={`/${arr}`}>
         <div onClick={()=> {
@@ -72,7 +77,7 @@ const [langCheck, setLangCheck]=useState(false)
         </div>
       </Link>
     );
-  });
+  });  
   const styles={
   display:  langCheck===true ?  "block" : "none"
   }
@@ -88,12 +93,12 @@ const [langCheck, setLangCheck]=useState(false)
       <div className="inputSearch">
         <input
           type="text"
-          placeholder={t('navigation.search')+"..."}
+    placeholder={t('navigation.search')+"..."}
           className="inputSearchForm"
           onChange={handleInput}
           value={country}
         />
- <Link to={country.length ? `/test/${country}` : '#'}>
+ {/*<Link to={country.length ? `/test/${country}` : '#'}>
   <div style={{position: "relative"}}>
   <button
   style={{paddingBottom: "10px"}} 
@@ -102,10 +107,12 @@ const [langCheck, setLangCheck]=useState(false)
     disabled={!country.length}
   >
 <span style={{lineHeight: "0px",  marginBottom: "-10px"}} className="btnSearchText">{t('navigation.search')}</span></button></div>
- </Link>
-
+  </Link> */}
+<Link to={country.length ? `/test/${country}` : '#'}>
+ <button className="finSearch">{t('navigation.search')}</button>
+  </Link> 
       </div>
-      {renderedElements} 
+      {renderedElements}   
       </div>
     
 

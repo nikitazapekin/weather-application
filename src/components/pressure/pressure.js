@@ -4,19 +4,25 @@ import { useEffect } from "react"
 import { useState } from "react"
 import { useParams } from "react-router"
 import { useDispatch } from "react-redux"
+
 import {Routes,Route, Link } from"react-router-dom"
 import { useSelector } from "react-redux"
 import { Fons } from "../fons/fons"
 import Fir from "./4.png"
 import Sec from "./5.png"
 import Third from "./6.png"
-
+import { useTranslation } from 'react-i18next';
 const Pressure =()=> {
+  const { t } = useTranslation();
     const {id, idd} = useParams();
     const [wind, setWind]=useState()
     const [data, setData]=useState()
+   
+const [timezone, setTimezone]=useState("")
+
     const dispatch = useDispatch();
     const stateData = useSelector((state) => state);
+    const langg= stateData.stateOfLang
 const stat=stateData.coords
 const [city, setCity]=useState("")
 const [country, setCountry]=useState("")
@@ -37,6 +43,8 @@ fetch(geoUrl)
     const state = data.results[0].components.state;
    // dispatch({type: "ADD_COORDS", latitude: id, longitude: idd, city: city, country: country, state: state})
    const stroke="";
+   const timez=data.results[0].annotations.timezone.name
+   setTimezone(timez)
   setCity(city)
   setCountry(country)
   setState(state)
@@ -177,9 +185,19 @@ function findMostFrequent(arr) {
 {/*<h1 className="">{city} {state} {country} </h1> */}
 <div class="container">
   <h2 class="title">
-    <span class="title-word title-word-1">{city} </span>
-    <span class="title-word title-word-2">{state} </span>
+  
+       
+  {langg ===true  && ( 
+    <div>
+    <span class="title-word title-word-1">{state} </span>
+    <span class="title-word title-word-2">{city} </span>
     <span class="title-word title-word-3">{country} </span>
+    </div>
+    )}
+    {langg===false && timezone!=undefined && (
+   <span class="title-word title-word-1">{timezone} </span> 
+ )}
+    
     
   </h2>
 </div>

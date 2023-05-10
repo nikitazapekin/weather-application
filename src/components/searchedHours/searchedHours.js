@@ -11,7 +11,7 @@ import Four from "./4.png"
 import Fifth from "./5.png"
 import Six from "./6.png"
 import Sev from "./7.png"
-
+import { useTranslation } from 'react-i18next';
 import "./searchedHours.css"
 export const SearchedHours =()=> {
     const {id, idd, iddd, idddd} = useParams();
@@ -22,7 +22,7 @@ const [dataVisib, setDataVisib]=useState()
 const [currentDate, setCurrentDate]=useState()
 const [state, setState]=useState()
 const [country, setCountry]=useState()
-  
+const { t } = useTranslation();
 
 
 

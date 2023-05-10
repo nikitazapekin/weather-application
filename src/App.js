@@ -7,12 +7,15 @@ import { useTranslation } from 'react-i18next';
 import { InputSearch } from './components/inputSearch/inputSearch';
 import {Sun} from "./image.png"
 import MyComponent from './components/test/test';
+
 import {  useSearchParams } from 'react-router-dom';
 import { Navigation } from './components/date/navigation/navigation';
 import { Homepage } from './components/homepage/homepage';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { SearchList } from './components/searchList/searchList';
 import { List } from './components/list/list';
+import { useSelector, useDispatch } from "react-redux";
+import { store } from './components/store/store';
 import { CurrentHour } from './components/currentHour/currentHour';
 import { SearchedHours } from './components/searchedHours/searchedHours';
 import { Favourite } from './components/favourite/favourite';
@@ -29,7 +32,10 @@ import Ru from "./ru.jpg"
 import i18n from 'i18next';
 
 function App(){
- 
+  const state = useSelector((state) => state);
+  const langg= state.stateOfLang
+  console.log("langg" +langg)
+  const dispatch = useDispatch();
 const [city, setCity]=useState('')
 const [langCheck, setLangCheck]=useState(false)
 const [langImg, setLangImg]=useState(true)
@@ -38,10 +44,12 @@ const toggleLanguage = (lang) => {
  // const newLanguage= currentLanguage===lang ? 'en' : 'ru'
   //const newLanguage = currentLanguage === 'en' ? 'ru' : 'en';
   if(lang==="ru"){
+ dispatch({type: "EN"})
   setCurrentLanguage('en');
   i18n.changeLanguage('en');
   }
   else{
+   dispatch({type: "RU"})
     setCurrentLanguage('ru');
     i18n.changeLanguage('ru');
   }
@@ -74,8 +82,6 @@ const toggleLanguage = (lang) => {
         default:
           errorMessage = "Произошла неизвестная ошибка";
       }
-    //  console.log(errorMessage);
-    //  setBoolCheck(false); // hide the loading image
     }
 
     if (navigator.geolocation) {

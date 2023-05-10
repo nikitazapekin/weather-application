@@ -8,6 +8,7 @@
   cursor: pointer;
   color: #fff;
   background-color: yellowgreen;
+  
 }
 .renderListItemFon{
     width: 100%;
@@ -94,3 +95,7 @@ animation:  anim 8s linear infinite;
         transform: translateX(0);
     }
 } */
+.listLink {
+  max-width: 90%;
+  width: 100%;
+}

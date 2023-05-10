@@ -10,14 +10,19 @@ import Four from "./4.png"
 import Fifth from "./5.png"
 import Six from "./6.png"
 import Sev from "./7.png"
-
+import { useSelector } from "react-redux"
+import { useTranslation } from 'react-i18next';
 import "./currentHour.css"
 const CurrentHour =()=> {
+  const { t } = useTranslation();
     const {id, idd} = useParams();
     const [data, setData]=useState();
     const [indexes, setIndexes]=useState();
 const [city, setCity]=useState('')
 const [dataVisib, setDataVisib]=useState()
+const state = useSelector((state) => state);
+const langg= state.stateOfLang
+const [timezone, setTimezone]=useState("")
     useEffect(() => {
       function successCallback(position) {
         const geoUrl = `https://api.opencagedata.com/geocode/v1/json?q=${position.coords.latitude}+${position.coords.longitude}&key=f9629a9e6fd7493aac20c35043c7e411`;
@@ -25,6 +30,8 @@ const [dataVisib, setDataVisib]=useState()
           .then(responses => responses.json())
           .then(data => {
             const city = data.results[0].components.city;
+            const timez=data.results[0].annotations.timezone.name
+            setTimezone(timez)
             setCity(city)
           });
         
@@ -155,7 +162,15 @@ const [stateImage, setStateImage]=useState()
         {/*   <h1 className="weatherFor">{idd} in {city}</h1> */}
        <div class="container" style={{position: "relative", top: "150px"}}>
   <h2 class="title">
-    <span class="title-word title-word-2">{city} </span>
+  {/*  <span class="title-word title-word-2">{city} </span> */}
+  <span class="title-word title-word-2">{langg ===true  && city!=undefined && (
+ <div>{city} </div> 
+
+ )}
+ {langg===false && city!=undefined && (
+   <div>{timezone} </div> 
+ )}
+ </span>
   </h2>
         </div> 
            <Fons />

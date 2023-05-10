@@ -18,8 +18,9 @@ import Nine from "./9.png"
 import Ten from "./10.png"
 import { Footer } from "../footer/footer";
 import { Fons } from "../fons/fons";
-
+import { useTranslation } from "react-i18next";
  export const SearchList =(props)=> {
+  const { t } = useTranslation('testCity');
   const { counter, incrementCounter } = props;
   const {id} = useParams();
   const [state, setState]=useState()
@@ -31,6 +32,7 @@ import { Fons } from "../fons/fons";
   const [temp, setTemp]=useState([])
   const [newArr, setNewArr] = useState([]);
   const [date, setDate]=useState([])
+  const [timezone, setTimezone]=useState("")
   const [boolHeart, setBoolHeart]=useState(true)
 const [arrayOfMin, setArrayOfMin]=useState([])
 const [datas, setDatas]=useState([])
@@ -89,6 +91,8 @@ fetch(url)
           setCity(city)
           setCountry(country)
           setState(state)
+          const timez=data.results[0].annotations.timezone.name
+          setTimezone(timez)
           }); 
   fetch(visibUrl)
   .then(response => response.json())
@@ -284,14 +288,15 @@ return <a onClick={()=>{
 <div className="addToFavouriteWrapper" onClick={()=> {
   if(boolHeart===false){
     setBoolHeart(true)
-    dispatch({type: "REMOVE_FROM_FAV", latitude: latitude, longitude: longitude, city: city, country: country, state: state})
-    dispatch({type: "REMOVE_FROM_FAV_CITY",  city: city, country: country, state: state})
+    dispatch({type: "REMOVE_FROM_FAV", latitude: latitude, longitude: longitude, city: city, country: country, state: state, timezone: timezone})
+    dispatch({type: "REMOVE_FROM_FAV_CITY",  city: city, country: country, state: state, timezone: timezone})
+    dispatch({type: "REM_EN_TIMEZONE", timezone: timezone})
   }
   else{
     setBoolHeart(false)
-    dispatch({type: "ADD_TO_FAV", latitude: latitude, longitude: longitude, city: city, country: country, state: state})
-    dispatch({type: "ADD_TO_FAV_CITY",  city: city, country: country, state: state})
-   
+    dispatch({type: "ADD_TO_FAV", latitude: latitude, longitude: longitude, city: city, country: country, state: state, timezone: timezone})
+    dispatch({type: "ADD_TO_FAV_CITY",  city: city, country: country, state: state, timezone: timezone})
+    dispatch({type: "ADD_EN_TIMEZONE", timezone: timezone})
   }
  
  

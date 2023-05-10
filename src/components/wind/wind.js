@@ -12,12 +12,16 @@ import Third from "./3.png"
 import Fiv from "./5.png"
 import Six from "./6.png"
 import "./wind.css"
+import { useTranslation } from 'react-i18next';
 const Wind=()=> {
+  const { t } = useTranslation();
     const {id, idd} = useParams();
     const [wind, setWind]=useState()
     const [data, setData]=useState()
     const dispatch = useDispatch();
     const stateData = useSelector((state) => state);
+   const [timezone, setTimezone]=useState("")
+const langg= stateData.stateOfLang
 const stat=stateData.coords
 const [city, setCity]=useState("")
 const [country, setCountry]=useState("")
@@ -34,7 +38,9 @@ fetch(geoUrl)
     console.log(JSON.stringify(data))
     const city = data.results[0].components.city;
     const country = data.results[0].components.country;
-    const state = data.results[0].components.state;
+   // const state = data.results[0].components.state;
+   // const timez=data.results[0].annotations.timezone.name
+   // setTimezone(timez)
    // dispatch({type: "ADD_COORDS", latitude: id, longitude: idd, city: city, country: country, state: state})
    const stroke="";
   setCity(city)
@@ -61,7 +67,8 @@ test()
       const geoResponse = await fetch(geoUrl);
       const geoData = await geoResponse.json();
       const city = geoData.results[0].components.city;
-      
+      const timez=geoData.results[0].annotations.timezone.name
+      setTimezone(timez)
       const weatherUrl = `https://api.open-meteo.com/v1/forecast?latitude=${id}&longitude=${idd}&hourly=temperature_2m,apparent_temperature,precipitation_probability,precipitation,rain,showers,snowfall,cloudcover_low,cloudcover_high,windspeed_10m,windspeed_80m,windspeed_120m,windspeed_180m&forecast_days=16`;
       const weatherResponse = await fetch(weatherUrl);
       const weatherData = await weatherResponse.json();
@@ -182,9 +189,17 @@ return (
 
      <div class="container">
   <h2 class="title">
+  
+  {langg ===true  && city!=undefined && state!=undefined && country!=undefined && ( 
+    <div>
     <span class="title-word title-word-1">{state} </span>
     <span class="title-word title-word-2">{city} </span>
     <span class="title-word title-word-3">{country} </span>
+    </div>
+    )}
+    {langg===false && timezone!=undefined && (
+   <span class="title-word title-word-1">{timezone} </span> 
+ )}
     
   </h2>
 </div>

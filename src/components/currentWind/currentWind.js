@@ -5,9 +5,12 @@ import { useEffect } from 'react';
 import Fir from "./1.png"
 import Sec from "./2.png"
 import Third from "./3.png"
+import { useSelector } from "react-redux"
 import { Navigation } from '../date/navigation/navigation';
 import "./currentWind.css"
+import { useTranslation } from 'react-i18next';
 const CurrentWind= ()=> {
+  const { t } = useTranslation();
     const {id, idd, iddd} = useParams();
     const [data, setData]=useState();
     const [indexes, setIndexes]=useState();
@@ -15,7 +18,9 @@ const [city, setCity]=useState('')
 const [currentDate, setCurrentDate]=useState()
 const [state, setState]=useState()
 const [country, setCountry]=useState()
-
+const stateData = useSelector((state) => state);
+const [timezone, setTimezone]=useState("")
+const langg= stateData.stateOfLang
 const [wind, setWind]=useState()
 
 
@@ -28,7 +33,8 @@ useEffect(() => {
         .then(data => {
           const city = data.results[0].components.city;
           setCity(city)
-         
+          const timez=data.results[0].annotations.timezone.name
+      setTimezone(timez)
         });
       
       async function fetchAsyncTodos() {
@@ -166,9 +172,18 @@ const arrayOfImages=[Fir, Sec, Third]
 {/*<h1>{city} {state} {country}</h1> */}
 <div class="container">
   <h2 class="title">
+ 
+     
+  {langg ===true  && ( 
+    <div>
     <span class="title-word title-word-1">{state} </span>
     <span class="title-word title-word-2">{city} </span>
     <span class="title-word title-word-3">{country} </span>
+    </div>
+    )}
+    {langg===false && timezone!=undefined && (
+   <span class="title-word title-word-1">{timezone} </span> 
+ )}
     
   </h2>
 </div>

@@ -2,10 +2,12 @@ import { useParams } from "react-router";
 import { useState } from "react";
 import { useEffect } from "react";
 import { Navigation } from "../date/navigation/navigation";
+import { useSelector } from "react-redux"
 import { Fons } from "../fons/fons";
 import Fir from "./4.png"
 import Sec from "./5.png"
 import Third from "./6.png"
+import { useTranslation } from 'react-i18next';
 const PressureCurrent =()=> {
     const {id, idd, iddd} =useParams()
     const [indexes, setIndexes]=useState();
@@ -15,10 +17,11 @@ const [state, setState]=useState()
 const [country, setCountry]=useState()
 const [data, setData]=useState()
 const [wind, setWind]=useState()
-
+const { t } = useTranslation();
   
-
-
+const [timezone, setTimezone]=useState("")
+const stateData = useSelector((state) => state);
+const langg= stateData.stateOfLang
 
 
 
@@ -32,7 +35,8 @@ useEffect(() => {
         .then(data => {
           const city = data.results[0].components.city;
           setCity(city)
-         
+          const timez=data.results[0].annotations.timezone.name
+          setTimezone(timez)
         });
       
       async function fetchAsyncTodos() {
@@ -170,9 +174,21 @@ return (
 {/*<h1>{city} {state} {country}</h1> */}
 <div class="container">
   <h2 class="title">
-    <span class="title-word title-word-1">{city} </span>
+ {/*   <span class="title-word title-word-1">{city} </span>
     <span class="title-word title-word-2">{state} </span>
     <span class="title-word title-word-3">{country} </span>
+*/}
+      
+      {langg ===true  && ( 
+    <div>
+    <span class="title-word title-word-1">{state} </span>
+    <span class="title-word title-word-2">{city} </span>
+    <span class="title-word title-word-3">{country} </span>
+    </div>
+    )}
+    {langg===false && timezone!=undefined && (
+   <span class="title-word title-word-1">{timezone} </span> 
+ )}
     
   </h2>
 </div>
@@ -214,33 +230,3 @@ return (
 )
 }
 export default PressureCurrent;
-/*
-{rren !== undefined && indexes !== undefined && data !== undefined && speed!=undefined && (
-              <div className='tableTemperature'>
-                {rren.map((item, index) => {
-                  let imageSrc;
-                  if (finalArr[index] === "сильный ветер" ) {
-                    imageSrc = arrayOfImages[1];
-                  } else if (finalArr[index] === "средний ветер") {
-                    imageSrc = arrayOfImages[2];
-                  } else   {
-                    imageSrc = arrayOfImages[0];
-                  } 
-                  return (
-                    <a className='styleLink' href="#" key={index}>
-                      <span>
-                        <div className='renderedCurrentCityTemperature'>
-                          <div className="centT">{speed[index]}</div>
-                          <div className="centTT">{nums[index]}:00</div>
-                          <img src={imageSrc} alt="logo" className="renderedCurrentCityTemperatureLogo" />
-                          <div className="renderedCurrentCityTemperatureFon"></div>
-                        </div>
-                        <i></i>
-                      </span>
-                    </a>
-                  );
-                })}
-              </div>
-            )}
-
-*/

@@ -21,7 +21,9 @@ import { SearchList } from '../searchList/searchList';
 import { Footer } from '../footer/footer';
 import Sld from '../slider/slider';
 import { Fons } from '../fons/fons';
+import { useTranslation } from 'react-i18next';
 const Homepage = (props) => {
+  const { t } = useTranslation();
   const {id}=props
   const [city, setCity] = useState("");
   const [newArr, setNewArr] = useState([]);
@@ -33,6 +35,9 @@ const [dataVisib, setDataVisib]=useState()
 const dispatch = useDispatch();
 const state = useSelector((state) => state);
 const [getCurrentDate, setGetCurrentDate]=useState("")
+const langg= state.stateOfLang
+const [timezone, setTimezone]=useState("")
+console.log("langg from home"+ langg)
 const getDate=(event)=> {
 setGetCurrentDate(event)
 }
@@ -53,6 +58,10 @@ setCurrentTiming(event)
         .then(data => {
           const city = data.results[0].components.city;
          // console.log(city)
+       //  console.log(data)
+         const timez=data.results[0].annotations.timezone.name
+       //  console.log(timez)
+       setTimezone(timez)
           setCity(city)
           dispatch({type: "ADD_COORDS", latitude: latitude, longitude: longitude, city: city})
         });
@@ -162,7 +171,7 @@ useEffect(()=> {
     setArrayOfProps(data.hourly.precipitation_probability)
   }
 }, [data]);
-console.log("data"+JSON.stringify(data))
+//console.log("data"+JSON.stringify(data))
   return (
     <div className="homepage">
       <Fons />
@@ -177,17 +186,16 @@ console.log("data"+JSON.stringify(data))
         <Time timing={timing} />
   </div>  
   
-
-  <div class="sketchy1">Добро пожаловать в Weather app! Здесь вы можете посмотреть погоду, ветер, давление для любого города!
+<div class="sketchy1">{t('homepage.welcome')}
   <img src={Palz} alt="palz" className="palz" />
   </div>
-
 
  
 {data!=undefined && (
 
 
       <CurrentWeather
+      timezone={timezone}
         getDate={getDate}
         dataVisib={dataVisib}
         data={data}
@@ -229,8 +237,9 @@ function Time() {
   return (
     <div style={{zIndex: "0"}} className='Time'>
      <img src={Sunn} alt="sun" className="sun" />  
-      <div className="day">{date.toLocaleDateString('en-US', {weekday: 'long'})}{' '}</div>
-      <div className="date">{date.toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}{' '}</div>
+     <div className="day">{date.toLocaleDateString('ru-RU', {weekday: 'long'})}{' '}</div>
+      <div className="date">{date.toLocaleDateString('ru-RU', { month: 'long', year: 'numeric' })}{' '}</div> 
+    
       <div className="time">{date.toLocaleTimeString()}</div>
       <div className="wrapperTime"></div>
     </div>

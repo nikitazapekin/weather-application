@@ -56,7 +56,7 @@ z-index: -1;
 }
 .inputSearchForm{
     width: 300px;
-    height: 15px;
+    height: 25px;
  cursor: pointer;
  padding-left: 30px;
 }
@@ -382,4 +382,15 @@ box-shadow: rgba(240, 46, 170, 0.4) -5px 5px, rgba(240, 46, 170, 0.3) -10px 10px
 }
 .currentSelectedLang {
   transform: translateY(10px);
+}
+.finSearch{
+  cursor: pointer;
+  width: 100px;
+ height: 25px;
+  background: linear-gradient(45deg, yellow, orangered);
+  color: #fff;
+  border: none;
+  outline: none;
+
+text-align: center;
 }

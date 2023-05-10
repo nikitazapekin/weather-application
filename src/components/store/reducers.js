@@ -49,7 +49,23 @@ import { createStore, applyMiddleware } from 'redux';
         }
       }
   } 
-
+  export const stateOfLang=(state=true, action)=>{
+    switch(action.type){
+      case "EN": {
+      state=false
+      console.log("En"+state)
+        return state
+      }
+      case "RU": {
+        state=true
+        console.log("RU"+state)
+return state
+      }
+      default: {
+        return state;
+      }
+    }
+} 
  export const fav=(state=[], action)=> {
   switch (action.type){
     case "ADD_TO_FAV":{
@@ -107,6 +123,7 @@ return state
 state.push(action.city)
 state.push(action.state)
 state.push(action.country)
+//state.push(action.timezone)
 console.log(state)
 state = state.filter((value, index, self) => {
   return self.indexOf(value) === index;
@@ -118,6 +135,7 @@ return state
       state=state.filter((item, index)=> item!=action.city)
       state=state.filter((item, index)=> item!=action.country)
       state=state.filter((item, index)=> item!=action.state)
+   //   state=state.filter((item, index)=> item!=action.timezone)
       console.log(state)
       return state
     }
@@ -125,4 +143,19 @@ return state
       return state
     }
   }
+ }
+ export const enTimezone=(state=[], action)=>{
+switch(action.type){
+  case "ADD_EN_TIMEZONE": {
+    state.push(action.timezone)
+    return state
+  }
+  case "REM_EN_TIMEZONE": {
+    state=state.filter((item, index)=> item!=action.timezone)
+    return state
+  }
+  default: {
+return state
+  }
+}
  }

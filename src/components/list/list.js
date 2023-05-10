@@ -12,9 +12,13 @@ import { useState, useEffect } from 'react';
 import { Navigation } from '../date/navigation/navigation';
 import { Footer } from '../footer/footer';
 import { Fons } from '../fons/fons';
+import { useTranslation } from 'react-i18next';
+import { useSelector } from "react-redux"
 const List = () => {
   const { id } = useParams();
   const [data, setData] = useState([]);
+  const { t } = useTranslation();
+  const stateData = useSelector((state) => state);
 
   useEffect(() => {
     store.dispatch(fetchData(`${id}`)).then(() => {
@@ -24,7 +28,7 @@ const List = () => {
       setData(array);
     });
   }, [id]);
-console.log(JSON.stringify(data))
+//console.log(JSON.stringify(data))
   function render() {
     if (data.length > 0) {
       const rend = data.map((item, index) => {
@@ -32,9 +36,9 @@ console.log(JSON.stringify(data))
         arr.push(item.latitude)
         arr.push(item.longitude)
         return (
-            <Link style={{textDecoration: "none"}} to={`/${arr}`}>
+            <Link style={{textDecoration: "none",   width: "70%", height: "70px"}} to={`/${arr}`}>
           <div className='renderedListItem' key={index}>
-            {index + 1}. {item.name} {item.country} {item.timezone} 
+            {index + 1}. {item.name} {item.country}  {item.timezone}
             <div className='renderListItemFon'></div>
           </div>
           </Link>
@@ -53,12 +57,13 @@ console.log(JSON.stringify(data))
       </div>
     <div className="container" style={{position: "relative", top: "130px"}}>
   <h2 class="title">
-    <span className="title-word title-word-1 title-word-55">Результат поиска {id}:</span>
+  {/*  <span className="title-word title-word-1 title-word-55">{t('list.result')}{id}:</span> */}
+  <span className="title-word title-word-1 title-word-55">{t('list.result')} {id}:</span>
   </h2>
 </div>
-    <div  style={{position: "relative", top: "200px"}}> 
+    <div  style={{position: "relative", top: "200px",  overflow: "hidden"}}> 
     <img style={{position: "absolute"}} src={Im} alt="sun" className="animationSunnn" />
-     {render()} </div>
+  {render()}  </div>
     </div>
   );
 };

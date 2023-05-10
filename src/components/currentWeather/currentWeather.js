@@ -10,12 +10,18 @@ import Fifth from "./5.png"
 import Six from "./6.png"
 import Sev from "./7.png"
 import { Fons } from "../fons/fons"
+import { useTranslation } from "react-i18next"
+import { useSelector } from "react-redux"
 export const CurrentWeather = (props) => {
-  const { city, newArr, temp, date, data, dataVisib, getDate } = props
+
+ const { t } = useTranslation();
+  const { city, newArr, temp, date, data, dataVisib, getDate, timezone } = props
   const [arrayOfMin, setArrayOfMin] = useState([])
 const [arrayOfMax, setArrayOfMax]=useState([])
 const [datas, setDatas]=useState([])
 const [arrayOfVisib , setArrayOfVisib]=useState([])
+const state = useSelector((state) => state);
+const langg= state.stateOfLang
 useEffect(()=>{
 if(dataVisib!=undefined){
 const arrayOfVisibility=dataVisib.hourly.visibility
@@ -94,6 +100,7 @@ setArrayOfMax(maxTempArray)
     return mostFrequent;
   }
 const [arOfWeath, setArOfWeath]=useState()
+console.log("langg from currentWeather"+langg)
 useEffect(()=> {
 
 
@@ -112,7 +119,7 @@ const arrOfWeath=[]
         resultArray.push('солнечно');
       }
     }
-    console.log(resultArray)
+   // console.log(resultArray)
   const item=findMostFrequent(resultArray)
  arrOfWeath.push(item)
   }
@@ -120,7 +127,7 @@ const arrOfWeath=[]
 }
 }, arOfWeath)
 const arrayOfImages=[Fir, Sec, Thir, Four, Fifth, Six, Sev] 
-//============================================
+
   const renderItems=renderMax.map((item, index)=> {
     let imageSrc;
     if(arOfWeath!=undefined){
@@ -161,14 +168,22 @@ const arrayOfImages=[Fir, Sec, Thir, Four, Fifth, Six, Sev]
   return (
     <div className="currentWeather">
       <Fons />
-    {/*  <p className="todayIn fancy">Сегодня в  {city} </p> */}
-   {/*  <div className="sketchy">Сегодня в городе {city}</div> */}
+   
    <div class="container" style={{position: "relative", top: "0"}}>
   <h2 class="title">
-    <span class="title-word title-word-1">Сегодня  </span>
-    <span class="title-word title-word-2">в </span>
-    <span class="title-word title-word-3">городе </span>
-    <span class="title-word title-word-3">{city} </span>
+    <span class="title-word title-word-1">{t('currentWeather.today')} </span>
+    <span class="title-word title-word-2">{t('currentWeather.in')}  </span>
+    <span class="title-word title-word-3">{t('currentWeather.city')}  </span>
+  
+ {/*<span class="title-word title-word-3">{city}
+ </span> */}
+ <span class="title-word title-word-3">{langg ===true  && city!=undefined && (
+ <div>{city} </div> 
+ )}
+ {langg===false && city!=undefined && (
+   <div>{timezone} </div> 
+ )}
+ </span> 
   </h2>
 </div>
       <div className="tableWrapper1">

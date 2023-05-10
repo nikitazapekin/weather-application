@@ -11,5 +11,26 @@
       "favourite": "Favourite",
       "pressure": "Pressure",
       "wind": "Wind"
+    },
+    "list": {
+      "result": "Result of search"
+    },
+    "favourite": {
+      "cities": "cities",
+      "list": "List of",
+      "favourite": "favourite"
+    },
+    "homepage": {
+      "welcome": "Welcome to the Weather app! Here you can see the weather, wind, pressure for any city!"
+    },
+    "testCity": {
+      "today_in_city": "today_in_city {city}",
+      "city": "city"
+    },
+    "currentWeather": {
+      "today": "Today",
+      "in": "in",
+      "city": "city"
     }
+
   }

@@ -3,13 +3,17 @@ import {Routes,Route, Link } from"react-router-dom"
 import { useSelector } from "react-redux"
 import { useDispatch } from "react-redux"
 import { favCities } from "../store/reducers";
+import { useTranslation } from 'react-i18next';
 import { Fons } from "../fons/fons";
 import "./favourite.css"
 const Favourite=()=> {
     const dispatch = useDispatch();
+    const { t } = useTranslation();
     const state = useSelector((state) => state);
     const elems = state.fav;
-   // const arr=[elems[0], elems[1]]
+ const timezone=state.enTimezone
+ //console.log(timezone)
+ const langg= state.stateOfLang
     const elemsCity=state.favCities
     console.log(elems)
     console.log(elemsCity)
@@ -51,8 +55,11 @@ const country=newArrCity[2]
           <div>
          
           {index+1}.
-        { newArrCity[index].map(item=>{ if(item!=undefined){
+
+        { langg===true ? newArrCity[index].map((item, index)=>{ if(item!=undefined){
           return item+" "   
+        }}) : newArrCity[index].map(item=>{ if(item!=undefined){
+          return timezone[index]+" "   
         }}) }
         
 
@@ -74,9 +81,9 @@ const country=newArrCity[2]
 
         <div class="container">
   <h2 class="title">
-    <span class="title-word title-word-1">Список </span>
-    <span class="title-word title-word-2">избранных </span>
-    <span class="title-word title-word-3">городов </span>
+    <span class="title-word title-word-1">{t('favourite.list')} </span>
+    <span class="title-word title-word-2">{t('favourite.favourite')} </span>
+    <span class="title-word title-word-3">{t('favourite.cities')} </span>
     
   </h2>
 </div>
@@ -90,6 +97,21 @@ const country=newArrCity[2]
 export {Favourite}
 
 /*
+ {langg ===true  && ( 
+    <div>
+    <span class="title-word title-word-1">{state} </span>
+    <span class="title-word title-word-2">{city} </span>
+    <span class="title-word title-word-3">{country} </span>
+    </div>
+    )}
+    {langg===false && timezone!=undefined && (
+   <span class="title-word title-word-1">{timezone} </span> 
+ )}
+
+
+
+
+
   <Link style={{textDecoration: "none"}} to={`/${arr}`}> 
          <div className="favCityItem">{index+1}.
         { newArrCity[index].map(item=>{ if(item!=undefined){
