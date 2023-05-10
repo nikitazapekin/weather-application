@@ -10,7 +10,8 @@
       "search": "search",
       "favourite": "Favourite",
       "pressure": "Pressure",
-      "wind": "Wind"
+      "wind": "Wind",
+      "home": "Home"
     },
     "list": {
       "result": "Result of search"

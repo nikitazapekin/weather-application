@@ -237,8 +237,8 @@ function Time() {
   return (
     <div style={{zIndex: "0"}} className='Time'>
      <img src={Sunn} alt="sun" className="sun" />  
-     <div className="day">{date.toLocaleDateString('ru-RU', {weekday: 'long'})}{' '}</div>
-      <div className="date">{date.toLocaleDateString('ru-RU', { month: 'long', year: 'numeric' })}{' '}</div> 
+     <div className="day">{date.toLocaleDateString('en-EN', {weekday: 'long'})}{' '}</div>
+      <div className="date">{date.toLocaleDateString('en-EN', { month: 'long', year: 'numeric' })}{' '}</div> 
     
       <div className="time">{date.toLocaleTimeString()}</div>
       <div className="wrapperTime"></div>

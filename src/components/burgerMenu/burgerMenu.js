@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import "./burgerMenu.css"
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from "react-redux";
+import { useTranslation } from 'react-i18next';
 import { useEffect } from 'react';
 const BurgerMenu = () => {
+  const { t } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
   const dispatch = useDispatch();
   const state = useSelector((state) => state);
@@ -38,19 +40,19 @@ const BurgerMenu = () => {
       <nav className={`burger-menu ${isOpen ? 'burger-menu-open' : ''}`}>
         <ul>
           <li>
-            <Link to="/">Главная</Link>
+            <Link to="/">{t('navigation.home')}</Link>
           </li>
           <li>
-            <Link to="/favourite">Избранное</Link>
+            <Link to="/favourite">{t('navigation.favourite')}</Link>
           </li>
           <li>
           {latitude && longitude ? (
   <Link style={{textDecoration: "none"}} to={`/wind/${latitude}/${longitude}`}>
-   Ветер
+  {t('navigation.wind')}
   </Link>
 ) : (
 
-<Link to="#">Ветер</Link>
+<Link to="#">{t('navigation.wind')}</Link>
 
 )}
           {/*  <Link to={`/pressure/${latitude}/${longitude}`}>Давление</Link> */}
@@ -60,11 +62,11 @@ const BurgerMenu = () => {
 
            {latitude && longitude ? (
   <Link style={{textDecoration: "none"}} to={`/pressure/${latitude}/${longitude}`}>
-  Давление
+ {t('navigation.pressure')}
   </Link>
 ) : (
 
-<Link to="#">Давление</Link>
+<Link to="#">{t('navigation.pressure')}</Link>
  
 )}
 
