@@ -101,38 +101,7 @@ const toggleLanguage = (lang) => {
   return(
     
     <div className="App">
-       <div className='selectLang'>
-    
-
-       {langImg === true ? (
-  <img src={Ru} alt="lang" onClick={() => {
-    setLangCheck(true);
-  
-  }} className="selectLangItem" />
-) : (
-  <img src={En} alt="lang" onClick={() => {
-    setLangCheck(true);
-
-  }} className="selectLangItem" />
-)}
-
-
-
-       {langCheck===true && (
-      <div className="langBlock">
-         <img src={Ru} alt="lang" onClick={()=>{
-        setLangCheck(false)
-        setLangImg(true)
-        toggleLanguage("en")
-       }} className='selectLangItem' />
-        <img src={En} alt="lang" onClick={()=>{
-        setLangCheck(false)
-        setLangImg(false)
-        toggleLanguage("ru")
-       }} className='selectLangItem' />
-      </div>
-       )}
-       </div>
+ 
 
 
 <div>
@@ -153,6 +122,41 @@ const toggleLanguage = (lang) => {
 </Routes>
 </Suspense>
 
+
+
+
+<div style={{zIndex:1111111111111111111111111, position: "absolute"}} className='selectLang'>
+    
+
+    {langImg === true ? (
+<img src={Ru} alt="lang" onClick={() => {
+ setLangCheck(true);
+
+}} className="selectLangItem" />
+) : (
+<img src={En} alt="lang" onClick={() => {
+ setLangCheck(true);
+
+}} className="selectLangItem" />
+)}
+
+
+
+    {langCheck===true && (
+   <div style={{zIndex: 1111111111111111111}} className="langBlock">
+      <img src={Ru} alt="lang" onClick={()=>{
+     setLangCheck(false)
+     setLangImg(true)
+     toggleLanguage("en")
+    }} className='selectLangItem' />
+     <img src={En} alt="lang" onClick={()=>{
+     setLangCheck(false)
+     setLangImg(false)
+     toggleLanguage("ru")
+    }} className='selectLangItem' />
+   </div>
+    )}
+    </div>
   </div>
   )
 }

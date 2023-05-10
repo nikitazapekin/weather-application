@@ -131,3 +131,10 @@ top: 50%;
 width: 100%;
 height: 100%;
 }
+@media (max-width: 400px){
+  .selectLang {
+   margin-right: 0px;
+   left: 100%;
+
+  }
+}
